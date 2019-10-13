@@ -1,18 +1,20 @@
-import React from 'react'
-import { Text } from 'react-native'
+import React, { useState } from 'react'
+import { Button, Text } from 'react-native'
 import { registerRootComponent } from 'expo'
 import { ThemeProvider } from 'styled-components/native'
 
-import { coreTheme } from './themes'
+import { createTheme } from './themes'
 import * as S from './index.styled'
 
 function App() {
-  const theme = coreTheme
+  const [theme, setTheme] = useState()
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={createTheme(theme)}>
       <S.App>
         <Text>Hello!</Text>
+        <Button onPress={() => setTheme()} title="light" />
+        <Button onPress={() => setTheme('dark')} title="dark" />
       </S.App>
     </ThemeProvider>
   )
