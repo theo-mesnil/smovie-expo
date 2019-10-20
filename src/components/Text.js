@@ -10,6 +10,5 @@ export const Text = ({ children, weight = 'regular', ...rest }) => (
 )
 
 Text.propTypes = {
-  children: PropTypes.node,
   weight: PropTypes.oneOf(['regular', 'bold', 'black'])
 }

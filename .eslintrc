@@ -43,6 +43,6 @@
     "react/jsx-no-literals": "off",
     "react/forbid-component-props": "off",
     "react/jsx-props-no-spreading": "off",
-    "react/prop-types": [2, { "ignore": ["navigation", "theme"] }]
+    "react/prop-types": [2, { "ignore": ["navigation", "children"] }]
   }
 }

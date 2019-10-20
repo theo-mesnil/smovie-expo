@@ -3,10 +3,10 @@ export const coreTheme = {
     primary: '#9AC2C9',
     secondary: '#B9D8C2',
     dark: {
-      900: '#000000'
+      900: '#000'
     },
     light: {
-      900: '#FFFFFF'
+      900: '#FFF'
     }
   }
 }
