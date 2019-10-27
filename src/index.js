@@ -1,16 +1,14 @@
 import { registerRootComponent } from 'expo'
 import { ThemeProvider } from 'styled-components/native'
-import { View } from 'react-native'
 import * as Font from 'expo-font'
 import React, { useEffect, useState } from 'react'
 
-import { Button } from './components/Button'
 import { createTheme } from './themes'
-import { Text } from './components/Text'
+import Navigation from './navigations'
 import * as S from './index.styled'
 
 function App() {
-  const [theme, setTheme] = useState()
+  const [theme, setTheme] = useState('dark')
   const [appLoaded, setAppLoaded] = useState(false)
 
   useEffect(() => {
@@ -29,19 +27,7 @@ function App() {
 
   return (
     <ThemeProvider theme={createTheme(theme)}>
-      <S.App>
-        {appLoaded && (
-          <>
-            <Text weight="black">Hello!</Text>
-            <View style={{ flexDirection: 'row' }}>
-              <Button onPress={() => setTheme()}>Light</Button>
-              <Button onPress={() => setTheme('dark')} variant="secondary">
-                Dark
-              </Button>
-            </View>
-          </>
-        )}
-      </S.App>
+      <S.App>{appLoaded && <Navigation />}</S.App>
     </ThemeProvider>
   )
 }
