@@ -1,10 +1,10 @@
 import React from 'react'
-import { View } from 'react-native'
 
+import { BasicLayout } from '../../layouts/Basic'
 import { Text } from '../../components/Text'
 
 export const Shows = () => (
-  <View>
+  <BasicLayout>
     <Text weight="black">Shows</Text>
-  </View>
+  </BasicLayout>
 )

@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "React Native Sandbox",
-    "slug": "react-native-sandbox",
+    "name": "Movies & Tv Shows",
+    "slug": "react-native-sandbox-themoviedb",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": ["ios", "android"],
@@ -11,7 +11,7 @@
     "splash": {
       "image": "./src/assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#9AC2C9"
+      "backgroundColor": "#0f191a"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -23,7 +23,7 @@
     "android": {
       "package": "com.yourcompany.yourappname",
       "adaptiveIcon": {
-        "backgroundColor": "#9AC2C9",
+        "backgroundColor": "#0f191a",
         "foregroundImage": "./src/assets/icon-android.png"
       }
     }
