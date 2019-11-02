@@ -1,24 +1,28 @@
+export const colors = {
+  light100: '#525252',
+  light200: '#474747',
+  light300: '#3d3d3d',
+  light400: '#333333',
+  light500: '#292929',
+  light600: '#1f1f1f',
+  light700: '#141414',
+  light800: '#0a0a0a',
+  light900: '#000',
+  dark100: '#adadad',
+  dark200: '#b8b8b8',
+  dark300: '#c2c2c2',
+  dark400: '#cccccc',
+  dark500: '#d6d6d6',
+  dark600: '#e0e0e0',
+  dark700: '#ebebeb',
+  dark800: '#f5f5f5',
+  dark900: '#fff'
+}
+
 export const darkTheme = {
-  colors: {
-    primary500: '#5a9ba7',
-    secondary500: '#7ab58b',
-    light100: '#416a72',
-    light200: '#3a5e65',
-    light300: '#335359',
-    light400: '#2c474c',
-    light500: '#253b40',
-    light600: '#1d3033',
-    light700: '#162427',
-    light800: '#0f191a',
-    light900: '#080d0e',
-    dark100: '#a0c3c3',
-    dark200: '#accaca',
-    dark300: '#b8d2d2',
-    dark400: '#c4d9d9',
-    dark500: '#d0e1e1',
-    dark600: '#dce9e9',
-    dark700: '#e8f0f2',
-    dark800: '#f4f8f9',
-    dark900: '#FFF'
+  colors,
+  background: {
+    behind: colors.light900,
+    ahead: colors.light800
   }
 }

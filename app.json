@@ -11,7 +11,7 @@
     "splash": {
       "image": "./src/assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#0f191a"
+      "backgroundColor": "#00ADB5"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -23,7 +23,7 @@
     "android": {
       "package": "com.yourcompany.yourappname",
       "adaptiveIcon": {
-        "backgroundColor": "#0f191a",
+        "backgroundColor": "#00ADB5",
         "foregroundImage": "./src/assets/icon-android.png"
       }
     }

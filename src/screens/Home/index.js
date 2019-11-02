@@ -1,10 +1,13 @@
 import React from 'react'
 
 import { BasicLayout } from '../../layouts/Basic'
-import { Text } from '../../components/Text'
+import { TitleScreen } from '../../components/TitleScreen'
+import { Centered } from '../../components/Centered'
 
 export const Home = () => (
   <BasicLayout>
-    <Text weight="black">Home</Text>
+    <Centered>
+      <TitleScreen>Home</TitleScreen>
+    </Centered>
   </BasicLayout>
 )

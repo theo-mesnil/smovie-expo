@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "expo": "^35.0.0",
+    "expo-web-browser": "^7.0.1",
     "lodash.merge": "^4.6.2",
     "react": "16.8.3",
     "react-dom": "16.8.3",

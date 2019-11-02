@@ -1,28 +1,58 @@
+const colors = {
+  primary100: '#dcfdff',
+  primary500: '#00adb5',
+  primary900: '#00888e',
+  secondary100: '#fcffc1',
+  secondary500: '#cbd400',
+  secondary900: '#a6ad00',
+  dark100: '#525252',
+  dark200: '#474747',
+  dark300: '#3d3d3d',
+  dark400: '#333333',
+  dark500: '#292929',
+  dark600: '#1f1f1f',
+  dark700: '#141414',
+  dark800: '#0a0a0a',
+  dark900: '#000',
+  light100: '#adadad',
+  light200: '#b8b8b8',
+  light300: '#c2c2c2',
+  light400: '#cccccc',
+  light500: '#d6d6d6',
+  light600: '#e0e0e0',
+  light700: '#ebebeb',
+  light800: '#f5f5f5',
+  light900: '#fff'
+}
+
 export const coreTheme = {
-  colors: {
-    primary100: '#b4d1d7',
-    primary500: '#9AC2C9',
-    primary900: '#5a9ba7',
-    secondary100: '#d2e6d8',
-    secondary500: '#a0caac',
-    secondary900: '#6dae80',
-    dark100: '#416a72',
-    dark200: '#3a5e65',
-    dark300: '#335359',
-    dark400: '#2c474c',
-    dark500: '#253b40',
-    dark600: '#1d3033',
-    dark700: '#162427',
-    dark800: '#0f191a',
-    dark900: '#080d0e',
-    light100: '#a0c3c3',
-    light200: '#accaca',
-    light300: '#b8d2d2',
-    light400: '#c4d9d9',
-    light500: '#d0e1e1',
-    light600: '#dce9e9',
-    light700: '#e8f0f2',
-    light800: '#f4f8f9',
-    light900: '#FFF'
+  colors,
+  fontSizes: {
+    h1: 27,
+    h2: 20,
+    h3: 17,
+    h4: 13,
+    body1: 15,
+    body2: 14,
+    body3: 13
+  },
+  space: {
+    xxs: '6px',
+    xs: '8px',
+    sm: '10px',
+    md: '12px',
+    lg: '15px',
+    xl: '20px',
+    xxl: '30px'
+  },
+  borderWidths: {
+    sm: '1px'
+  },
+  background: {
+    behind: colors.light800,
+    ahead: colors.light900
+  },
+  switch: {
+    thumb: colors.light900
   }
 }

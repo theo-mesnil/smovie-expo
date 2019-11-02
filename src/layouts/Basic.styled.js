@@ -5,7 +5,7 @@ export const Layout = styled.SafeAreaView(
   ({ theme }) =>
     css`
       flex: 1;
-      background-color: ${theme.colors.light800};
-      padding-top: ${Platform.OS === 'android' ? StatusBar.currentHeight + 10 : 0};
+      background-color: ${theme.background.behind};
+      ${Platform.OS === 'android' && `padding-top: ${StatusBar.currentHeight}`};
     `
 )

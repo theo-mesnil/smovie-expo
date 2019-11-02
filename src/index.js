@@ -4,6 +4,7 @@ import * as Font from 'expo-font'
 import React, { useEffect, useState } from 'react'
 import { Platform, StatusBar } from 'react-native'
 
+import { ThemeContext } from './utils/context'
 import { createTheme } from './themes'
 import Navigation from './navigations'
 import * as S from './index.styled'
@@ -32,7 +33,11 @@ function App() {
       {Platform.OS === 'ios' && (
         <StatusBar animated barStyle={themeName === 'dark' ? 'light-content' : 'dark-content'} />
       )}
-      <S.App>{appLoaded && <Navigation screenProps={{ theme, themeName, setThemeName }} />}</S.App>
+      <S.App>
+        <ThemeContext.Provider value={theme}>
+          {appLoaded && <Navigation screenProps={{ theme, themeName, setThemeName }} />}
+        </ThemeContext.Provider>
+      </S.App>
     </ThemeProvider>
   )
 }

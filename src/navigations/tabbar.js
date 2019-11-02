@@ -8,6 +8,7 @@ import { Icon } from '../components/Icon'
 import { Movies } from '../screens/Movies'
 import { Shows } from '../screens/Shows'
 import { More } from '../screens/More'
+import { isIpad } from '../constants/screen'
 
 function getTabIcon(routeName) {
   switch (routeName) {
@@ -24,6 +25,8 @@ function getTabIcon(routeName) {
   }
 }
 
+const padding = isIpad ? 0 : 5
+
 export const TabNavigator = createBottomTabNavigator(
   {
     Home,
@@ -37,13 +40,13 @@ export const TabNavigator = createBottomTabNavigator(
         activeTintColor: screenProps.theme.colors.primary500,
         inactiveTintColor: screenProps.theme.colors.dark900,
         style: {
-          paddingTop: 5,
+          paddingTop: padding,
           height: 60,
-          backgroundColor: screenProps.theme.colors.light900,
+          backgroundColor: screenProps.theme.background.ahead,
           borderTopColor: screenProps.theme.colors.light900
         },
         labelStyle: {
-          paddingBottom: 5
+          paddingBottom: padding
         }
       },
       tabBarIcon: ({ focused }) => {
