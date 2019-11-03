@@ -2,11 +2,11 @@ import React from 'react'
 import { ScrollView } from 'react-native'
 import * as WebBrowser from 'expo-web-browser'
 
-import { Icon } from '../../components/Icon'
-import { Switch } from '../../components/Switch'
 import { BasicLayout } from '../../layouts/Basic'
-import { Item, List } from '../../components/List'
 import { Centered } from '../../components/Centered'
+import { Icon } from '../../components/Icon'
+import { Item, List } from '../../components/List'
+import { Switch } from '../../components/Switch'
 import { TitleScreen } from '../../components/TitleScreen'
 
 export const More = ({ screenProps: { setThemeName, themeName } }) => {
@@ -18,7 +18,7 @@ export const More = ({ screenProps: { setThemeName, themeName } }) => {
   return (
     <BasicLayout>
       <ScrollView>
-        <Centered>
+        <Centered withMaxSize>
           <TitleScreen>More</TitleScreen>
         </Centered>
         <List>
@@ -38,14 +38,14 @@ export const More = ({ screenProps: { setThemeName, themeName } }) => {
               <Item.Title>Expo</Item.Title>
               <Item.Subtitle>Platform for universal React applications</Item.Subtitle>
             </Item.Content>
-            <Icon color="light100" name="external-link" size={20} />
+            <Icon color="dark100" name="external-link" size={20} />
           </Item>
           <Item activeOpacity={0.6} isLast onPress={() => openLink('https://www.themoviedb.org')}>
             <Item.Content>
               <Item.Title>The movie database</Item.Title>
               <Item.Subtitle>Community built movie and TV database</Item.Subtitle>
             </Item.Content>
-            <Icon color="light100" name="external-link" size={20} />
+            <Icon color="dark100" name="external-link" size={20} />
           </Item>
         </List>
       </ScrollView>

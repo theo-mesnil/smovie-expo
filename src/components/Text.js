@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React from 'react'
 
 import * as S from './Text.styled'
@@ -8,7 +7,3 @@ export const Text = ({ children, weight = 'regular', ...rest }) => (
     {children}
   </S.Text>
 )
-
-Text.propTypes = {
-  weight: PropTypes.oneOf(['regular', 'bold', 'black'])
-}

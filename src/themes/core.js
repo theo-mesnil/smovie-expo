@@ -43,10 +43,22 @@ export const coreTheme = {
     md: '12px',
     lg: '15px',
     xl: '20px',
-    xxl: '30px'
+    xxl: '30px',
+    number: {
+      xxs: 6,
+      xs: 8,
+      sm: 10,
+      md: 12,
+      lg: 15,
+      xl: 20,
+      xxl: 30
+    }
   },
   borderWidths: {
     sm: '1px'
+  },
+  radii: {
+    md: 6
   },
   background: {
     behind: colors.light800,

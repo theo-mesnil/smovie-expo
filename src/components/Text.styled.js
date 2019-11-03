@@ -5,5 +5,6 @@ export const Text = styled.Text(
     font-family: ${weight};
     font-size: 20;
     color: ${theme.colors.dark900};
+    font-family: 'regular';
   `
 )

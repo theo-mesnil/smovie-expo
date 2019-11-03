@@ -12,9 +12,9 @@ export const List = styled.View(
 )
 
 List.Title = styled.Text(
-  ({ theme }) => css`
-    ${centeredStyled}
-    font-family: 'bold';
+  ({ theme, withMaxSize = true }) => css`
+    ${centeredStyled({ theme, withMaxSize })};
+    font-family: 'black';
     color: ${theme.colors.primary500};
     font-size: ${theme.fontSizes.h4};
     text-transform: uppercase;
@@ -22,14 +22,14 @@ List.Title = styled.Text(
 )
 
 export const Item = styled.TouchableOpacity(
-  ({ isLast, theme }) => css`
-    ${centeredStyled};
+  ({ isLast, theme, withMaxSize = true }) => css`
+    ${centeredStyled({ theme, withMaxSize })};
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: ${isLast
-      ? `${theme.space.xl} ${theme.space.xl} ${theme.space.xs}`
-      : `${theme.space.xl}`};
+      ? css`${theme.space.xl} ${theme.space.xl} ${theme.space.xs}`
+      : theme.space.xl};
     border-bottom-width: ${isLast ? 0 : theme.borderWidths.sm};
     border-color: ${theme.colors.light700};
   `
@@ -44,13 +44,15 @@ Item.Title = styled.Text(
   ({ theme }) => css`
     color: ${theme.colors.dark900};
     font-size: ${theme.fontSizes.body1};
+    font-family: 'bold';
   `
 )
 
 Item.Subtitle = styled.Text(
   ({ theme }) => css`
-    color: ${theme.colors.light100};
+    color: ${theme.colors.dark100};
     font-size: ${theme.fontSizes.body2};
+    font-family: 'regular';
     padding-top: 2;
   `
 )
