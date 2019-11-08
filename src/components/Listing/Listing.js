@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { FlatList as FlatListNative } from 'react-native'
 
-import { ThemeContext } from '../utils/context'
+import { ThemeContext } from '../../utils/context'
 
 import * as S from './Listing.styled'
 
@@ -15,6 +15,7 @@ export const Listing = props => {
         paddingRight: theme.space.number.xl
       }}
       horizontal
+      showsHorizontalScrollIndicator={false}
       {...props}
     />
   )

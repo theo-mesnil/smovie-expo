@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components/native'
 
-import { isTablet, SIZE_TABLET, windowWidth } from '../constants/screen'
+import { isTablet, SIZE_TABLET, windowWidth } from '../../constants/screen'
 
 export const Item = styled.View(
   ({ isFirst, numberOfColumns = 2, numberOfColumnsTablet = 3, theme }) => css`

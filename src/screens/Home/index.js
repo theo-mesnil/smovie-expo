@@ -7,18 +7,22 @@ import { formatGenres } from '../../utils/formatGenres'
 import { getGenres } from '../../api/genres'
 import { getImageUrl } from '../../constants/image'
 import { getTrending } from '../../api/trending'
-import { Listing, ListingItem } from '../../components/Listing'
+import { Listing, ListingItem, ListingLoader } from '../../components/Listing'
 import { Section } from '../../components/Section'
 import { Thumb } from '../../components/Thumb'
 import { TitleScreen } from '../../components/TitleScreen'
 
 export const Home = ({ navigation }) => {
-  const [trending, setTrending] = useState()
-  const [movieGenres, setMovieGenres] = useState()
+  const [moviesTrending, setMoviesTrending] = useState()
+  const [moviesGenre, setMovieGenre] = useState()
+  const [showsTrending, setShowsTrending] = useState()
+  const [showsGenre, setShowsGenre] = useState()
 
   useEffect(() => {
-    getGenres(setMovieGenres)
-    getTrending(setTrending)
+    getGenres(setMovieGenre)
+    getTrending(setMoviesTrending)
+    getGenres(setShowsGenre, 'tv')
+    getTrending(setShowsTrending, 'tv')
   }, [])
 
   return (
@@ -27,49 +31,46 @@ export const Home = ({ navigation }) => {
         <Centered>
           <TitleScreen>Home</TitleScreen>
         </Centered>
-        {trending && trending.results && (
-          <Section onPress={() => navigation.navigate('Movies')} title="Trendy movies">
+        <Section onPress={() => navigation.navigate('Movies')} title="Trendy movies">
+          {moviesTrending && moviesTrending.results && moviesGenre ? (
             <Listing
-              data={trending.results}
+              data={moviesTrending.results}
               keyExtractor={item => `${item.id}`}
               renderItem={({ index, item }) => (
                 <ListingItem isFirst={index === 0}>
                   <Thumb
                     backgroundUri={getImageUrl(item.backdrop_path)}
                     onPress={() => navigation.navigate('Movie')}
-                    subtitle={!!movieGenres && formatGenres(movieGenres.genres, item.genre_ids)}
+                    subtitle={!!moviesGenre && formatGenres(moviesGenre.genres, item.genre_ids)}
                     title={item.title}
                   />
                 </ListingItem>
               )}
             />
-          </Section>
-        )}
-        {trending &&
-          trending.results &&
-          [...Array(4)].map((_, index) => (
-            <Section
-              // eslint-disable-next-line react/no-array-index-key
-              key={index}
-              onPress={() => navigation.navigate('Movies')}
-              title="Trendy movies"
-            >
-              <Listing
-                data={trending.results}
-                keyExtractor={item => `${item.id}`}
-                renderItem={({ index, item }) => (
-                  <ListingItem isFirst={index === 0}>
-                    <Thumb
-                      backgroundUri={getImageUrl(item.backdrop_path)}
-                      onPress={() => navigation.navigate('Movie')}
-                      subtitle={!!movieGenres && formatGenres(movieGenres.genres, item.genre_ids)}
-                      title={item.title}
-                    />
-                  </ListingItem>
-                )}
-              />
-            </Section>
-          ))}
+          ) : (
+            <ListingLoader />
+          )}
+        </Section>
+        <Section onPress={() => navigation.navigate('Shows')} title="Trendy TvShows">
+          {showsTrending && showsTrending.results && showsGenre ? (
+            <Listing
+              data={showsTrending.results}
+              keyExtractor={item => `${item.id}`}
+              renderItem={({ index, item }) => (
+                <ListingItem isFirst={index === 0}>
+                  <Thumb
+                    backgroundUri={getImageUrl(item.backdrop_path)}
+                    onPress={() => navigation.navigate('Movie')}
+                    subtitle={!!showsGenre && formatGenres(showsGenre.genres, item.genre_ids)}
+                    title={item.name}
+                  />
+                </ListingItem>
+              )}
+            />
+          ) : (
+            <ListingLoader />
+          )}
+        </Section>
       </ScrollView>
     </BasicLayout>
   )

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { ImageBackground, TouchableOpacity } from 'react-native'
 
-import { ThemeContext } from '../utils/context'
+import { ThemeContext } from '../../utils/context'
 
 import * as S from './Thumb.styled'
 
@@ -15,8 +15,16 @@ export const Thumb = ({ backgroundUri, aspectRatio = 16 / 9, title, subtitle, on
         source={{ uri: backgroundUri }}
         style={{ aspectRatio }}
       />
-      {title && <S.Title numberOfLines={2}>{title}</S.Title>}
-      {subtitle && <S.Subtitle numberOfLines={1}>{subtitle}</S.Subtitle>}
+      {title && (
+        <S.TitleWrapper>
+          <S.Title numberOfLines={2}>{title}</S.Title>
+        </S.TitleWrapper>
+      )}
+      {subtitle && (
+        <S.SubtitleWrapper>
+          <S.Subtitle numberOfLines={1}>{subtitle}</S.Subtitle>
+        </S.SubtitleWrapper>
+      )}
     </TouchableOpacity>
   )
 }
