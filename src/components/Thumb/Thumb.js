@@ -5,7 +5,7 @@ import { ThemeContext } from '../../utils/context'
 
 import * as S from './Thumb.styled'
 
-export const Thumb = ({ backgroundUri, aspectRatio = 16 / 9, title, subtitle, onPress }) => {
+export const Thumb = ({ backgroundUri, aspectRatio = 2 / 3, title, subtitle, onPress }) => {
   const theme = useContext(ThemeContext)
 
   return (

@@ -71,7 +71,7 @@ export const LineGradient = ({ size = 'md', style, ...rest }) => {
     <ShapeLoader
       linearStartPosition={[0, 0]}
       size={getSize[size] || size}
-      style={{ ...style, borderRadius: '50%' }}
+      style={{ ...style, borderRadius: getSize['lg'] }}
       {...rest}
     />
   )

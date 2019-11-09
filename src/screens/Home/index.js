@@ -17,12 +17,16 @@ export const Home = ({ navigation }) => {
   const [moviesGenre, setMovieGenre] = useState()
   const [showsTrending, setShowsTrending] = useState()
   const [showsGenre, setShowsGenre] = useState()
+  const [peoplesTrending, setPeoplesTrending] = useState()
 
   useEffect(() => {
-    getGenres(setMovieGenre)
-    getTrending(setMoviesTrending)
-    getGenres(setShowsGenre, 'tv')
-    getTrending(setShowsTrending, 'tv')
+    setTimeout(() => {
+      getGenres(setMovieGenre)
+      getTrending(setMoviesTrending)
+      getGenres(setShowsGenre, 'tv')
+      getTrending(setShowsTrending, 'tv')
+      getTrending(setPeoplesTrending, 'person')
+    }, 1000)
   }, [])
 
   return (
@@ -31,14 +35,33 @@ export const Home = ({ navigation }) => {
         <Centered>
           <TitleScreen>Home</TitleScreen>
         </Centered>
+        <Section onPress={() => navigation.navigate('Shows')} title="Trendy TvShows">
+          {showsTrending && showsTrending.results && showsGenre ? (
+            <Listing
+              data={showsTrending.results}
+              keyExtractor={item => `${item.id}`}
+              renderItem={({ index, item }) => (
+                <ListingItem isFirst={index === 0} numberOfColumns={2} numberOfColumnsTablet={3}>
+                  <Thumb
+                    backgroundUri={getImageUrl(item.poster_path)}
+                    onPress={() => navigation.navigate('Show')}
+                  />
+                </ListingItem>
+              )}
+            />
+          ) : (
+            <ListingLoader numberOfColumns={2} numberOfColumnsTablet={3} withoutTitle />
+          )}
+        </Section>
         <Section onPress={() => navigation.navigate('Movies')} title="Trendy movies">
           {moviesTrending && moviesTrending.results && moviesGenre ? (
             <Listing
               data={moviesTrending.results}
               keyExtractor={item => `${item.id}`}
               renderItem={({ index, item }) => (
-                <ListingItem isFirst={index === 0}>
+                <ListingItem isFirst={index === 0} numberOfColumns={2} numberOfColumnsTablet={3}>
                   <Thumb
+                    aspectRatio={16 / 9}
                     backgroundUri={getImageUrl(item.backdrop_path)}
                     onPress={() => navigation.navigate('Movie')}
                     subtitle={!!moviesGenre && formatGenres(moviesGenre.genres, item.genre_ids)}
@@ -48,20 +71,19 @@ export const Home = ({ navigation }) => {
               )}
             />
           ) : (
-            <ListingLoader />
+            <ListingLoader aspectRatio={16 / 9} numberOfColumns={2} numberOfColumnsTablet={3} />
           )}
         </Section>
-        <Section onPress={() => navigation.navigate('Shows')} title="Trendy TvShows">
-          {showsTrending && showsTrending.results && showsGenre ? (
+        <Section title="Trendy People">
+          {peoplesTrending && peoplesTrending.results ? (
             <Listing
-              data={showsTrending.results}
+              data={peoplesTrending.results}
               keyExtractor={item => `${item.id}`}
               renderItem={({ index, item }) => (
                 <ListingItem isFirst={index === 0}>
                   <Thumb
-                    backgroundUri={getImageUrl(item.backdrop_path)}
+                    backgroundUri={getImageUrl(item.profile_path)}
                     onPress={() => navigation.navigate('Movie')}
-                    subtitle={!!showsGenre && formatGenres(showsGenre.genres, item.genre_ids)}
                     title={item.name}
                   />
                 </ListingItem>
