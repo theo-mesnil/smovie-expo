@@ -3,7 +3,6 @@ import { ScrollView } from 'react-native'
 
 import { BasicLayout } from '../../layouts/Basic'
 import { Centered } from '../../components/Centered'
-import { formatGenres } from '../../utils/formatGenres'
 import { getGenres } from '../../api/genres'
 import { getImageUrl } from '../../constants/image'
 import { getTrending } from '../../api/trending'
@@ -12,7 +11,7 @@ import { Section } from '../../components/Section'
 import { Thumb } from '../../components/Thumb'
 import { TitleScreen } from '../../components/TitleScreen'
 
-export const Home = ({ navigation }) => {
+export const Trending = ({ navigation }) => {
   const [moviesTrending, setMoviesTrending] = useState()
   const [moviesGenre, setMovieGenre] = useState()
   const [showsTrending, setShowsTrending] = useState()
@@ -33,9 +32,9 @@ export const Home = ({ navigation }) => {
     <BasicLayout>
       <ScrollView>
         <Centered>
-          <TitleScreen>Home</TitleScreen>
+          <TitleScreen>Trending</TitleScreen>
         </Centered>
-        <Section onPress={() => navigation.navigate('Shows')} title="Trendy TvShows">
+        <Section onPress={() => navigation.navigate('Shows')} title="Tv Shows">
           {showsTrending && showsTrending.results && showsGenre ? (
             <Listing
               data={showsTrending.results}
@@ -53,7 +52,7 @@ export const Home = ({ navigation }) => {
             <ListingLoader numberOfColumns={2} numberOfColumnsTablet={3} withoutTitle />
           )}
         </Section>
-        <Section onPress={() => navigation.navigate('Movies')} title="Trendy movies">
+        <Section onPress={() => navigation.navigate('Movies')} title="Movies">
           {moviesTrending && moviesTrending.results && moviesGenre ? (
             <Listing
               data={moviesTrending.results}
@@ -61,31 +60,24 @@ export const Home = ({ navigation }) => {
               renderItem={({ index, item }) => (
                 <ListingItem isFirst={index === 0} numberOfColumns={2} numberOfColumnsTablet={3}>
                   <Thumb
-                    aspectRatio={16 / 9}
-                    backgroundUri={getImageUrl(item.backdrop_path)}
+                    backgroundUri={getImageUrl(item.poster_path)}
                     onPress={() => navigation.navigate('Movie')}
-                    subtitle={!!moviesGenre && formatGenres(moviesGenre.genres, item.genre_ids)}
-                    title={item.title}
                   />
                 </ListingItem>
               )}
             />
           ) : (
-            <ListingLoader aspectRatio={16 / 9} numberOfColumns={2} numberOfColumnsTablet={3} />
+            <ListingLoader numberOfColumns={2} numberOfColumnsTablet={3} withoutTitle />
           )}
         </Section>
-        <Section title="Trendy People">
+        <Section title="People">
           {peoplesTrending && peoplesTrending.results ? (
             <Listing
               data={peoplesTrending.results}
               keyExtractor={item => `${item.id}`}
               renderItem={({ index, item }) => (
                 <ListingItem isFirst={index === 0}>
-                  <Thumb
-                    backgroundUri={getImageUrl(item.profile_path)}
-                    onPress={() => navigation.navigate('Movie')}
-                    title={item.name}
-                  />
+                  <Thumb backgroundUri={getImageUrl(item.profile_path)} title={item.name} />
                 </ListingItem>
               )}
             />

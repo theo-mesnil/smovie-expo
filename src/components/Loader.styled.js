@@ -14,7 +14,7 @@ export const ShapeLoader = ({
   ...rest
 }) => {
   const theme = useContext(ThemeContext)
-  const startValue = 0.2
+  const startValue = 0.1
   const [fadeAnim] = useState(new Animated.Value(startValue))
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export const ShapeLoader = ({
         }),
         Animated.timing(fadeAnim, {
           toValue: startValue,
-          duration: 1000
+          duration: 500
         })
       ])
     ).start()
@@ -45,7 +45,7 @@ export const ShapeLoader = ({
       <>
         {children}
         <LinearGradient
-          colors={[theme.colors.light400, theme.colors.light700]}
+          colors={[theme.colors.light600, theme.colors.light700]}
           start={linearStartPosition}
           style={{
             position: 'absolute',

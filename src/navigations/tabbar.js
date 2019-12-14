@@ -2,7 +2,7 @@
 import React from 'react'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 
-import { Home } from '../screens/Home'
+import { Trending } from '../screens/Trending'
 import { Icon } from '../components/Icon'
 import { Movies } from '../screens/Movies'
 import { Shows } from '../screens/Shows'
@@ -11,8 +11,8 @@ import { isIpad } from '../constants/screen'
 
 function getTabIcon(routeName) {
   switch (routeName) {
-    case 'Home':
-      return 'home'
+    case 'Trending':
+      return 'star'
     case 'Movies':
       return 'film'
     case 'Shows':
@@ -28,7 +28,7 @@ const padding = isIpad ? 0 : 5
 
 export const TabNavigator = createBottomTabNavigator(
   {
-    Home,
+    Trending,
     Movies,
     Shows,
     More
