@@ -31,7 +31,7 @@ export const Item = styled.TouchableOpacity(
       ? css`${theme.space.xl} ${theme.space.xl} ${theme.space.xs}`
       : theme.space.xl};
     border-bottom-width: ${isLast ? 0 : theme.borderWidths.sm};
-    border-color: ${theme.colors.light700};
+    border-color: ${theme.colors.light800};
   `
 )
 
