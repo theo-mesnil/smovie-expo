@@ -1,3 +1,4 @@
+import React from 'react'
 import styled, { css } from 'styled-components/native'
 
 import { centeredStyled } from './Centered'
@@ -21,7 +22,7 @@ List.Title = styled.Text(
   `
 )
 
-export const Item = styled.TouchableOpacity(
+const ItemStyled = styled.TouchableOpacity(
   ({ isLast, theme, withMaxSize = true }) => css`
     ${centeredStyled({ theme, withMaxSize })};
     flex-direction: row;
@@ -34,6 +35,10 @@ export const Item = styled.TouchableOpacity(
     border-color: ${theme.colors.light800};
   `
 )
+
+export function Item(props) {
+  return <ItemStyled activeOpacity={0.7} {...props} />
+}
 
 Item.Content = styled.View`
   flex-direction: column;
