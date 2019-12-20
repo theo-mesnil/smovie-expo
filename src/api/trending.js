@@ -2,10 +2,10 @@ import axios from 'axios'
 
 import { getApiUrl } from './api'
 
-export const getTrending = (setTrending, type = 'movie', time = 'week') =>
+export const getTrending = (callback, type = 'movie', time = 'week') =>
   axios
     .get(getApiUrl(`trending/${type}/${time}`))
     .then(response => {
-      setTrending(response.data)
+      callback(response.data)
     })
     .catch()
