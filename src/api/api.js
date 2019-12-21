@@ -1,4 +1,4 @@
-import { THEMOVIEDB_API_KEY } from 'react-native-dotenv'
+import { THEMOVIEDB_API_KEY } from '../../env'
 
 export const API_URL = 'https://api.themoviedb.org/3/'
 
