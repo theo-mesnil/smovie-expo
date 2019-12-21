@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { Platform, StatusBar } from 'react-native'
 import { AppearanceProvider, useColorScheme } from 'react-native-appearance'
 
-import { ThemeContext } from './utils/context'
+import { ThemeProvider as ThemeProviderContext } from './contexts/theme'
 import { createTheme } from './themes'
 import { useAsyncStorage } from './utils/storage'
 import Navigation from './navigations'
@@ -41,9 +41,9 @@ function App() {
           <StatusBar animated barStyle={themeName === 'dark' ? 'light-content' : 'dark-content'} />
         )}
         <S.App>
-          <ThemeContext.Provider value={theme}>
+          <ThemeProviderContext value={theme}>
             {appLoaded && <Navigation screenProps={{ theme, themeName, setThemeName }} />}
-          </ThemeContext.Provider>
+          </ThemeProviderContext>
         </S.App>
       </AppearanceProvider>
     </ThemeProvider>

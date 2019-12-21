@@ -1,19 +1,20 @@
 /* eslint-disable react/no-multi-comp */
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Animated } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 
-import { ThemeContext } from '../utils/context'
+import { useTheme } from '../contexts/theme'
 
 export const ShapeLoader = ({
   children,
-  style,
+  delay,
   size,
   linearStartPosition = [0.2, 0.3],
-  delay,
+  style,
+  colors,
   ...rest
 }) => {
-  const theme = useContext(ThemeContext)
+  const theme = useTheme()
   const startValue = 0.1
   const [fadeAnim] = useState(new Animated.Value(startValue))
 
@@ -45,7 +46,7 @@ export const ShapeLoader = ({
       <>
         {children}
         <LinearGradient
-          colors={[theme.colors.light600, theme.colors.light700]}
+          colors={colors || [theme.colors.light600, theme.colors.light700]}
           start={linearStartPosition}
           style={{
             position: 'absolute',

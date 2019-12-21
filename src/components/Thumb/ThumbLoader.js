@@ -1,12 +1,12 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { View } from 'react-native'
 
 import { LineGradient, ShapeLoader } from '../Loader.styled'
-import { ThemeContext } from '../../utils/context'
 import * as S from '../Thumb/Thumb.styled'
+import { useTheme } from '../../contexts/theme'
 
 export const ThumbLoader = ({ aspectRatio = 2 / 3, withoutTitle }) => {
-  const theme = useContext(ThemeContext)
+  const theme = useTheme()
 
   return (
     <View>

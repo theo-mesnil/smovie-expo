@@ -1,12 +1,12 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { ImageBackground, TouchableOpacity } from 'react-native'
 
-import { ThemeContext } from '../../utils/context'
+import { useTheme } from '../../contexts/theme'
 
 import * as S from './Thumb.styled'
 
 export const Thumb = ({ backgroundUri, aspectRatio = 2 / 3, title, subtitle, onPress }) => {
-  const theme = useContext(ThemeContext)
+  const theme = useTheme()
 
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
