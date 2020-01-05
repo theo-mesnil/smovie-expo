@@ -1,13 +1,14 @@
-import React from 'react'
 import styled, { css } from 'styled-components/native'
 
 import { centeredStyled } from './Centered'
+import { TouchableOpacity } from './TouchableOpacity'
 
 export const List = styled.View(
   ({ theme }) => css`
     width: 100%;
     background-color: ${theme.background.ahead};
-    padding: ${theme.space.xl} 0 ${theme.space.sm};
+    padding-top: ${theme.space.xl};
+    padding-horizontal: ${theme.space.sm};
     margin-bottom: ${theme.space.sm};
   `
 )
@@ -22,23 +23,25 @@ List.Title = styled.Text(
   `
 )
 
-const ItemStyled = styled.TouchableOpacity(
+export const Item = styled(TouchableOpacity)(
   ({ isLast, theme, withMaxSize = true }) => css`
     ${centeredStyled({ theme, withMaxSize })};
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: ${isLast
-      ? css`${theme.space.xl} ${theme.space.xl} ${theme.space.xs}`
-      : theme.space.xl};
+    ${isLast
+      ? css`
+          padding-vertical: ${theme.space.xl};
+          padding-right: ${theme.space.xl};
+        `
+      : css`
+          padding-vertical: ${theme.space.xl};
+          padding-horizontal: ${theme.space.xl};
+        `};
     border-bottom-width: ${isLast ? 0 : theme.borderWidths.sm};
     border-color: ${theme.colors.light800};
   `
 )
-
-export function Item(props) {
-  return <ItemStyled activeOpacity={0.7} {...props} />
-}
 
 Item.Content = styled.View`
   flex-direction: column;

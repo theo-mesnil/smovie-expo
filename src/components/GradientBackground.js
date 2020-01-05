@@ -1,14 +1,18 @@
 import React from 'react'
 import { LinearGradient } from 'expo-linear-gradient'
+import styled from 'styled-components/native'
+import { flexbox, layout, position, space } from 'styled-system'
 
 import { useTheme } from '../contexts/theme'
+
+const StyledGradientBackground = styled(LinearGradient)(flexbox, layout, position, space)
 
 export function GradientBackground({ colors, style }) {
   const theme = useTheme()
 
   return (
-    <LinearGradient
-      colors={colors || ['transparent', theme.colors.light900]}
+    <StyledGradientBackground
+      colors={colors || ['transparent', theme.background.behind]}
       style={{
         position: 'absolute',
         left: 0,

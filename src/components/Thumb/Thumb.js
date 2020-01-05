@@ -1,15 +1,16 @@
 import React from 'react'
-import { ImageBackground, TouchableOpacity } from 'react-native'
+import { ImageBackground } from 'react-native'
 
 import { useTheme } from '../../contexts/theme'
+import { TouchableOpacity } from '../../components/TouchableOpacity'
 
 import * as S from './Thumb.styled'
 
-export const Thumb = ({ backgroundUri, aspectRatio = 2 / 3, title, subtitle, onPress }) => {
+export const Thumb = ({ backgroundUri, aspectRatio = 3 / 4, title, subtitle, onPress }) => {
   const theme = useTheme()
 
   return (
-    <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
+    <TouchableOpacity activeOpacity={onPress ? 0.7 : 1} onPress={onPress}>
       <ImageBackground
         imageStyle={{ borderRadius: theme.radii.md }}
         source={{ uri: backgroundUri }}

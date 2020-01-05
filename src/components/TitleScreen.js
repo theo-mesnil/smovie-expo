@@ -5,6 +5,6 @@ export const TitleScreen = styled.Text(
     color: ${theme.colors.dark900};
     font-family: 'bold';
     font-size: ${theme.fontSizes.h1};
-    margin: ${theme.space.xl} 0;
+    margin-vertical: ${theme.space.xl};
   `
 )

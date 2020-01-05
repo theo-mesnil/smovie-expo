@@ -23,6 +23,7 @@ export const darkTheme = {
   colors,
   background: {
     behind: colors.light900,
-    ahead: colors.light700
+    ahead: colors.light700,
+    cover: colors.light900
   }
 }

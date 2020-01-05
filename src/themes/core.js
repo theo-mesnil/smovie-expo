@@ -22,7 +22,8 @@ const colors = {
   light600: '#e0e0e0',
   light700: '#ebebeb',
   light800: '#f5f5f5',
-  light900: '#fff'
+  light900: '#fff',
+  danger500: '#e32249'
 }
 
 export const coreTheme = {
@@ -37,22 +38,13 @@ export const coreTheme = {
     body3: 13
   },
   space: {
-    xxs: '6px',
-    xs: '8px',
-    sm: '10px',
-    md: '12px',
-    lg: '15px',
-    xl: '20px',
-    xxl: '30px',
-    number: {
-      xxs: 6,
-      xs: 8,
-      sm: 10,
-      md: 12,
-      lg: 15,
-      xl: 20,
-      xxl: 30
-    }
+    xxs: 5,
+    xs: 10,
+    sm: 12,
+    md: 15,
+    lg: 20,
+    xl: 25,
+    xxl: 30
   },
   borderWidths: {
     sm: '1px'
@@ -62,7 +54,8 @@ export const coreTheme = {
   },
   background: {
     behind: colors.light800,
-    ahead: colors.light900
+    ahead: colors.light900,
+    cover: colors.dark900
   },
   switch: {
     thumb: colors.light900

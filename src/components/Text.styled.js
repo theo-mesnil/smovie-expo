@@ -1,10 +1,15 @@
 import styled, { css } from 'styled-components/native'
+import { color, flexbox, layout, position, space } from 'styled-system'
 
 export const Text = styled.Text(
-  ({ theme, weight }) => css`
+  ({ fontSize = 16, theme, weight }) => css`
     font-family: ${weight};
-    font-size: 20;
+    font-size: ${fontSize};
     color: ${theme.colors.dark900};
-    font-family: 'regular';
+    ${flexbox};
+    ${layout};
+    ${position};
+    ${space};
+    ${color};
   `
 )

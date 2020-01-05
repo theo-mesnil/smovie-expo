@@ -73,7 +73,11 @@ export const Trending = ({ navigation }) => {
             keyExtractor={item => `${item.id}`}
             renderItem={({ index, item }) => (
               <ListingItem isFirst={index === 0}>
-                <Thumb backgroundUri={getImageUrl(item.profile_path)} title={item.name} />
+                <Thumb
+                  aspectRatio={2 / 3}
+                  backgroundUri={getImageUrl(item.profile_path)}
+                  title={item.name}
+                />
               </ListingItem>
             )}
           />

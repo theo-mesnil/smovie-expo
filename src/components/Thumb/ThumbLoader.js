@@ -5,7 +5,7 @@ import { LineGradient, ShapeLoader } from '../Loader.styled'
 import * as S from '../Thumb/Thumb.styled'
 import { useTheme } from '../../contexts/theme'
 
-export const ThumbLoader = ({ aspectRatio = 2 / 3, withoutTitle }) => {
+export const ThumbLoader = ({ aspectRatio = 3 / 4, withoutTitle }) => {
   const theme = useTheme()
 
   return (

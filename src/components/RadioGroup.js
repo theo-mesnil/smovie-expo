@@ -7,7 +7,6 @@ export function Radio({ disabled, onPress, selected }) {
     <S.Radio
       accessibilityRole="radio"
       accessibilityState={{ selected, disabled }}
-      activeOpacity={0.7}
       onPress={onPress}
       selected={selected}
     >

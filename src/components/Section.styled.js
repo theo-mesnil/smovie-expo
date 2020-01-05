@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components/native'
 
 import { centeredStyled } from './Centered'
+import { TouchableOpacity } from './TouchableOpacity'
 
 export const Section = styled.View(
   ({ theme }) => css`
@@ -8,7 +9,7 @@ export const Section = styled.View(
   `
 )
 
-export const TitleWithLink = styled.TouchableOpacity`
+export const TitleWithLink = styled(TouchableOpacity)`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;

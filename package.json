@@ -25,7 +25,8 @@
     "react-navigation": "^4.0.10",
     "react-navigation-stack": "^1.10.3",
     "react-navigation-tabs": "^2.5.6",
-    "styled-components": "^4.4.0"
+    "styled-components": "^4.4.0",
+    "styled-system": "^5.1.4"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
