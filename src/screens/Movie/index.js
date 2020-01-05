@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from 'react'
 import { ImageBackground } from 'react-native'
 
@@ -6,22 +7,40 @@ import { getMovieDetail } from '../../api/movie'
 import { getImageUrl } from '../../constants/image'
 import { ShapeLoader } from '../../components/Loader.styled'
 import { Box } from '../../components/Box'
+import { LinkList } from '../../components/LinkList'
+import { Genres } from '../../components/Genres'
+import { Section } from '../../components/Section'
+import { Listing, ListingItem, ListingLoader } from '../../components/Listing'
 import { Informations } from '../../components/Informations'
+import { Thumb } from '../../components/Thumb'
 import { Icon } from '../../components/Icon'
 import { Text } from '../../components/Text'
 import { TouchableOpacity } from '../../components/TouchableOpacity'
 import { GradientBackground } from '../../components/GradientBackground'
 import { convertToFullDate } from '../../utils/formatTime'
+import { formatMoney } from '../../utils/formatMoney'
 
 import { MainInformation } from './MainInformation'
 
 export const Movie = ({ navigation }) => {
   const [movieDetail, setMovieDetail] = useState()
+  const [movieCredits, setMovieCredits] = useState()
+  const [movieRecommendations, setMovieRecommendations] = useState()
   const aspectRatioCover = 16 / 10
 
   useEffect(() => {
-    getMovieDetail(setMovieDetail, navigation.getParam('movieID'))
+    const movieId = navigation.getParam('movieID')
+    getMovieDetail(setMovieDetail, movieId)
+    getMovieDetail(setMovieCredits, movieId, '/credits')
+    getMovieDetail(setMovieRecommendations, movieId, '/recommendations')
   }, [navigation])
+
+  const director = !!movieCredits && movieCredits.crew.filter(credit => credit.job === 'Director')
+  const writers =
+    !!movieCredits &&
+    movieCredits.crew.filter(
+      credit => credit.department === 'Writing' && director[0].name !== credit.name
+    )
 
   return (
     <AllScreenLayout>
@@ -54,12 +73,84 @@ export const Movie = ({ navigation }) => {
           <Box paddingBottom="xl" paddingLeft="xl" paddingRight="xl" paddingTop="xl">
             <Text>{movieDetail.overview}</Text>
             <Informations title={movieDetail.status}>
-              {convertToFullDate(movieDetail.release_date)}
+              <Text numberOfLines={1}>{convertToFullDate(movieDetail.release_date)}</Text>
             </Informations>
-            <Informations title="Director">Test 1</Informations>
-            <Informations title="Genres">Test 1</Informations>
-            <Informations title="Revenue">Test 1</Informations>
+            {director && (
+              <Informations title="Director">
+                <LinkList
+                  list={director}
+                  onPress={(id, name) => navigation.navigate('People', { id, name })}
+                />
+              </Informations>
+            )}
+            {writers && (
+              <Informations title="Writers">
+                <LinkList
+                  list={writers}
+                  onPress={(id, name) => navigation.navigate('People', { id, name })}
+                />
+              </Informations>
+            )}
+            {movieDetail.genres && (
+              <Informations title="Genres">
+                <Genres genres={movieDetail.genres} />
+              </Informations>
+            )}
+            {movieDetail.revenue && (
+              <Informations title="Revenue">
+                <Text numberOfLines={1}>{formatMoney(movieDetail.revenue)}</Text>
+              </Informations>
+            )}
           </Box>
+          <Section title="Casting">
+            {movieCredits ? (
+              <Listing
+                data={movieCredits.cast}
+                keyExtractor={item => `${item.id}_${Math.random()}`}
+                renderItem={({ index, item }) => (
+                  <ListingItem isFirst={index === 0}>
+                    <Thumb
+                      aspectRatio={2 / 3}
+                      backgroundUri={getImageUrl(item.profile_path)}
+                      onPress={
+                        () => navigation.navigate('People', { id: item.id, name: item.name })
+                        // eslint-disable-next-line react/jsx-curly-newline
+                      }
+                      title={item.name}
+                    />
+                  </ListingItem>
+                )}
+              />
+            ) : (
+              <ListingLoader />
+            )}
+          </Section>
+          <Section title="Recommendations">
+            {movieRecommendations ? (
+              <Listing
+                data={movieRecommendations.results}
+                keyExtractor={item => `${item.id}_${Math.random()}`}
+                renderItem={({ index, item }) => (
+                  <ListingItem
+                    isFirst={index === 0}
+                    numberOfColumns={1.5}
+                    numberOfColumnsTablet={4}
+                  >
+                    <Thumb
+                      aspectRatio={16 / 9}
+                      backgroundUri={getImageUrl(item.backdrop_path)}
+                      onPress={() => {
+                        navigation.push('Movie', { movieID: item.id })
+                      }}
+                      title={item.title}
+                    />
+                  </ListingItem>
+                )}
+              />
+            ) : (
+              <ListingLoader numberOfColumns={1} numberOfColumnsTablet={3} />
+            )}
+          </Section>
         </Box>
       ) : (
         <ShapeLoader style={{ aspectRatio: aspectRatioCover }}>

@@ -12,11 +12,11 @@ import * as S from './MainInformation.styled'
 export function MainInformation({ genre, minutes, poster, title, voteAverage }) {
   return (
     <S.MainInformation>
-      <Box marginRight={20} width={80}>
+      <Box marginRight={20} width={90}>
         <Thumb backgroundUri={getImageUrl(poster)} />
       </Box>
       <Box justifyContent="center">
-        <Text fontSize={20} lineHeight={20} numberOfLines={2} weight="bold" width="90%">
+        <Text fontSize={23} lineHeight={23} numberOfLines={2} weight="bold" width="95%">
           {title}
         </Text>
         {genre && (

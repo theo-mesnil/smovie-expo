@@ -76,6 +76,7 @@ export const Trending = ({ navigation }) => {
                 <Thumb
                   aspectRatio={2 / 3}
                   backgroundUri={getImageUrl(item.profile_path)}
+                  onPress={() => navigation.navigate('People', { id: item.id, name: item.name })}
                   title={item.name}
                 />
               </ListingItem>

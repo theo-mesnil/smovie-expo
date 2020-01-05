@@ -39,7 +39,7 @@ export const Item = styled(TouchableOpacity)(
           padding-horizontal: ${theme.space.xl};
         `};
     border-bottom-width: ${isLast ? 0 : theme.borderWidths.sm};
-    border-color: ${theme.colors.light800};
+    border-color: ${theme.colors.light500};
   `
 )
 

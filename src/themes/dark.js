@@ -22,8 +22,8 @@ export const colors = {
 export const darkTheme = {
   colors,
   background: {
-    behind: colors.light900,
-    ahead: colors.light700,
-    cover: colors.light900
+    behind: colors.light700,
+    ahead: colors.light600,
+    cover: colors.light700
   }
 }

@@ -7,7 +7,7 @@ export function Informations({ children, title }) {
   return (
     <Box marginTop="lg">
       <Text weight="black">{title}</Text>
-      <Text numberOfLines={1}>{children}</Text>
+      {children}
     </Box>
   )
 }

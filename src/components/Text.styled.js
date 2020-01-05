@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components/native'
-import { color, flexbox, layout, position, space } from 'styled-system'
+import { color, flexbox, layout, position, space, typography } from 'styled-system'
 
 export const Text = styled.Text(
   ({ fontSize = 16, theme, weight }) => css`
@@ -11,5 +11,6 @@ export const Text = styled.Text(
     ${position};
     ${space};
     ${color};
+    ${typography};
   `
 )

@@ -53,9 +53,9 @@ export const coreTheme = {
     md: 6
   },
   background: {
-    behind: colors.light800,
-    ahead: colors.light900,
-    cover: colors.dark900
+    behind: colors.light700,
+    ahead: colors.light800,
+    cover: colors.dark800
   },
   switch: {
     thumb: colors.light900
