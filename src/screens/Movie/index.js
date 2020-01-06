@@ -96,7 +96,7 @@ export const Movie = ({ navigation }) => {
                 <Genres genres={movieDetail.genres} />
               </Informations>
             )}
-            {movieDetail.revenue && (
+            {!!movieDetail.revenue && !!movieDetail.revenue !== 0 && (
               <Informations title="Revenue">
                 <Text numberOfLines={1}>{formatMoney(movieDetail.revenue)}</Text>
               </Informations>
