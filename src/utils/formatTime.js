@@ -1,3 +1,5 @@
+import { format } from 'date-fns'
+
 export function convertMinToHours(number) {
   const hours = number / 60
   const rhours = Math.floor(hours)
@@ -7,10 +9,5 @@ export function convertMinToHours(number) {
 }
 
 export function convertToFullDate(date) {
-  return new Date(date).toLocaleDateString('en-US', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  })
+  return format(new Date(date), 'PPPP')
 }

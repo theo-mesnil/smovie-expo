@@ -1,9 +1,3 @@
 export function formatMoney(money) {
-  const formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 0
-  })
-
-  return formatter.format(money)
+  return `$${money.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}`
 }

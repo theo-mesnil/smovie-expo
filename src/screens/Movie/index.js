@@ -134,7 +134,7 @@ export const Movie = ({ navigation }) => {
                   <ListingItem
                     isFirst={index === 0}
                     numberOfColumns={1.5}
-                    numberOfColumnsTablet={4}
+                    numberOfColumnsTablet={2.5}
                   >
                     <Thumb
                       aspectRatio={16 / 9}
