@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components/native'
 
-import { Text } from '../../components/Text'
+import { Text } from './Text'
 
-export const MainInformation = styled.View`
+export const ContentHeader = styled.View`
   flex-direction: row;
   width: 100%;
   max-width: 600;

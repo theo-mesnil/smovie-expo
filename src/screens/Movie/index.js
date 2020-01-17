@@ -1,14 +1,14 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from 'react'
-import { ImageBackground } from 'react-native'
 
 import { AllScreenLayout } from '../../layouts'
 import { getMovieDetail } from '../../api/movie'
 import { getImageUrl } from '../../constants/image'
 import {
   Box,
+  ContentHeader,
+  ContentHeaderLoader,
   Genres,
-  GradientBackground,
   Icon,
   Informations,
   LinkList,
@@ -16,7 +16,6 @@ import {
   ListingItem,
   ListingLoader,
   Section,
-  ShapeLoader,
   Text,
   Thumb,
   TouchableOpacity
@@ -24,13 +23,10 @@ import {
 import { convertToFullDate } from '../../utils/formatTime'
 import { formatMoney } from '../../utils/formatMoney'
 
-import { MainInformation } from './MainInformation'
-
 export const Movie = ({ navigation }) => {
   const [movieDetail, setMovieDetail] = useState()
   const [movieCredits, setMovieCredits] = useState()
   const [movieRecommendations, setMovieRecommendations] = useState()
-  const aspectRatioCover = 16 / 10
 
   useEffect(() => {
     const movieId = navigation.getParam('movieID')
@@ -59,21 +55,15 @@ export const Movie = ({ navigation }) => {
       </TouchableOpacity>
       {movieDetail ? (
         <Box>
-          <ImageBackground
-            opacity={0.8}
-            source={{ uri: getImageUrl(movieDetail.backdrop_path) }}
-            style={{ aspectRatio: aspectRatioCover, justifyContent: 'flex-end' }}
-          >
-            <GradientBackground />
-            <MainInformation
-              date={movieDetail.release_date}
-              genre={!!movieDetail.genres && !!movieDetail.genres[0] && movieDetail.genres[0].name}
-              minutes={movieDetail.runtime}
-              poster={movieDetail.poster_path}
-              title={movieDetail.title}
-              voteAverage={movieDetail.vote_average}
-            />
-          </ImageBackground>
+          <ContentHeader
+            cover={movieDetail.backdrop_path}
+            date={movieDetail.release_date}
+            genre={!!movieDetail.genres && !!movieDetail.genres[0] && movieDetail.genres[0].name}
+            minutes={movieDetail.runtime}
+            poster={movieDetail.poster_path}
+            title={movieDetail.title}
+            voteAverage={movieDetail.vote_average}
+          />
           <Box paddingBottom="xl" paddingLeft="xl" paddingRight="xl" paddingTop="xl">
             <Text>{movieDetail.overview}</Text>
             <Informations title={movieDetail.status}>
@@ -157,9 +147,7 @@ export const Movie = ({ navigation }) => {
           </Section>
         </Box>
       ) : (
-        <ShapeLoader style={{ aspectRatio: aspectRatioCover }}>
-          <GradientBackground zIndex={1} />
-        </ShapeLoader>
+        <ContentHeaderLoader />
       )}
     </AllScreenLayout>
   )
