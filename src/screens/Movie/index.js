@@ -15,6 +15,7 @@ import {
   Listing,
   ListingItem,
   ListingLoader,
+  Padding,
   Section,
   Text,
   Thumb,
@@ -64,7 +65,7 @@ export const Movie = ({ navigation }) => {
             title={movieDetail.title}
             voteAverage={movieDetail.vote_average}
           />
-          <Box paddingBottom="xl" paddingLeft="xl" paddingRight="xl" paddingTop="xl">
+          <Padding>
             <Text>{movieDetail.overview}</Text>
             <Informations title={movieDetail.status}>
               <Text numberOfLines={1}>{convertToFullDate(movieDetail.release_date)}</Text>
@@ -95,7 +96,7 @@ export const Movie = ({ navigation }) => {
                 <Text numberOfLines={1}>{formatMoney(movieDetail.revenue)}</Text>
               </Informations>
             )}
-          </Box>
+          </Padding>
           <Section title="Casting">
             {movieCredits ? (
               <Listing
