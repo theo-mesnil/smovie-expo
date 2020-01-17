@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react'
 
-import { BasicLayout } from '../../layouts/Basic'
-import { Centered } from '../../components/Centered'
+import { BasicLayout } from '../../layouts'
+import {
+  Centered,
+  Listing,
+  ListingItem,
+  ListingLoader,
+  Section,
+  Thumb,
+  TitleScreen
+} from '../../components'
 import { getGenres } from '../../api/genres'
 import { getImageUrl } from '../../constants/image'
 import { getTrending } from '../../api/trending'
-import { Listing, ListingItem, ListingLoader } from '../../components/Listing'
-import { Section } from '../../components/Section'
-import { Thumb } from '../../components/Thumb'
-import { TitleScreen } from '../../components/TitleScreen'
 
 export const Trending = ({ navigation }) => {
   const [moviesTrending, setMoviesTrending] = useState()

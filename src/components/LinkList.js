@@ -3,6 +3,7 @@ import React from 'react'
 
 import { Box } from './Box'
 import { Text, TextLink } from './Text'
+import { TouchableOpacity } from './TouchableOpacity'
 
 export function LinkList({ list, onPress }) {
   return (
@@ -11,8 +12,13 @@ export function LinkList({ list, onPress }) {
         const { id, name } = item
 
         return (
-          <Box flexDirection="row" key={`linlListItem_${name}_${key}`}>
-            <TextLink onPress={() => onPress(id, name)}>{`${name}`}</TextLink>
+          <Box
+            as={TouchableOpacity}
+            flexDirection="row"
+            key={`linlListItem_${name}_${key}`}
+            onPress={() => onPress(id, name)}
+          >
+            <TextLink>{`${name}`}</TextLink>
             {key + 1 < list.length && <Text>, </Text>}
           </Box>
         )

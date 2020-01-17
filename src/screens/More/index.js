@@ -2,12 +2,8 @@
 import React from 'react'
 import * as WebBrowser from 'expo-web-browser'
 
-import { BasicLayout } from '../../layouts/Basic'
-import { Centered } from '../../components/Centered'
-import { Icon } from '../../components/Icon'
-import { Item, List } from '../../components/List'
-import { TitleScreen } from '../../components/TitleScreen'
-import { Radio } from '../../components/RadioGroup'
+import { BasicLayout } from '../../layouts'
+import { Centered, Icon, Item, List, Radio, TitleScreen } from '../../components'
 
 export const More = ({ screenProps: { setThemeName, themeName } }) => {
   const setTheme = value => {

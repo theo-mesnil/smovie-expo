@@ -2,21 +2,25 @@
 import React, { useEffect, useState } from 'react'
 import { ImageBackground } from 'react-native'
 
-import { AllScreenLayout } from '../../layouts/AllScreen'
+import { AllScreenLayout } from '../../layouts'
 import { getMovieDetail } from '../../api/movie'
 import { getImageUrl } from '../../constants/image'
-import { ShapeLoader } from '../../components/Loader.styled'
-import { Box } from '../../components/Box'
-import { LinkList } from '../../components/LinkList'
-import { Genres } from '../../components/Genres'
-import { Section } from '../../components/Section'
-import { Listing, ListingItem, ListingLoader } from '../../components/Listing'
-import { Informations } from '../../components/Informations'
-import { Thumb } from '../../components/Thumb'
-import { Icon } from '../../components/Icon'
-import { Text } from '../../components/Text'
-import { TouchableOpacity } from '../../components/TouchableOpacity'
-import { GradientBackground } from '../../components/GradientBackground'
+import {
+  Box,
+  Genres,
+  GradientBackground,
+  Icon,
+  Informations,
+  LinkList,
+  Listing,
+  ListingItem,
+  ListingLoader,
+  Section,
+  ShapeLoader,
+  Text,
+  Thumb,
+  TouchableOpacity
+} from '../../components'
 import { convertToFullDate } from '../../utils/formatTime'
 import { formatMoney } from '../../utils/formatMoney'
 

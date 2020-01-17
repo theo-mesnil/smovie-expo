@@ -1,9 +1,7 @@
 import React from 'react'
 
-import { BasicLayout } from '../../layouts/Basic'
-import { Centered } from '../../components/Centered'
-import { Text } from '../../components/Text'
-import { TitleScreen } from '../../components/TitleScreen'
+import { BasicLayout } from '../../layouts'
+import { Centered, Text, TitleScreen } from '../../components'
 
 export const Genre = ({ navigation }) => (
   <BasicLayout>

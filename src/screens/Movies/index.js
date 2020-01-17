@@ -1,8 +1,7 @@
 import React from 'react'
 
-import { BasicLayout } from '../../layouts/Basic'
-import { Centered } from '../../components/Centered'
-import { TitleScreen } from '../../components/TitleScreen'
+import { BasicLayout } from '../../layouts'
+import { Centered, TitleScreen } from '../../components'
 
 export const Movies = () => (
   <BasicLayout>

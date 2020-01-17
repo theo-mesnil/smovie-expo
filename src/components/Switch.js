@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Switch as SwitchNative } from 'react-native'
 
-import { ThemeContext } from '../utils/context'
+import { useTheme } from '../contexts/theme'
 
 export const Switch = props => {
-  const theme = useContext(ThemeContext)
+  const theme = useTheme()
 
   return (
     <SwitchNative
