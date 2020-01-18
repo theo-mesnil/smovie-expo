@@ -42,13 +42,12 @@ export function ContentHeader({
               {genre}
               {minutes && (
                 <Text fontSize={13} weight="bold">
-                  {' '}
                   ({convertMinToHours(minutes)})
                 </Text>
               )}
             </S.Genre>
           )}
-          {voteAverage && <VoteAverage vote={voteAverage} />}
+          {voteAverage && <VoteAverage mt="md" vote={voteAverage} />}
         </Box>
       </S.ContentHeader>
     </ImageBackground>

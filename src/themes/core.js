@@ -23,7 +23,8 @@ const colors = {
   light700: '#ebebeb',
   light800: '#f5f5f5',
   light900: '#fff',
-  danger500: '#e32249'
+  danger500: '#e32249',
+  white: '#fff'
 }
 
 export const coreTheme = {

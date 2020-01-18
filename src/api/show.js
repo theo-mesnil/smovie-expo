@@ -9,3 +9,11 @@ export const getShowDetail = (callback, id, url) =>
       callback(response.data)
     })
     .catch()
+
+export const getSeasonDetail = (callback, showId, seasonNumber) =>
+  axios
+    .get(getApiUrl(`tv/${showId}/season/${seasonNumber}`))
+    .then(response => {
+      callback(response.data)
+    })
+    .catch()

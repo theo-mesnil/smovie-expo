@@ -1,11 +1,12 @@
 import styled from 'styled-components/native'
+import { space } from 'styled-system'
 
 import { Text } from './Text'
 
 export const VoteAverage = styled.View`
   flex-direction: row;
-  margin-top: 15;
   align-items: center;
+  ${space};
 `
 
 export const Vote = styled(Text)`

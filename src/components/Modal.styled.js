@@ -9,12 +9,13 @@ export const Modal = styled(ModalNative)`
 `
 
 export const Content = styled(Box)(
-  ({ theme }) => css`
+  ({ maxHeight, theme }) => css`
     background-color: ${theme.colors.light700};
     padding-horizontal: ${theme.space.xl};
     padding-bottom: 60;
     padding-top: ${theme.space.xl};
     border-top-left-radius: 20;
     border-top-right-radius: 20;
+    max-height: ${maxHeight};
   `
 )

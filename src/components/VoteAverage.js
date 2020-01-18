@@ -3,7 +3,7 @@ import React from 'react'
 import { Icon } from './Icon'
 import * as S from './VoteAverage.styled'
 
-export function VoteAverage({ vote }) {
+export function VoteAverage({ vote, weight = 'black', ...rest }) {
   function getVoteAverageIcon(vote) {
     if (vote < 2) {
       return 'cloud-lightning'
@@ -18,14 +18,19 @@ export function VoteAverage({ vote }) {
     }
   }
 
+  function getVoteNumber(vote) {
+    const voteNumber = vote * 10
+    return voteNumber.toString().split('.')[0]
+  }
+
   return (
-    <S.VoteAverage>
+    <S.VoteAverage {...rest}>
       <Icon
         color={vote >= 9 ? 'danger500' : 'primary500'}
         name={getVoteAverageIcon(vote)}
         size={20}
       />
-      <S.Vote weight="black">{vote * 10}%</S.Vote>
+      <S.Vote weight={weight}>{getVoteNumber(vote)}%</S.Vote>
     </S.VoteAverage>
   )
 }
