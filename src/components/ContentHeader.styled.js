@@ -4,8 +4,8 @@ import { Text } from './Text'
 
 export const ContentHeader = styled.View`
   flex-direction: row;
-  width: 100%;
-  max-width: 600;
+  /* width: 100%; */
+  /* max-width: 600; */
   margin-horizontal: 25;
   margin-bottom: 10;
 `

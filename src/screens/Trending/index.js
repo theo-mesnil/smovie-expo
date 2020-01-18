@@ -43,7 +43,7 @@ export const Trending = ({ navigation }) => {
               <ListingItem isFirst={index === 0} numberOfColumns={2} numberOfColumnsTablet={3}>
                 <Thumb
                   backgroundUri={getImageUrl(item.poster_path)}
-                  onPress={() => navigation.navigate('Show')}
+                  onPress={() => navigation.navigate('Show', { showID: item.id })}
                 />
               </ListingItem>
             )}

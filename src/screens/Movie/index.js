@@ -58,7 +58,6 @@ export const Movie = ({ navigation }) => {
         <Box>
           <ContentHeader
             cover={movieDetail.backdrop_path}
-            date={movieDetail.release_date}
             genre={!!movieDetail.genres && !!movieDetail.genres[0] && movieDetail.genres[0].name}
             minutes={movieDetail.runtime}
             poster={movieDetail.poster_path}

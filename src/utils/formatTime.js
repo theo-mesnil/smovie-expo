@@ -5,7 +5,16 @@ export function convertMinToHours(number) {
   const rhours = Math.floor(hours)
   const minutes = (hours - rhours) * 60
   const rminutes = Math.round(minutes)
-  return `${rhours}h${rminutes && `${rminutes}m`}`
+  const formatHour = `${rhours}h`
+  const formatMinutes = `${rminutes}m`
+
+  if (rhours === 0 && rminutes !== 0) {
+    return formatMinutes
+  } else if (rminutes === 0 && rhours !== 0) {
+    return formatHour
+  } else {
+    return formatHour + formatMinutes
+  }
 }
 
 export function convertToFullDate(date) {
