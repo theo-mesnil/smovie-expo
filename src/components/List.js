@@ -53,6 +53,7 @@ Item.Title = styled.Text(
     color: ${theme.colors.dark900};
     font-size: ${theme.fontSizes.body1};
     font-family: 'bold';
+    text-transform: capitalize;
   `
 )
 
