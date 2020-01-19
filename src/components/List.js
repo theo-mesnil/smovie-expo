@@ -6,7 +6,7 @@ import { TouchableOpacity } from './TouchableOpacity'
 export const List = styled.View(
   ({ theme }) => css`
     width: 100%;
-    background-color: ${theme.background.ahead};
+    background-color: ${theme.colors.ahead};
     padding-top: ${theme.space.xl};
     padding-horizontal: ${theme.space.sm};
     margin-bottom: ${theme.space.sm};

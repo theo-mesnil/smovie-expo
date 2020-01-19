@@ -122,7 +122,7 @@ export const Movie = () => {
               <ListingLoader />
             )}
           </Section>
-          <Section title="Recommendations">
+          <Section backgroundColor="ahead" mb={0} pb="xl" pt="sm" title="Recommendations">
             {movieRecommendations ? (
               <Listing
                 data={movieRecommendations.results}

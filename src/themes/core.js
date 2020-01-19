@@ -24,7 +24,9 @@ const colors = {
   light800: '#f5f5f5',
   light900: '#fff',
   danger500: '#e32249',
-  white: '#fff'
+  white: '#fff',
+  behind: '#ebebeb',
+  ahead: '#f5f5f5'
 }
 
 export const coreTheme = {
@@ -52,11 +54,6 @@ export const coreTheme = {
   },
   radii: {
     md: 6
-  },
-  background: {
-    behind: colors.light700,
-    ahead: colors.light800,
-    cover: colors.dark800
   },
   switch: {
     thumb: colors.light900

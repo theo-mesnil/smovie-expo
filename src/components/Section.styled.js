@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components/native'
+import { color, space } from 'styled-system'
 
 import { centeredStyled } from './Centered'
 import { TouchableOpacity } from './TouchableOpacity'
@@ -6,6 +7,8 @@ import { TouchableOpacity } from './TouchableOpacity'
 export const Section = styled.View(
   ({ theme }) => css`
     margin-bottom: ${theme.space.xxl};
+    ${space};
+    ${color};
   `
 )
 

@@ -33,8 +33,8 @@ export function TabBar() {
       activeTintColor: theme.values.colors.primary500,
       inactiveTintColor: theme.values.colors.dark900,
       style: {
-        backgroundColor: theme.values.background.ahead,
-        borderTopColor: theme.values.background.ahead
+        backgroundColor: theme.values.colors.ahead,
+        borderTopColor: theme.values.colors.ahead
       }
     },
     androidTabBarStyle

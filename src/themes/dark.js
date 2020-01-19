@@ -16,14 +16,11 @@ export const colors = {
   dark600: '#cccccc',
   dark700: '#d6d6d6',
   dark800: '#e0e0e0',
-  dark900: '#ebebeb'
+  dark900: '#ebebeb',
+  behind: '#141414',
+  ahead: '#1f1f1f'
 }
 
 export const darkTheme = {
-  colors,
-  background: {
-    behind: colors.light700,
-    ahead: colors.light600,
-    cover: colors.light700
-  }
+  colors
 }

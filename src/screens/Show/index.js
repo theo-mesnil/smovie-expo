@@ -115,7 +115,7 @@ export const Show = () => {
               <ListingLoader />
             )}
           </Section>
-          <Section title="Recommendations">
+          <Section backgroundColor="ahead" mb={0} pb="xl" pt="sm" title="Recommendations">
             {showRecommendations ? (
               <Listing
                 data={showRecommendations.results}

@@ -3,8 +3,8 @@ import React from 'react'
 import { Icon } from './Icon'
 import * as S from './Section.styled'
 
-export const Section = ({ children, onPress, title }) => (
-  <S.Section>
+export const Section = ({ children, onPress, title, ...rest }) => (
+  <S.Section {...rest}>
     {title && (
       <S.Title>
         {onPress ? (

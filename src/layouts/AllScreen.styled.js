@@ -4,6 +4,6 @@ export const Layout = styled.View(
   ({ theme }) =>
     css`
       flex: 1;
-      background-color: ${theme.background.behind};
+      background-color: ${theme.colors.behind};
     `
 )
