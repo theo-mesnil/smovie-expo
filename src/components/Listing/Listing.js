@@ -11,7 +11,7 @@ export const Listing = props => {
   return (
     <FlatListNative
       contentContainerStyle={{
-        paddingHorizontal: theme.space.xl
+        paddingHorizontal: theme.values.space.xl
       }}
       horizontal
       showsHorizontalScrollIndicator={false}

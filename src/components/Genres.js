@@ -1,12 +1,11 @@
-import React, { useContext } from 'react'
-// TODO add hook when V5 is ready
-import { NavigationContext } from 'react-navigation'
+import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 
 import { Box } from './Box'
 import { Button } from './Button'
 
 export function Genres({ genres }) {
-  const navigation = useContext(NavigationContext)
+  const navigation = useNavigation()
 
   return (
     <Box flexDirection="row">

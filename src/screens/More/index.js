@@ -2,26 +2,29 @@
 import React from 'react'
 import * as WebBrowser from 'expo-web-browser'
 
+import { useTheme } from '../../contexts/theme'
 import { BasicLayout } from '../../layouts'
 import { Centered, Icon, Item, List, Radio, TitleScreen } from '../../components'
 
-export const More = ({ screenProps: { setThemeName, themeName } }) => {
+export const More = () => {
+  const theme = useTheme()
+
   const setTheme = value => {
-    setThemeName(value)
+    theme.setThemeName(value)
   }
 
   const openLink = async link => {
     await WebBrowser.openBrowserAsync(link)
   }
 
-  function ThemeItem({ isLast, subtitle, theme, title }) {
+  function ThemeItem({ isLast, name, subtitle, title }) {
     return (
-      <Item isLast={isLast} onPress={() => setTheme(theme)}>
+      <Item isLast={isLast} onPress={() => setTheme(name)}>
         <Item.Content>
           <Item.Title>{title}</Item.Title>
           <Item.Subtitle>{subtitle}</Item.Subtitle>
         </Item.Content>
-        <Radio onPress={() => setTheme(theme)} selected={themeName === theme} />
+        <Radio onPress={() => setTheme(name)} selected={theme.name === name} />
       </Item>
     )
   }
@@ -33,12 +36,12 @@ export const More = ({ screenProps: { setThemeName, themeName } }) => {
       </Centered>
       <List>
         <List.Title>Theme</List.Title>
-        <ThemeItem subtitle="Get that whiteness out of my sight" theme="dark" title="Dark mode" />
-        <ThemeItem subtitle="Turn on the light" theme="light" title="Light mode" />
+        <ThemeItem name="dark" subtitle="Get that whiteness out of my sight" title="Dark mode" />
+        <ThemeItem name="light" subtitle="Turn on the light" title="Light mode" />
         <ThemeItem
           isLast
+          name="native"
           subtitle="Get theme from your device settings"
-          theme="native"
           title="Native mode"
         />
       </List>

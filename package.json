@@ -9,6 +9,10 @@
     "lint": "eslint src --max-warnings 0"
   },
   "dependencies": {
+    "@react-native-community/masked-view": "^0.1.6",
+    "@react-navigation/bottom-tabs": "^5.0.0-alpha.37",
+    "@react-navigation/native": "^5.0.0-alpha.27",
+    "@react-navigation/stack": "^5.0.0-alpha.61",
     "axios": "^0.19.0",
     "date-fns": "^2.8.1",
     "expo": "^36.0.0",
@@ -22,11 +26,10 @@
     "react-native-gesture-handler": "~1.5.0",
     "react-native-modal": "^11.5.3",
     "react-native-reanimated": "~1.4.0",
+    "react-native-safe-area-context": "0.6.0",
+    "react-native-screens": "2.0.0-alpha.12",
     "react-native-vector-icons": "^6.6.0",
     "react-native-web": "^0.11.7",
-    "react-navigation": "^4.0.10",
-    "react-navigation-stack": "^1.10.3",
-    "react-navigation-tabs": "^2.5.6",
     "styled-components": "^4.4.0",
     "styled-system": "^5.1.4"
   },

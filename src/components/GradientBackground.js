@@ -12,7 +12,7 @@ export function GradientBackground({ colors, style }) {
 
   return (
     <StyledGradientBackground
-      colors={colors || ['transparent', theme.background.behind]}
+      colors={colors || ['transparent', theme.values.background.behind]}
       style={{
         position: 'absolute',
         left: 0,

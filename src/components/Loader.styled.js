@@ -46,7 +46,7 @@ export const ShapeLoader = ({
       <>
         {children}
         <LinearGradient
-          colors={colors || [theme.colors.light400, theme.colors.light500]}
+          colors={colors || [theme.values.colors.light400, theme.values.colors.light500]}
           start={linearStartPosition}
           style={{
             position: 'absolute',

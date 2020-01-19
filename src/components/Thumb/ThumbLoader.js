@@ -10,7 +10,7 @@ export const ThumbLoader = ({ aspectRatio = 3 / 4, withoutTitle }) => {
 
   return (
     <View>
-      <ShapeLoader style={{ aspectRatio, borderRadius: theme.radii.md }} />
+      <ShapeLoader style={{ aspectRatio, borderRadius: theme.values.radii.md }} />
       {!withoutTitle && (
         <S.TitleWrapper>
           <LineGradient />

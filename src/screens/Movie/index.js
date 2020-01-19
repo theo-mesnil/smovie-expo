@@ -1,5 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from 'react'
+import { useNavigation, useRoute } from '@react-navigation/native'
 
 import { AllScreenLayout } from '../../layouts'
 import { getMovieDetail } from '../../api/movie'
@@ -24,17 +25,19 @@ import {
 import { convertToFullDate } from '../../utils/formatTime'
 import { formatMoney } from '../../utils/formatMoney'
 
-export const Movie = ({ navigation }) => {
+export const Movie = () => {
+  const route = useRoute()
+  const navigation = useNavigation()
   const [movieDetail, setMovieDetail] = useState()
   const [movieCredits, setMovieCredits] = useState()
   const [movieRecommendations, setMovieRecommendations] = useState()
 
   useEffect(() => {
-    const movieId = navigation.getParam('movieID')
+    const movieId = route.params.movieID
     getMovieDetail(setMovieDetail, movieId)
     getMovieDetail(setMovieCredits, movieId, '/credits')
     getMovieDetail(setMovieRecommendations, movieId, '/recommendations')
-  }, [navigation])
+  }, [route.params.movieID])
 
   const director = !!movieCredits && movieCredits.crew.filter(credit => credit.job === 'Director')
   const writers =

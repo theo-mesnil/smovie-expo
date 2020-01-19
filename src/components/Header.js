@@ -1,12 +1,12 @@
-import React, { useContext } from 'react'
-import { NavigationContext } from 'react-navigation'
+import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 
 import { Icon } from './Icon'
 import { Box } from './Box'
 import { TouchableOpacity } from './TouchableOpacity'
 
 export function Header({ children, iconName = 'arrow-left' }) {
-  const navigation = useContext(NavigationContext)
+  const navigation = useNavigation()
 
   return (
     <Box

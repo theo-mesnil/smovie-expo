@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
+import { useNavigation, useRoute } from '@react-navigation/native'
 
 import { AllScreenLayout } from '../../layouts'
 import {
@@ -24,17 +25,19 @@ import { getImageUrl } from '../../constants/image'
 
 import * as S from './styled'
 
-export const Show = ({ navigation }) => {
+export const Show = () => {
+  const route = useRoute()
+  const navigation = useNavigation()
   const [showDetail, setShowDetail] = useState()
   const [showCredits, setShowCredits] = useState()
   const [showRecommendations, setShowRecommendations] = useState()
 
   useEffect(() => {
-    const showId = navigation.getParam('showID')
+    const showId = route.params.showID
     getShowDetail(setShowDetail, showId)
     getShowDetail(setShowCredits, showId, '/credits')
     getShowDetail(setShowRecommendations, showId, '/recommendations')
-  }, [navigation])
+  }, [route.params.showID])
 
   return (
     <AllScreenLayout>

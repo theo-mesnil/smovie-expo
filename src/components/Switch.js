@@ -8,9 +8,9 @@ export const Switch = props => {
 
   return (
     <SwitchNative
-      ios_backgroundColor={theme.colors.light500}
-      thumbColor={theme.switch.thumb}
-      trackColor={{ false: theme.colors.light500, true: theme.colors.primary500 }}
+      ios_backgroundColor={theme.values.colors.light500}
+      thumbColor={theme.values.switch.thumb}
+      trackColor={{ false: theme.values.colors.light500, true: theme.values.colors.primary500 }}
       {...props}
     />
   )

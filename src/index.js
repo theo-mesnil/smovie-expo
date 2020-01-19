@@ -8,7 +8,7 @@ import { AppearanceProvider, useColorScheme } from 'react-native-appearance'
 import { ThemeProvider as ThemeProviderContext } from './contexts/theme'
 import { createTheme } from './themes'
 import { useAsyncStorage } from './utils/storage'
-import Navigation from './navigations'
+import { Navigation } from './navigations'
 import * as S from './index.styled'
 
 function App() {
@@ -41,8 +41,10 @@ function App() {
           <StatusBar animated barStyle={themeName === 'dark' ? 'light-content' : 'dark-content'} />
         )}
         <S.App>
-          <ThemeProviderContext value={theme}>
-            {appLoaded && <Navigation screenProps={{ theme, themeName, setThemeName }} />}
+          <ThemeProviderContext
+            value={{ values: theme, name: themeName, setThemeName: setThemeName }}
+          >
+            {appLoaded && <Navigation />}
           </ThemeProviderContext>
         </S.App>
       </AppearanceProvider>

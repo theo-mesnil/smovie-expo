@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { format } from 'date-fns'
+import { useRoute } from '@react-navigation/native'
 
 import { AllScreenLayout } from '../../layouts'
 import {
@@ -17,15 +18,16 @@ import { getImageUrl } from '../../constants/image'
 
 import * as S from './Season.styled'
 
-export const Season = ({ navigation }) => {
+export const Season = () => {
+  const route = useRoute()
   const [seasonDetail, setSeasonDetail] = useState()
-  const seasonName = navigation.getParam('seasonName')
-  const showId = navigation.getParam('showID')
-  const seasonNumber = navigation.getParam('seasonNumber')
+  const seasonName = route.params.seasonName
+  const showId = route.params.showID
+  const seasonNumber = route.params.seasonNumber
 
   useEffect(() => {
     getSeasonDetail(setSeasonDetail, showId, seasonNumber)
-  }, [navigation, seasonNumber, showId])
+  }, [seasonNumber, showId])
 
   return (
     <AllScreenLayout>

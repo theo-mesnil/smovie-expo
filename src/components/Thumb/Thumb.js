@@ -12,7 +12,7 @@ export const Thumb = ({ backgroundUri, aspectRatio = 3 / 4, title, subtitle, onP
   return (
     <TouchableOpacity activeOpacity={onPress ? 0.7 : 1} onPress={onPress}>
       <ImageBackground
-        imageStyle={{ borderRadius: theme.radii.md }}
+        imageStyle={{ borderRadius: theme.values.radii.md }}
         source={{ uri: backgroundUri }}
         style={{ aspectRatio }}
       />

@@ -11,9 +11,11 @@ const SMALL_DEVICE = 375
 const isSmallDevice = windowWidth < SMALL_DEVICE
 const isTablet = windowWidth >= SIZE_TABLET
 const isIpad = Platform.isPad
+const isAndroid = Platform.OS === 'android'
 
 export {
   isIpad,
+  isAndroid,
   isSmallDevice,
   isTablet,
   screenHeight,
