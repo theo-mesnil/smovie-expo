@@ -13,12 +13,9 @@ import * as S from './index.styled'
 
 function App() {
   const colorScheme = useColorScheme()
-  const [themeName, setThemeName] = useAsyncStorage(
-    'theme',
-    themeName ? (themeName === 'native' ? colorScheme : themeName) : 'dark'
-  )
+  const [themeName, setThemeName] = useAsyncStorage('theme', themeName || 'dark')
   const [appLoaded, setAppLoaded] = useState(false)
-  const theme = createTheme(themeName)
+  const theme = createTheme(themeName === 'native' ? colorScheme : themeName)
 
   useEffect(() => {
     async function loadApp() {
@@ -34,12 +31,20 @@ function App() {
     loadApp()
   }, [])
 
+  function getStatusBarStyle(theme) {
+    if (theme === 'dark') {
+      return 'light-content'
+    } else if (theme === 'native') {
+      return colorScheme === 'dark' ? 'light-content' : 'dark-content'
+    } else {
+      return 'dark-content'
+    }
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <AppearanceProvider>
-        {Platform.OS === 'ios' && (
-          <StatusBar animated barStyle={themeName === 'dark' ? 'light-content' : 'dark-content'} />
-        )}
+        {Platform.OS === 'ios' && <StatusBar animated barStyle={getStatusBarStyle(themeName)} />}
         <S.App>
           <ThemeProviderContext
             value={{ values: theme, name: themeName, setThemeName: setThemeName }}
