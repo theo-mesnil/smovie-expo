@@ -19,8 +19,9 @@ export function VoteAverage({ vote, weight = 'black', ...rest }) {
   }
 
   function getVoteNumber(vote) {
-    const voteNumber = vote * 10
-    return voteNumber.toString().split('.')[0]
+    const voteNumber = vote.toString().split('.')[0]
+    const voteSubNumber = vote.toString().split('.')[1]
+    return voteSubNumber ? `${voteNumber}.${voteSubNumber.substring(0, 1)}` : voteNumber
   }
 
   return (
@@ -30,7 +31,7 @@ export function VoteAverage({ vote, weight = 'black', ...rest }) {
         name={getVoteAverageIcon(vote)}
         size={20}
       />
-      <S.Vote weight={weight}>{getVoteNumber(vote)}%</S.Vote>
+      <S.Vote weight={weight}>{getVoteNumber(vote)}</S.Vote>
     </S.VoteAverage>
   )
 }

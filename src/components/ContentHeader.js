@@ -42,6 +42,7 @@ export function ContentHeader({
               {genre}
               {minutes && (
                 <Text fontSize={13} weight="bold">
+                  {' '}
                   ({convertMinToHours(minutes)})
                 </Text>
               )}
