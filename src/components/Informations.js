@@ -6,7 +6,7 @@ import { Text } from './Text'
 export function Informations({ children, paddingOnTitle, title }) {
   return (
     <Box marginTop="lg">
-      <Text ml={paddingOnTitle && 'xl'} weight="black">
+      <Text marginBottom={2} ml={paddingOnTitle && 'xl'} weight="black">
         {title}
       </Text>
       {children}
