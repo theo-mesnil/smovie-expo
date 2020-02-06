@@ -4,6 +4,7 @@ import { ScrollView } from 'react-native'
 import { screenHeight } from '../constants/screen'
 
 import * as S from './Modal.styled'
+import { Box } from './Box'
 
 export function Modal({ children, closeModal, isVisible, ...rest }) {
   const [scrollOffset, setScrollOffset] = useState(null)
@@ -38,6 +39,14 @@ export function Modal({ children, closeModal, isVisible, ...rest }) {
           scrollEventThrottle={16}
           showsVerticalScrollIndicator={false}
         >
+          <Box
+            alignSelf="center"
+            backgroundColor="light400"
+            borderRadius={3}
+            height={6}
+            mb="lg"
+            width={50}
+          />
           {children}
         </ScrollView>
       </S.Content>

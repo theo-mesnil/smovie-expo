@@ -13,7 +13,7 @@ export const Content = styled(Box)(
     background-color: ${theme.colors.light700};
     padding-horizontal: ${theme.space.xl};
     padding-bottom: 60;
-    padding-top: ${theme.space.xl};
+    padding-top: ${theme.space.sm};
     border-top-left-radius: 20;
     border-top-right-radius: 20;
     max-height: ${maxHeight};
