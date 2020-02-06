@@ -10,7 +10,7 @@ import { getImageUrl } from '../../constants/image'
 import { convertToFullDate } from '../../utils/formatTime'
 
 export const People = () => {
-  const aspectRatioCover = 16 / 13
+  const aspectRatioCover = 16 / 18
   const route = useRoute()
   const [peopleDetail, setPeopleDetail] = useState()
   const [biographyModalVisible, setBiographyModalVisible] = useState(false)
@@ -33,22 +33,22 @@ export const People = () => {
             >
               <GradientBackground />
               <Centered>
-                <Text fontSize="h0" textAlign="center" weight="bold">
+                <Text fontSize="h0" lineHeight={55} textAlign="center" weight="black">
                   {route.params.name}
                 </Text>
+                <Informations title={peopleDetail.known_for_department}>
+                  <Text>
+                    {peopleDetail.place_of_birth && `Born in ${peopleDetail.place_of_birth} `}
+                    {peopleDetail.birthday && `on ${convertToFullDate(peopleDetail.birthday)}`}
+                  </Text>
+                </Informations>
               </Centered>
             </ImageBackground>
             <Centered>
-              <Informations title={peopleDetail.known_for_department}>
-                <Text>
-                  {peopleDetail.place_of_birth && `Born in ${peopleDetail.place_of_birth} `}
-                  {peopleDetail.birthday && `on ${convertToFullDate(peopleDetail.birthday)}`}
-                </Text>
-              </Informations>
               {peopleDetail.biography.length > 0 && (
                 <Informations title="Biography">
                   <Text numberOfLines={3} onPress={() => setBiographyModalVisible(true)}>
-                    {peopleDetail.biography}
+                    {peopleDetail.biography.replace('\n\n', '\n')}
                   </Text>
                 </Informations>
               )}
