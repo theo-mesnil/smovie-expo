@@ -32,6 +32,7 @@ const colors = {
 export const coreTheme = {
   colors,
   fontSizes: {
+    h0: 40,
     h1: 27,
     h2: 20,
     h3: 17,
