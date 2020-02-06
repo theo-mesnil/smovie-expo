@@ -34,7 +34,7 @@ export function ContentHeader({
           <Thumb backgroundUri={getImageUrl(poster)} />
         </Box>
         <Box justifyContent="center">
-          <Text fontSize={23} lineHeight={23} numberOfLines={2} weight="bold">
+          <Text fontSize="h1" lineHeight={25} maxWidth="95%" numberOfLines={2} weight="bold">
             {title}
           </Text>
           {genre && (
