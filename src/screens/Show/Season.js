@@ -41,13 +41,15 @@ export const Season = () => {
           <Box mt={40}>
             {seasonDetail.episodes.map(episode => (
               <S.Episode key={episode.name}>
-                <Box mr="sm" width="100%">
-                  <Thumb aspectRatio={16 / 9} backgroundUri={getImageUrl(episode.still_path)} />
-                </Box>
-                <Text fontSize="h2" mb="sm" mt="md" numberOfLines={3} weight="bold">
+                {!!episode.still_path && (
+                  <Box mb="md" mr="sm" width="100%">
+                    <Thumb aspectRatio={16 / 9} backgroundUri={getImageUrl(episode.still_path)} />
+                  </Box>
+                )}
+                <Text fontSize="h2" mb="sm" numberOfLines={3} weight="bold">
                   {`${episode.episode_number}. ${episode.name}`}
                 </Text>
-                <Text color="dark400">{episode.overview}</Text>
+                {!!episode.overview && <Text color="dark400">{episode.overview}</Text>}
                 <Box
                   alignItems="flex-end"
                   flexDirection="row"
