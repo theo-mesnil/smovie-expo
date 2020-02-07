@@ -22,7 +22,7 @@ export const Season = () => {
   const route = useRoute()
   const [seasonDetail, setSeasonDetail] = useState()
   const seasonName = route.params.seasonName
-  const showId = route.params.showID
+  const showId = route.params.id
   const seasonNumber = route.params.seasonNumber
 
   useEffect(() => {

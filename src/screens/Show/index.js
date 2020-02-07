@@ -33,11 +33,11 @@ export const Show = () => {
   const [showRecommendations, setShowRecommendations] = useState()
 
   useEffect(() => {
-    const showId = route.params.showID
+    const showId = route.params.id
     getShowDetail(setShowDetail, showId)
     getShowDetail(setShowCredits, showId, '/credits')
     getShowDetail(setShowRecommendations, showId, '/recommendations')
-  }, [route.params.showID])
+  }, [route.params.id])
 
   return (
     <AllScreenLayout>
@@ -60,8 +60,8 @@ export const Show = () => {
                   mr="xxs"
                   mt="xxs"
                   onPress={() => {
-                    navigation.navigate('Season', {
-                      showID: showDetail.id,
+                    navigation.push('Season', {
+                      id: showDetail.id,
                       seasonNumber: season.season_number,
                       seasonName: season.name
                     })
@@ -103,7 +103,7 @@ export const Show = () => {
                       aspectRatio={2 / 3}
                       backgroundUri={getImageUrl(item.profile_path)}
                       onPress={
-                        () => navigation.navigate('People', { id: item.id, name: item.name })
+                        () => navigation.push('People', { id: item.id, name: item.name })
                         // eslint-disable-next-line react/jsx-curly-newline
                       }
                       title={item.name}
@@ -130,7 +130,7 @@ export const Show = () => {
                       aspectRatio={16 / 9}
                       backgroundUri={getImageUrl(item.backdrop_path)}
                       onPress={() => {
-                        navigation.push('Show', { showID: item.id })
+                        navigation.push('Show', { id: item.id })
                       }}
                       title={item.name}
                     />

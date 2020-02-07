@@ -15,7 +15,7 @@ export function Genres({ genres }) {
           key={`genre_${genre.name}`}
           marginRight="xxs"
           marginTop="xxs"
-          onPress={() => navigation.navigate('People', { id: genre.id, name: genre.name })}
+          onPress={() => navigation.push('People', { id: genre.id, name: genre.name })}
           variant="light500"
           variantSize="sm"
         >

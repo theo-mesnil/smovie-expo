@@ -33,11 +33,11 @@ export const Movie = () => {
   const [movieRecommendations, setMovieRecommendations] = useState()
 
   useEffect(() => {
-    const movieId = route.params.movieID
+    const movieId = route.params.id
     getMovieDetail(setMovieDetail, movieId)
     getMovieDetail(setMovieCredits, movieId, '/credits')
     getMovieDetail(setMovieRecommendations, movieId, '/recommendations')
-  }, [route.params.movieID])
+  }, [route.params.id])
 
   const director = !!movieCredits && movieCredits.crew.filter(credit => credit.job === 'Director')
   const writers =
@@ -76,15 +76,15 @@ export const Movie = () => {
               <Informations title="Director">
                 <LinkList
                   list={director}
-                  onPress={(id, name) => navigation.navigate('People', { id, name })}
+                  onPress={(id, name) => navigation.push('People', { id, name })}
                 />
               </Informations>
             )}
-            {writers && (
+            {writers.length > 0 && (
               <Informations title="Writers">
                 <LinkList
                   list={writers}
-                  onPress={(id, name) => navigation.navigate('People', { id, name })}
+                  onPress={(id, name) => navigation.push('People', { id, name })}
                 />
               </Informations>
             )}
@@ -110,7 +110,7 @@ export const Movie = () => {
                       aspectRatio={2 / 3}
                       backgroundUri={getImageUrl(item.profile_path)}
                       onPress={
-                        () => navigation.navigate('People', { id: item.id, name: item.name })
+                        () => navigation.push('People', { id: item.id, name: item.name })
                         // eslint-disable-next-line react/jsx-curly-newline
                       }
                       title={item.name}
@@ -137,7 +137,7 @@ export const Movie = () => {
                       aspectRatio={16 / 9}
                       backgroundUri={getImageUrl(item.backdrop_path)}
                       onPress={() => {
-                        navigation.push('Movie', { movieID: item.id })
+                        navigation.push('Movie', { id: item.id })
                       }}
                       title={item.title}
                     />

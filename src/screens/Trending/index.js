@@ -34,7 +34,7 @@ export const Trending = ({ navigation }) => {
       <Centered>
         <TitleScreen>Trending</TitleScreen>
       </Centered>
-      <Section onPress={() => navigation.navigate('Shows')} title="Tv Shows">
+      <Section onPress={() => navigation.push('Shows')} title="Tv Shows">
         {showsTrending && showsTrending.results && showsGenre ? (
           <Listing
             data={showsTrending.results}
@@ -43,7 +43,7 @@ export const Trending = ({ navigation }) => {
               <ListingItem isFirst={index === 0} numberOfColumns={2} numberOfColumnsTablet={3}>
                 <Thumb
                   backgroundUri={getImageUrl(item.poster_path)}
-                  onPress={() => navigation.navigate('Show', { showID: item.id })}
+                  onPress={() => navigation.push('Show', { id: item.id })}
                 />
               </ListingItem>
             )}
@@ -52,7 +52,7 @@ export const Trending = ({ navigation }) => {
           <ListingLoader numberOfColumns={2} numberOfColumnsTablet={3} withoutTitle />
         )}
       </Section>
-      <Section onPress={() => navigation.navigate('Movies')} title="Movies">
+      <Section onPress={() => navigation.push('Movies')} title="Movies">
         {moviesTrending && moviesTrending.results && moviesGenre ? (
           <Listing
             data={moviesTrending.results}
@@ -61,7 +61,7 @@ export const Trending = ({ navigation }) => {
               <ListingItem isFirst={index === 0} numberOfColumns={2} numberOfColumnsTablet={3}>
                 <Thumb
                   backgroundUri={getImageUrl(item.poster_path)}
-                  onPress={() => navigation.navigate('Movie', { movieID: item.id })}
+                  onPress={() => navigation.push('Movie', { id: item.id })}
                 />
               </ListingItem>
             )}
@@ -80,7 +80,7 @@ export const Trending = ({ navigation }) => {
                 <Thumb
                   aspectRatio={2 / 3}
                   backgroundUri={getImageUrl(item.profile_path)}
-                  onPress={() => navigation.navigate('People', { id: item.id, name: item.name })}
+                  onPress={() => navigation.push('People', { id: item.id, name: item.name })}
                   title={item.name}
                 />
               </ListingItem>
