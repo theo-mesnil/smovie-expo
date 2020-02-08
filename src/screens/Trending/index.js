@@ -34,7 +34,7 @@ export const Trending = ({ navigation }) => {
       <Centered>
         <TitleScreen>Trending</TitleScreen>
       </Centered>
-      <Section onPress={() => navigation.push('Shows')} title="Tv Shows">
+      <Section onPress={() => navigation.navigate('Shows')} title="Tv Shows">
         {showsTrending && showsTrending.results && showsGenre ? (
           <Listing
             data={showsTrending.results}
@@ -52,7 +52,7 @@ export const Trending = ({ navigation }) => {
           <ListingLoader numberOfColumns={2} numberOfColumnsTablet={3} withoutTitle />
         )}
       </Section>
-      <Section onPress={() => navigation.push('Movies')} title="Movies">
+      <Section onPress={() => navigation.navigate('Movies')} title="Movies">
         {moviesTrending && moviesTrending.results && moviesGenre ? (
           <Listing
             data={moviesTrending.results}

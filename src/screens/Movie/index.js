@@ -43,7 +43,7 @@ export const Movie = () => {
   const writers =
     !!movieCredits &&
     movieCredits.crew.filter(
-      credit => credit.department === 'Writing' && director[0].name !== credit.name
+      credit => credit.department === 'Writing' && !!director[0] && director[0].name !== credit.name
     )
 
   return (
@@ -69,9 +69,11 @@ export const Movie = () => {
           />
           <Padding>
             <Text>{movieDetail.overview}</Text>
-            <Informations title={movieDetail.status}>
-              <Text numberOfLines={1}>{convertToFullDate(movieDetail.release_date)}</Text>
-            </Informations>
+            {movieDetail.release_date && (
+              <Informations title={movieDetail.status}>
+                <Text numberOfLines={1}>{convertToFullDate(movieDetail.release_date)}</Text>
+              </Informations>
+            )}
             {director && (
               <Informations title="Director">
                 <LinkList
@@ -122,8 +124,8 @@ export const Movie = () => {
               <ListingLoader />
             )}
           </Section>
-          <Section backgroundColor="ahead" mb={0} pb="xl" pt="sm" title="Recommendations">
-            {movieRecommendations ? (
+          {movieRecommendations && movieRecommendations.results.length > 0 && (
+            <Section backgroundColor="ahead" mb={0} pb="xl" pt="sm" title="Recommendations">
               <Listing
                 data={movieRecommendations.results}
                 keyExtractor={item => `${item.id}_${Math.random()}`}
@@ -144,10 +146,8 @@ export const Movie = () => {
                   </ListingItem>
                 )}
               />
-            ) : (
-              <ListingLoader numberOfColumns={1} numberOfColumnsTablet={3} />
-            )}
-          </Section>
+            </Section>
+          )}
         </Box>
       ) : (
         <ContentHeaderLoader />

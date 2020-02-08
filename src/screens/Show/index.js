@@ -83,9 +83,11 @@ export const Show = () => {
                 }`}
               </Text>
             </Informations>
-            <Informations title="First broadcast">
-              <Text numberOfLines={1}>{convertToFullDate(showDetail.first_air_date)}</Text>
-            </Informations>
+            {showDetail.first_air_date && (
+              <Informations title="First broadcast">
+                <Text numberOfLines={1}>{convertToFullDate(showDetail.first_air_date)}</Text>
+              </Informations>
+            )}
             {showDetail.genres && (
               <Informations title="Genres">
                 <Genres genres={showDetail.genres} />

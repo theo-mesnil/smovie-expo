@@ -14,7 +14,7 @@ import { VoteAverage } from './VoteAverage'
 import * as S from './ContentHeader.styled'
 
 export function ContentHeader({
-  aspectRatioCover = 16 / 10,
+  aspectRatioCover = 16 / 13,
   cover,
   genre,
   minutes,
@@ -30,11 +30,13 @@ export function ContentHeader({
     >
       <GradientBackground />
       <S.ContentHeader>
-        <Box marginRight={20} width={90}>
-          <Thumb backgroundUri={getImageUrl(poster)} />
-        </Box>
-        <Box justifyContent="center">
-          <Text fontSize="h1" lineHeight={25} numberOfLines={2} weight="bold">
+        {!!poster && (
+          <Box marginRight={20} width={120}>
+            <Thumb backgroundUri={getImageUrl(poster)} />
+          </Box>
+        )}
+        <Box flex="1" justifyContent="center">
+          <Text fontSize="h1" lineHeight={25} numberOfLines={3} weight="bold">
             {title}
           </Text>
           {genre && (
