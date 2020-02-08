@@ -24,7 +24,7 @@ import { convertToFullDate } from '../../utils/formatTime'
 
 import { Filmography } from './Filmography'
 
-export const People = () => {
+export function People() {
   const aspectRatioCover = 16 / 18
   const route = useRoute()
   const navigation = useNavigation()
@@ -74,7 +74,15 @@ export const People = () => {
               style={{ aspectRatio: aspectRatioCover, justifyContent: 'flex-end' }}
             >
               <GradientBackground />
-              <Text fontSize="h0" lineHeight={55} mb="xxl" textAlign="center" weight="black">
+              <Text
+                fontSize="h0"
+                lineHeight={55}
+                mb="xxl"
+                paddingLeft="sm"
+                paddingRight="sm"
+                textAlign="center"
+                weight="black"
+              >
                 {route.params.name}
               </Text>
             </ImageBackground>

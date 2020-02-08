@@ -4,7 +4,7 @@ import { useRoute } from '@react-navigation/native'
 import { BasicLayout } from '../../layouts'
 import { Centered, Text, TitleScreen } from '../../components'
 
-export const Genre = () => {
+export function Genre() {
   const route = useRoute()
 
   return (

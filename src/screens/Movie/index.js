@@ -25,7 +25,7 @@ import {
 import { convertToFullDate } from '../../utils/formatTime'
 import { formatMoney } from '../../utils/formatMoney'
 
-export const Movie = () => {
+export function Movie() {
   const route = useRoute()
   const navigation = useNavigation()
   const [movieDetail, setMovieDetail] = useState()

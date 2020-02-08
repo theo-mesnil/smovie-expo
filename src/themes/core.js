@@ -54,6 +54,7 @@ export const coreTheme = {
     sm: '1px'
   },
   radii: {
+    sm: 3,
     md: 6
   },
   switch: {

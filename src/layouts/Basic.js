@@ -3,8 +3,10 @@ import { ScrollView } from 'react-native'
 
 import * as S from './Basic.styled'
 
-export const BasicLayout = ({ children }) => (
-  <S.Layout>
-    <ScrollView>{children}</ScrollView>
-  </S.Layout>
-)
+export function BasicLayout({ children }) {
+  return (
+    <S.Layout>
+      <ScrollView>{children}</ScrollView>
+    </S.Layout>
+  )
+}

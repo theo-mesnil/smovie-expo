@@ -6,7 +6,7 @@ import { useTheme } from '../../contexts/theme'
 import { BasicLayout } from '../../layouts'
 import { Centered, Icon, Item, List, Modal, TitleScreen } from '../../components'
 
-export const More = () => {
+export function More() {
   const theme = useTheme()
   const [themeModalVisible, setThemeModalVisible] = useState(false)
 

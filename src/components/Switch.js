@@ -3,7 +3,7 @@ import { Switch as SwitchNative } from 'react-native'
 
 import { useTheme } from '../contexts/theme'
 
-export const Switch = props => {
+export function Switch(props) {
   const theme = useTheme()
 
   return (

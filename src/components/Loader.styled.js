@@ -5,7 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient'
 
 import { useTheme } from '../contexts/theme'
 
-export const ShapeLoader = ({
+export function ShapeLoader({
   children,
   delay,
   size,
@@ -13,7 +13,7 @@ export const ShapeLoader = ({
   style,
   colors,
   ...rest
-}) => {
+}) {
   const theme = useTheme()
   const startValue = 0.1
   const [fadeAnim] = useState(new Animated.Value(startValue))
@@ -61,7 +61,7 @@ export const ShapeLoader = ({
   )
 }
 
-export const LineGradient = ({ size = 'md', style, ...rest }) => {
+export function LineGradient({ size = 'md', style, ...rest }) {
   const getSize = {
     sm: 5,
     md: 10,

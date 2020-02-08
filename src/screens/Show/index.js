@@ -25,7 +25,7 @@ import { getImageUrl } from '../../constants/image'
 
 import * as S from './styled'
 
-export const Show = () => {
+export function Show() {
   const route = useRoute()
   const navigation = useNavigation()
   const [showDetail, setShowDetail] = useState()

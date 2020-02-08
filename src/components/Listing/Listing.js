@@ -5,7 +5,7 @@ import { useTheme } from '../../contexts/theme'
 
 import * as S from './Listing.styled'
 
-export const Listing = props => {
+export function Listing(props) {
   const theme = useTheme()
 
   return (

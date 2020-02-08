@@ -31,7 +31,7 @@ export function ContentHeader({
       <GradientBackground />
       <S.ContentHeader>
         {!!poster && (
-          <Box marginRight={20} width={120}>
+          <Box marginRight="lg" width={120}>
             <Thumb backgroundUri={getImageUrl(poster)} />
           </Box>
         )}
@@ -43,7 +43,7 @@ export function ContentHeader({
             <S.Genre>
               {genre}
               {minutes && (
-                <Text fontSize={13} weight="bold">
+                <Text fontSize="body3" weight="bold">
                   {' '}
                   ({convertMinToHours(minutes)})
                 </Text>

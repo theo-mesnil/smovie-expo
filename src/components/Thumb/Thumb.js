@@ -6,7 +6,7 @@ import { TouchableOpacity } from '../../components/TouchableOpacity'
 
 import * as S from './Thumb.styled'
 
-export const Thumb = ({ backgroundUri, aspectRatio = 3 / 4, title, subtitle, onPress }) => {
+export function Thumb({ backgroundUri, aspectRatio = 3 / 4, title, subtitle, onPress }) {
   const theme = useTheme()
 
   return (

@@ -18,7 +18,7 @@ import { getImageUrl } from '../../constants/image'
 
 import * as S from './Season.styled'
 
-export const Season = () => {
+export function Season() {
   const route = useRoute()
   const [seasonDetail, setSeasonDetail] = useState()
   const seasonName = route.params.seasonName

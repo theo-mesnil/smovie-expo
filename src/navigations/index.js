@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavigationNativeContainer } from '@react-navigation/native'
+import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 
 import { Movie } from '../screens/Movie'
@@ -14,7 +14,7 @@ const Stack = createStackNavigator()
 
 export function Navigation() {
   return (
-    <NavigationNativeContainer>
+    <NavigationContainer>
       <Stack.Navigator headerMode="none">
         <Stack.Screen component={TabBar} name="TabBar" />
         <Stack.Screen component={Movie} name="Movie" />
@@ -23,6 +23,6 @@ export function Navigation() {
         <Stack.Screen component={People} name="People" />
         <Stack.Screen component={Genre} name="Genre" />
       </Stack.Navigator>
-    </NavigationNativeContainer>
+    </NavigationContainer>
   )
 }

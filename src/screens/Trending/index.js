@@ -14,7 +14,7 @@ import { getGenres } from '../../api/genres'
 import { getImageUrl } from '../../constants/image'
 import { getTrending } from '../../api/trending'
 
-export const Trending = ({ navigation }) => {
+export function Trending({ navigation }) {
   const [moviesTrending, setMoviesTrending] = useState()
   const [moviesGenre, setMovieGenre] = useState()
   const [showsTrending, setShowsTrending] = useState()

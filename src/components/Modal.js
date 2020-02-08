@@ -42,7 +42,7 @@ export function Modal({ children, closeModal, isVisible, ...rest }) {
           <Box
             alignSelf="center"
             backgroundColor="light400"
-            borderRadius={3}
+            borderRadius="sm"
             height={6}
             mb="lg"
             width={50}
