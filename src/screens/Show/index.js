@@ -72,7 +72,7 @@ export function Show() {
               ))}
             </S.Seasons>
           </ScrollView>
-          <Padding pt={0}>
+          <Padding pb={0} pt={0}>
             <Text>{showDetail.overview}</Text>
             <Informations title="Seasons and Episodes">
               <Text>
@@ -88,12 +88,12 @@ export function Show() {
                 <Text numberOfLines={1}>{convertToFullDate(showDetail.first_air_date)}</Text>
               </Informations>
             )}
-            {showDetail.genres && (
-              <Informations title="Genres">
-                <Genres genres={showDetail.genres} />
-              </Informations>
-            )}
           </Padding>
+          {showDetail.genres && (
+            <Informations mb="lg" paddingOnTitle title="Genres">
+              <Genres genres={showDetail.genres} />
+            </Informations>
+          )}
           <Section title="Casting">
             {showCredits ? (
               <Listing

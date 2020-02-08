@@ -3,9 +3,9 @@ import React from 'react'
 import { Box } from './Box'
 import { Text } from './Text'
 
-export function Informations({ children, paddingOnTitle, title }) {
+export function Informations({ children, paddingOnTitle, title, ...rest }) {
   return (
-    <Box marginTop="lg">
+    <Box marginTop="lg" {...rest}>
       <Text marginBottom={2} ml={paddingOnTitle && 'xl'} weight="black">
         {title}
       </Text>

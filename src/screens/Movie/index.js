@@ -67,7 +67,7 @@ export function Movie() {
             title={movieDetail.title}
             voteAverage={movieDetail.vote_average}
           />
-          <Padding>
+          <Padding pb={0}>
             <Text>{movieDetail.overview}</Text>
             {movieDetail.release_date && (
               <Informations title={movieDetail.status}>
@@ -90,17 +90,17 @@ export function Movie() {
                 />
               </Informations>
             )}
-            {movieDetail.genres && (
-              <Informations title="Genres">
-                <Genres genres={movieDetail.genres} />
-              </Informations>
-            )}
             {!!movieDetail.revenue && !!movieDetail.revenue !== 0 && (
               <Informations title="Revenue">
                 <Text numberOfLines={1}>{formatMoney(movieDetail.revenue)}</Text>
               </Informations>
             )}
           </Padding>
+          {movieDetail.genres && (
+            <Informations mb="lg" paddingOnTitle title="Genres">
+              <Genres genres={movieDetail.genres} />
+            </Informations>
+          )}
           <Section title="Casting">
             {movieCredits ? (
               <Listing

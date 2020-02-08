@@ -11,7 +11,7 @@ export function Filmography({ date, id, isMovie, title }) {
       <Text width={45}>{date}</Text>
       <Icon color="light100" name="chevron-right" size={15} />
       <TextLink
-        flex="1"
+        flex={1}
         ml="xs"
         numberOfLines={1}
         onPress={
