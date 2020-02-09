@@ -74,7 +74,7 @@ export function People() {
               source={{ uri: getImageUrl(peopleDetail.profile_path, isTablet ? 1280 : 780) }}
               style={{ aspectRatio: aspectRatioCover, justifyContent: 'flex-end' }}
             >
-              <GradientBackground />
+              <GradientBackground style={{ top: undefined, bottom: 0, height: '30%' }} />
               <Text
                 fontSize="h0"
                 lineHeight={55}
