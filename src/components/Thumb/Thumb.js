@@ -6,11 +6,11 @@ import { TouchableOpacity } from '../../components/TouchableOpacity'
 
 import * as S from './Thumb.styled'
 
-export function Thumb({ backgroundUri, aspectRatio = 3 / 4, title, subtitle, onPress }) {
+export function Thumb({ backgroundUri, aspectRatio = 3 / 4, title, subtitle, onPress, ...rest }) {
   const theme = useTheme()
 
   return (
-    <TouchableOpacity activeOpacity={onPress ? 0.7 : 1} onPress={onPress}>
+    <TouchableOpacity activeOpacity={onPress ? 0.7 : 1} onPress={onPress} {...rest}>
       <ImageBackground
         imageStyle={{ borderRadius: theme.values.radii.md }}
         source={{ uri: backgroundUri }}

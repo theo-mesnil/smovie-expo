@@ -19,6 +19,7 @@ import { getImageUrl } from '../../constants/image'
 import { isTablet } from '../../constants/screen'
 
 export function Movies() {
+  const numberOfColumns = isTablet ? 6 : 3
   const theme = useTheme()
   const navigation = useNavigation()
   const [discover, setDiscover] = useState()
@@ -35,19 +36,21 @@ export function Movies() {
           <TitleScreen>Movies</TitleScreen>
         </Padding>
         {discover && (
-          <Padding pb={0} pt={0}>
+          <Padding pb={0} pr="xs" pt={0}>
             <FlatList
               data={discover.results}
               keyExtractor={item => `${item.id}_${Math.random()}`}
-              numColumns={isTablet ? 6 : 3}
+              numColumns={numberOfColumns}
               renderItem={({ item }) => (
-                <Box flex={1} paddingBottom="md" paddingRight="md">
+                <Box flex={1 / numberOfColumns}>
                   <Thumb
                     backgroundUri={getImageUrl(item.poster_path)}
                     onPress={
                       () => setSelectMovie(item)
                       // eslint-disable-next-line react/jsx-curly-newline
                     }
+                    paddingBottom="md"
+                    paddingRight="md"
                   />
                 </Box>
               )}
