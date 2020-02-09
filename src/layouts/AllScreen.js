@@ -7,7 +7,7 @@ export function AllScreenLayout({ children }) {
   return (
     <S.Layout>
       <StatusBar translucent />
-      <ScrollView>{children}</ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>{children}</ScrollView>
     </S.Layout>
   )
 }

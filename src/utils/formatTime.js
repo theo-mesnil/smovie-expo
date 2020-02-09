@@ -20,3 +20,7 @@ export function convertMinToHours(number) {
 export function convertToFullDate(date) {
   return format(new Date(date), 'PPPP')
 }
+
+export function convertToDate(date) {
+  return format(new Date(date), 'PPP')
+}

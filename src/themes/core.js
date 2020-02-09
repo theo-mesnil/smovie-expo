@@ -55,7 +55,8 @@ export const coreTheme = {
   },
   radii: {
     sm: 3,
-    md: 6
+    md: 6,
+    xl: 20
   },
   switch: {
     thumb: colors.light900

@@ -4,6 +4,8 @@ import { ImageBackground } from 'react-native'
 
 import { getImageUrl } from '../constants/image'
 import { convertMinToHours } from '../utils/formatTime'
+import { useTheme } from '../contexts/theme'
+import { convertToDate } from '../utils/formatTime'
 
 import { Box } from './Box'
 import { GradientBackground } from './GradientBackground'
@@ -20,10 +22,14 @@ export function ContentHeader({
   minutes,
   poster,
   title,
-  voteAverage
+  voteAverage,
+  date
 }) {
+  const theme = useTheme()
+
   return (
     <ImageBackground
+      imageStyle={{ borderRadius: theme.values.radii.xl }}
       opacity={0.8}
       source={{ uri: getImageUrl(cover) }}
       style={{ aspectRatio: aspectRatioCover, justifyContent: 'flex-end' }}
@@ -39,6 +45,7 @@ export function ContentHeader({
           <Text fontSize="h1" lineHeight={25} numberOfLines={3} weight="bold">
             {title}
           </Text>
+          {date && <Text numberOfLines={2}>{convertToDate(date)}</Text>}
           {genre && (
             <S.Genre>
               {genre}

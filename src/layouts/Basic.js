@@ -6,7 +6,7 @@ import * as S from './Basic.styled'
 export function BasicLayout({ children }) {
   return (
     <S.Layout>
-      <ScrollView>{children}</ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>{children}</ScrollView>
     </S.Layout>
   )
 }

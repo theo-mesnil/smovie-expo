@@ -6,7 +6,7 @@ import { screenHeight } from '../constants/screen'
 import * as S from './Modal.styled'
 import { Box } from './Box'
 
-export function Modal({ children, closeModal, isVisible, ...rest }) {
+export function Modal({ children, closeModal, isVisible, withPadding, ...rest }) {
   const [scrollOffset, setScrollOffset] = useState(null)
   const scrollViewRef = createRef()
   const maxHeight = screenHeight - 100
@@ -32,7 +32,7 @@ export function Modal({ children, closeModal, isVisible, ...rest }) {
       swipeDirection={['down']}
       {...rest}
     >
-      <S.Content maxHeight={maxHeight}>
+      <S.Content maxHeight={maxHeight} withPadding={withPadding}>
         <ScrollView
           onScroll={handleOnScroll}
           ref={scrollViewRef}
