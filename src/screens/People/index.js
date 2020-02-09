@@ -144,12 +144,14 @@ export function People() {
                   >
                     {peoplePopular
                       .filter(item => item.media_type === 'movie')
+                      .filter(item => !!item.release_date)
                       .sort(
                         (a, b) =>
                           getYear(new Date(b.release_date)) - getYear(new Date(a.release_date))
                       )
                       .map((item, index, items) => {
                         const date = getYear(new Date(item.release_date))
+
                         const dateBefore =
                           index > 0 ? getYear(new Date(items[index - 1].release_date)) : undefined
 
@@ -178,6 +180,7 @@ export function People() {
                   >
                     {peoplePopular
                       .filter(item => item.media_type === 'tv')
+                      .filter(item => !!item.first_air_date)
                       .sort(
                         (a, b) =>
                           getYear(new Date(b.first_air_date)) - getYear(new Date(a.first_air_date))
