@@ -16,8 +16,10 @@ import {
 import { getDiscover } from '../../api/discover'
 import { getImageUrl } from '../../constants/image'
 import { isTablet } from '../../constants/screen'
+import { useTheme } from '../../contexts/theme'
 
 export function Shows() {
+  const theme = useTheme()
   const navigation = useNavigation()
   const [discover, setDiscover] = useState()
   const [selectTvShow, setSelectTvShow] = useState()
@@ -58,10 +60,11 @@ export function Shows() {
         {selectTvShow && (
           <>
             <ContentHeader
-              aspectRatioCover={16 / 9}
+              aspectRatioCover={isTablet ? 16 / 4 : 16 / 9}
               borderOnCover
               cover={selectTvShow.backdrop_path}
               date={selectTvShow.first_air_date}
+              imageStyle={{ borderRadius: theme.values.radii.xl }}
               poster={selectTvShow.poster_path}
               title={selectTvShow.name}
               voteAverage={selectTvShow.vote_average}

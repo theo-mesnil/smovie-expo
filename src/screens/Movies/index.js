@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { FlatList } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
+import { useTheme } from '../../contexts/theme'
 import { BasicLayout } from '../../layouts'
 import {
   Box,
@@ -18,6 +19,7 @@ import { getImageUrl } from '../../constants/image'
 import { isTablet } from '../../constants/screen'
 
 export function Movies() {
+  const theme = useTheme()
   const navigation = useNavigation()
   const [discover, setDiscover] = useState()
   const [selectMovie, setSelectMovie] = useState()
@@ -58,10 +60,11 @@ export function Movies() {
         {selectMovie && (
           <>
             <ContentHeader
-              aspectRatioCover={16 / 9}
+              aspectRatioCover={isTablet ? 16 / 4 : 16 / 9}
               borderOnCover
               cover={selectMovie.backdrop_path}
               date={selectMovie.release_date}
+              imageStyle={{ borderRadius: theme.values.radii.xl }}
               poster={selectMovie.poster_path}
               title={selectMovie.title}
               voteAverage={selectMovie.vote_average}

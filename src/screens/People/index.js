@@ -21,11 +21,12 @@ import {
 import { getPeopleDetail } from '../../api/people'
 import { getImageUrl } from '../../constants/image'
 import { convertToFullDate } from '../../utils/formatTime'
+import { isTablet } from '../../constants/screen'
 
 import { Filmography } from './Filmography'
 
 export function People() {
-  const aspectRatioCover = 16 / 18
+  const aspectRatioCover = isTablet ? 16 / 9 : 16 / 18
   const route = useRoute()
   const navigation = useNavigation()
   const [peopleDetail, setPeopleDetail] = useState()
@@ -70,7 +71,7 @@ export function People() {
           <>
             <ImageBackground
               opacity={0.8}
-              source={{ uri: getImageUrl(peopleDetail.profile_path) }}
+              source={{ uri: getImageUrl(peopleDetail.profile_path, isTablet ? 1280 : 780) }}
               style={{ aspectRatio: aspectRatioCover, justifyContent: 'flex-end' }}
             >
               <GradientBackground />

@@ -4,8 +4,8 @@ import { ImageBackground } from 'react-native'
 
 import { getImageUrl } from '../constants/image'
 import { convertMinToHours } from '../utils/formatTime'
-import { useTheme } from '../contexts/theme'
 import { convertToDate } from '../utils/formatTime'
+import { isTablet } from '../constants/screen'
 
 import { Box } from './Box'
 import { GradientBackground } from './GradientBackground'
@@ -16,22 +16,21 @@ import { VoteAverage } from './VoteAverage'
 import * as S from './ContentHeader.styled'
 
 export function ContentHeader({
-  aspectRatioCover = 16 / 13,
+  aspectRatioCover = isTablet ? 16 / 6 : 16 / 13,
   cover,
   genre,
   minutes,
   poster,
   title,
   voteAverage,
-  date
+  date,
+  imageStyle
 }) {
-  const theme = useTheme()
-
   return (
     <ImageBackground
-      imageStyle={{ borderRadius: theme.values.radii.xl }}
+      imageStyle={imageStyle}
       opacity={0.8}
-      source={{ uri: getImageUrl(cover) }}
+      source={{ uri: getImageUrl(cover, isTablet ? 1280 : 780) }}
       style={{ aspectRatio: aspectRatioCover, justifyContent: 'flex-end' }}
     >
       <GradientBackground />
