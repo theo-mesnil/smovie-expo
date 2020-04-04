@@ -8,9 +8,8 @@ export const Item = styled.View(
     margin-left: ${theme.space.md};
     ${isFirst && `margin-left: 0`}
     ${isTablet &&
-      css`
-        width: ${SIZE_TABLET / numberOfColumnsTablet -
-          theme.space.md * (numberOfColumnsTablet + 1)};
-      `}
+    css`
+      width: ${SIZE_TABLET / numberOfColumnsTablet - theme.space.md * (numberOfColumnsTablet + 1)};
+    `}
   `
 )
