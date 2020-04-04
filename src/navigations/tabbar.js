@@ -14,11 +14,11 @@ import { isAndroid } from '../constants/screen'
 const androidTabBarStyle = isAndroid
   ? {
       style: {
-        paddingTop: 4,
+        paddingTop: 7,
         height: 60
       },
       labelStyle: {
-        paddingBottom: 10
+        paddingBottom: 7
       }
     }
   : undefined
