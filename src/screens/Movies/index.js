@@ -4,16 +4,7 @@ import { useNavigation } from '@react-navigation/native'
 
 import { useTheme } from '../../contexts/theme'
 import { BasicLayout } from '../../layouts'
-import {
-  Box,
-  Button,
-  ContentHeader,
-  Modal,
-  Padding,
-  Text,
-  Thumb,
-  TitleScreen
-} from '../../components'
+import { Box, Button, ContentHeader, Modal, Padding, Text, Thumb } from '../../components'
 import { getDiscover } from '../../api/discover'
 import { getImageUrl } from '../../constants/image'
 import { isTablet } from '../../constants/screen'
@@ -32,9 +23,6 @@ export function Movies() {
   return (
     <>
       <BasicLayout>
-        <Padding pb={0} pt={0}>
-          <TitleScreen>Movies</TitleScreen>
-        </Padding>
         {discover && (
           <Padding pb={0} pr="xs" pt={0}>
             <FlatList

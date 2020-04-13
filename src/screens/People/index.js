@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import { ImageBackground } from 'react-native'
+import { ImageBackground, ScrollView } from 'react-native'
 import { getYear } from 'date-fns'
 
 import { GradientBackground } from '../../components/GradientBackground'
@@ -68,7 +68,7 @@ export function People() {
       <AllScreenLayout>
         <Header />
         {peopleDetail && (
-          <>
+          <ScrollView showsVerticalScrollIndicator={false}>
             <ImageBackground
               opacity={0.8}
               source={{ uri: getImageUrl(peopleDetail.profile_path, isTablet ? 1280 : 780) }}
@@ -203,7 +203,7 @@ export function People() {
                 </Padding>
               </Section>
             )}
-          </>
+          </ScrollView>
         )}
       </AllScreenLayout>
       <Modal closeModal={() => setBiographyModalVisible(false)} isVisible={biographyModalVisible}>
