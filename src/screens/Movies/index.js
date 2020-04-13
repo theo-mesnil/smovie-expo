@@ -33,10 +33,10 @@ export function Movies() {
                 <Box flex={1 / numberOfColumns}>
                   <Thumb
                     backgroundUri={getImageUrl(item.poster_path)}
-                    onPress={
-                      () => setSelectMovie(item)
-                      // eslint-disable-next-line react/jsx-curly-newline
-                    }
+                    onLongPress={() => setSelectMovie(item)}
+                    onPress={() => {
+                      navigation.push('Movie', { id: item.id })
+                    }}
                     paddingBottom="md"
                     paddingRight="md"
                   />
@@ -66,8 +66,8 @@ export function Movies() {
                 alignItems="center"
                 mt="lg"
                 onPress={() => {
-                  setSelectMovie()
                   navigation.push('Movie', { id: selectMovie.id })
+                  setSelectMovie()
                 }}
               >
                 See more

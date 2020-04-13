@@ -33,10 +33,10 @@ export function Shows() {
                 <Box flex={1 / numberOfColumns}>
                   <Thumb
                     backgroundUri={getImageUrl(item.poster_path)}
-                    onPress={
-                      () => setSelectTvShow(item)
-                      // eslint-disable-next-line react/jsx-curly-newline
-                    }
+                    onLongPress={() => setSelectTvShow(item)}
+                    onPress={() => {
+                      navigation.push('Show', { id: item.id })
+                    }}
                     paddingBottom="md"
                     paddingRight="md"
                   />
@@ -66,8 +66,8 @@ export function Shows() {
                 alignItems="center"
                 mt="lg"
                 onPress={() => {
-                  setSelectTvShow()
                   navigation.push('Show', { id: selectTvShow.id })
+                  setSelectTvShow()
                 }}
               >
                 See more

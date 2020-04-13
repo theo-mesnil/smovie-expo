@@ -7,7 +7,7 @@ export function Button({ children, onPress, variant = 'primary500', variantSize 
   return (
     <Touchable onPress={onPress}>
       <S.Button variant={variant} variantSize={variantSize} {...rest}>
-        <S.Content variantSize={variantSize}>toto {children}</S.Content>
+        <S.Content variantSize={variantSize}>{children}</S.Content>
       </S.Button>
     </Touchable>
   )
