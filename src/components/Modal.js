@@ -6,7 +6,14 @@ import { screenHeight } from '../constants/screen'
 import * as S from './Modal.styled'
 import { Box } from './Box'
 
-export function Modal({ children, closeModal, isVisible, withPadding, ...rest }) {
+export function Modal({
+  children,
+  closeModal,
+  isVisible,
+  pipeColor = 'light400',
+  withPadding,
+  ...rest
+}) {
   const [scrollOffset, setScrollOffset] = useState(null)
   const scrollViewRef = createRef()
   const maxHeight = screenHeight - 100
@@ -41,11 +48,13 @@ export function Modal({ children, closeModal, isVisible, withPadding, ...rest })
         >
           <Box
             alignSelf="center"
-            backgroundColor="light400"
+            backgroundColor={pipeColor}
             borderRadius="sm"
             height={6}
-            mb="lg"
+            position="absolute"
+            top={6}
             width={50}
+            zIndex={1}
           />
           {children}
         </ScrollView>

@@ -47,7 +47,11 @@ export function Shows() {
           </Padding>
         )}
       </BasicLayout>
-      <Modal closeModal={() => setSelectTvShow()} isVisible={!!selectTvShow}>
+      <Modal
+        closeModal={() => setSelectTvShow()}
+        isVisible={!!selectTvShow}
+        pipeColor="rgba(255, 255, 255, 0.7)"
+      >
         {selectTvShow && (
           <>
             <ContentHeader

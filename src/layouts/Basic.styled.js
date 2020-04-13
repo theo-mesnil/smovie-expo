@@ -1,4 +1,3 @@
-import { Platform, StatusBar } from 'react-native'
 import styled, { css } from 'styled-components/native'
 
 export const Layout = styled.SafeAreaView(
@@ -6,6 +5,5 @@ export const Layout = styled.SafeAreaView(
     css`
       flex: 1;
       background-color: ${theme.colors.behind};
-      ${Platform.OS === 'android' && `padding-top: ${StatusBar.currentHeight}`};
     `
 )

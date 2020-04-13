@@ -12,13 +12,14 @@ export function Thumb({ backgroundUri, aspectRatio = 3 / 4, title, subtitle, onP
 
   return (
     <Touchable onPress={onPress} {...rest}>
-      <Box>
+      <Box borderRadius="md" overflow="hidden">
         <ImageBackground
           imageStyle={{
-            borderRadius: theme.values.radii.md
+            borderRadius: theme.values.radii.md,
+            backgroundColor: theme.values.colors.light500
           }}
           source={{ uri: backgroundUri }}
-          style={{ aspectRatio, zIndex: -1 }}
+          style={{ aspectRatio }}
         />
         {title && (
           <S.TitleWrapper>

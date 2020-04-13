@@ -47,7 +47,11 @@ export function Movies() {
           </Padding>
         )}
       </BasicLayout>
-      <Modal closeModal={() => setSelectMovie()} isVisible={!!selectMovie}>
+      <Modal
+        closeModal={() => setSelectMovie()}
+        isVisible={!!selectMovie}
+        pipeColor="rgba(255, 255, 255, 0.7)"
+      >
         {selectMovie && (
           <>
             <ContentHeader

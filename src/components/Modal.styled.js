@@ -3,25 +3,28 @@ import ModalNative from 'react-native-modal'
 
 import { Box } from './Box'
 
-export const Modal = styled(ModalNative)`
-  justify-content: flex-end;
-  margin: 0;
-`
+export const Modal = styled(ModalNative)(
+  ({ theme }) => css`
+    justify-content: flex-end;
+    margin: 0;
+    padding-bottom: ${theme.space.md};
+    padding-right: ${theme.space.md};
+    padding-left: ${theme.space.md};
+  `
+)
 
 export const Content = styled(Box)(
   ({ maxHeight, theme, withPadding }) => css`
     background-color: ${theme.colors.light700};
-    padding-bottom: 60;
-    padding-top: ${theme.space.sm};
-    border-top-left-radius: ${theme.radii.xl};
-    border-top-right-radius: ${theme.radii.xl};
+    border-radius: ${theme.radii.xl};
     max-height: ${maxHeight};
-    ${withPadding
-      ? css`
-          padding-horizontal: ${theme.space.xl};
-        `
-      : css`
-          padding-horizontal: ${theme.space.xs};
-        `}
+    max-width: 600;
+    overflow: hidden;
+
+    ${withPadding &&
+    css`
+      padding-horizontal: ${theme.space.xl};
+      padding-vertical: ${theme.space.xl};
+    `}
   `
 )

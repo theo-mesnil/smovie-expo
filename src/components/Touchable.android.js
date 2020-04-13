@@ -12,15 +12,18 @@ const StyledTouchableNativeFeedback = styled.TouchableNativeFeedback(
   position
 )
 
-export function Touchable(props) {
+export function Touchable({ onPress, ...rest }) {
   const theme = useTheme()
 
   return (
     <StyledTouchableNativeFeedback
-      background={TouchableNativeFeedback.Ripple(theme.values.colors.light900, false)}
+      background={
+        onPress ? TouchableNativeFeedback.Ripple(theme.values.colors.light900, false) : undefined
+      }
       delayPressIn={0}
-      useForeground
-      {...props}
+      onPress={onPress}
+      useForeground={!!onPress}
+      {...rest}
     />
   )
 }
