@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 
 import { Icon } from './Icon'
 import { Box } from './Box'
-import { TouchableOpacity } from './TouchableOpacity'
+import { Touchable } from './Touchable'
 
 export function Header({ children, iconName = 'arrow-left' }) {
   const navigation = useNavigation()
@@ -21,9 +21,11 @@ export function Header({ children, iconName = 'arrow-left' }) {
       width={1}
       zIndex={1}
     >
-      <TouchableOpacity mr="sm" onPress={() => navigation.goBack(null)}>
-        <Icon color="dark900" name={iconName} size={30} />
-      </TouchableOpacity>
+      <Touchable mr="sm" onPress={() => navigation.goBack(null)}>
+        <Box>
+          <Icon color="dark900" name={iconName} size={30} />
+        </Box>
+      </Touchable>
       {children}
     </Box>
   )

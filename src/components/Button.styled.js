@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components/native'
 import { flexbox, layout, position, space, typography } from 'styled-system'
 
-import { TouchableOpacity } from './TouchableOpacity'
 import { Text } from './Text'
 
 function ButtonSize({ theme, variantSize }) {
@@ -30,7 +29,7 @@ function ContentSize({ variantSize }) {
   }
 }
 
-export const Button = styled(TouchableOpacity)(
+export const Button = styled.View(
   // eslint-disable-next-line no-unused-vars
   ({ theme, variant, variantSize }) => css`
     background-color: ${theme.colors[`${variant}`]};

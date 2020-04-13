@@ -1,8 +1,6 @@
 import styled, { css } from 'styled-components/native'
 
-import { TouchableOpacity } from './TouchableOpacity'
-
-export const Radio = styled(TouchableOpacity)(
+export const Radio = styled.View(
   ({ selected, theme }) => css`
     background-color: ${theme.colors.light900};
     border: 2px solid ${selected ? theme.colors.primary500 : theme.colors.light500};

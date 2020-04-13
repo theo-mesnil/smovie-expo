@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components/native'
 
 import { centeredStyled } from './Centered'
-import { TouchableOpacity } from './TouchableOpacity'
 
 export const List = styled.View(
   ({ theme }) => css`
@@ -23,7 +22,7 @@ List.Title = styled.Text(
   `
 )
 
-export const Item = styled(TouchableOpacity)(
+export const Item = styled.View(
   ({ isLast, theme, withMaxSize = true }) => css`
     ${centeredStyled({ theme, withMaxSize })};
     flex-direction: row;
