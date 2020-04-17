@@ -48,7 +48,7 @@ export function Movies() {
         )}
       </BasicLayout>
       <Modal
-        closeModal={() => setSelectMovie()}
+        closeAction={() => setSelectMovie()}
         isVisible={!!selectMovie}
         pipeColor="rgba(255, 255, 255, 0.7)"
       >

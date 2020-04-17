@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components/native'
 import ModalNative from 'react-native-modal'
-
-import { Box } from './Box'
+import { View } from 'react-native'
 
 export const Modal = styled(ModalNative)(
   ({ theme }) => css`
@@ -13,7 +12,7 @@ export const Modal = styled(ModalNative)(
   `
 )
 
-export const Content = styled(Box)(
+export const Wrapper = styled(View)(
   ({ maxHeight, theme, withPadding }) => css`
     background-color: ${theme.colors.light700};
     border-radius: ${theme.radii.xl};

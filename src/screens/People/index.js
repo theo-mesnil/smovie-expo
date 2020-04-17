@@ -206,7 +206,11 @@ export function People() {
           </ScrollView>
         )}
       </AllScreenLayout>
-      <Modal closeModal={() => setBiographyModalVisible(false)} isVisible={biographyModalVisible}>
+      <Modal
+        closeAction={() => setBiographyModalVisible(false)}
+        isVisible={biographyModalVisible}
+        withPadding
+      >
         {peopleDetail && <Text>{peopleDetail.biography}</Text>}
       </Modal>
     </>

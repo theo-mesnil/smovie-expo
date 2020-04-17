@@ -73,7 +73,7 @@ export function More() {
           </List>
         </ScrollView>
       </BasicLayout>
-      <Modal closeModal={() => setThemeModalVisible(false)} isVisible={themeModalVisible}>
+      <Modal closeAction={() => setThemeModalVisible(false)} isVisible={themeModalVisible}>
         <ThemeItem name="dark" subtitle="Get that whiteness out of my sight" />
         <ThemeItem name="light" subtitle="Turn on the light" />
         <ThemeItem isLast name="native" subtitle="Get theme from your device settings" />

@@ -48,7 +48,7 @@ export function Shows() {
         )}
       </BasicLayout>
       <Modal
-        closeModal={() => setSelectTvShow()}
+        closeAction={() => setSelectTvShow()}
         isVisible={!!selectTvShow}
         pipeColor="rgba(255, 255, 255, 0.7)"
       >

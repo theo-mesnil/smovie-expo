@@ -3,20 +3,19 @@ import { ScrollView } from 'react-native'
 
 import { screenHeight } from '../constants/screen'
 
-import * as S from './Modal.styled'
 import { Box } from './Box'
+import * as S from './Modal.styled'
 
 export function Modal({
   children,
-  closeModal,
+  closeAction,
+  maxHeight = screenHeight / 1.5,
   isVisible,
   pipeColor = 'light400',
-  withPadding,
-  ...rest
+  withPadding = false
 }) {
-  const [scrollOffset, setScrollOffset] = useState(null)
   const scrollViewRef = createRef()
-  const maxHeight = screenHeight - 100
+  const [scrollOffset, setScrollOffset] = useState()
 
   function handleOnScroll(event) {
     setScrollOffset(event.nativeEvent.contentOffset.y)
@@ -31,34 +30,30 @@ export function Modal({
   return (
     <S.Modal
       isVisible={isVisible}
-      onBackdropPress={closeModal}
-      onSwipeComplete={closeModal}
+      onBackdropPress={closeAction}
+      onSwipeComplete={closeAction}
+      propagateSwipe
       scrollOffset={scrollOffset}
-      scrollOffsetMax={maxHeight - 100}
+      scrollOffsetMax={400 - 300}
       scrollTo={handleScrollTo}
       swipeDirection={['down']}
-      {...rest}
+      testID="modal"
     >
-      <S.Content maxHeight={maxHeight} withPadding={withPadding}>
-        <ScrollView
-          onScroll={handleOnScroll}
-          ref={scrollViewRef}
-          scrollEventThrottle={16}
-          showsVerticalScrollIndicator={false}
-        >
-          <Box
-            alignSelf="center"
-            backgroundColor={pipeColor}
-            borderRadius="sm"
-            height={6}
-            position="absolute"
-            top={6}
-            width={50}
-            zIndex={1}
-          />
+      <S.Wrapper maxHeight={maxHeight} withPadding={withPadding}>
+        <Box
+          alignSelf="center"
+          backgroundColor={pipeColor}
+          borderRadius="sm"
+          height={6}
+          position="absolute"
+          top={6}
+          width={50}
+          zIndex={1}
+        />
+        <ScrollView onScroll={handleOnScroll} ref={scrollViewRef} scrollEventThrottle={16}>
           {children}
         </ScrollView>
-      </S.Content>
+      </S.Wrapper>
     </S.Modal>
   )
 }
