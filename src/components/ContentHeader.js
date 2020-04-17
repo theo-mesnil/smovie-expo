@@ -56,7 +56,7 @@ export function ContentHeader({
               )}
             </S.Genre>
           )}
-          {voteAverage && <VoteAverage mt="md" vote={voteAverage} />}
+          {!!voteAverage && <VoteAverage mt="md" vote={voteAverage} />}
         </Box>
       </S.ContentHeader>
     </ImageBackground>
