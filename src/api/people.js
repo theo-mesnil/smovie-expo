@@ -9,3 +9,11 @@ export const getPeopleDetail = (callback, id, url = '') =>
       callback(response.data)
     })
     .catch()
+
+export const getPeoplePopular = callback =>
+  axios
+    .get(getApiUrl(`person/popular`))
+    .then(response => {
+      callback(response.data)
+    })
+    .catch()

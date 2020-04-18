@@ -6,6 +6,7 @@ import { Listing, ListingItem, ListingLoader, Section, Thumb } from '../../compo
 import { getGenres } from '../../api/genres'
 import { getImageUrl } from '../../constants/image'
 import { getTrending } from '../../api/trending'
+import { getPeoplePopular } from '../../api/people'
 
 export function Trending({ navigation }) {
   const [moviesTrending, setMoviesTrending] = useState()
@@ -19,7 +20,7 @@ export function Trending({ navigation }) {
     getTrending(setMoviesTrending)
     getGenres(setShowsGenre, 'tv')
     getTrending(setShowsTrending, 'tv')
-    getTrending(setPeoplesTrending, 'person')
+    getPeoplePopular(setPeoplesTrending)
   }, [])
 
   return (
