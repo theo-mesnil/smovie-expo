@@ -2,7 +2,7 @@ import { registerRootComponent } from 'expo'
 import { ThemeProvider } from 'styled-components/native'
 import * as Font from 'expo-font'
 import React, { useEffect, useState } from 'react'
-import { Platform, StatusBar } from 'react-native'
+import { StatusBar } from 'react-native'
 import { AppearanceProvider, useColorScheme } from 'react-native-appearance'
 
 import { ThemeProvider as ThemeProviderContext } from './contexts/theme'
@@ -44,7 +44,12 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <AppearanceProvider>
-        {Platform.OS === 'ios' && <StatusBar animated barStyle={getStatusBarStyle(themeName)} />}
+        <StatusBar
+          animated
+          backgroundColor="transparent"
+          barStyle={getStatusBarStyle(themeName)}
+          translucent
+        />
         <S.App>
           <ThemeProviderContext
             value={{ values: theme, name: themeName, setThemeName: setThemeName }}

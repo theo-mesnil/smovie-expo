@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
 import { useNavigation, useRoute } from '@react-navigation/native'
 
-import { AllScreenLayout } from '../../layouts'
+import { BasicLayout } from '../../layouts'
 import {
   Box,
   Button,
@@ -40,7 +40,7 @@ export function Show() {
   }, [route.params.id])
 
   return (
-    <AllScreenLayout>
+    <BasicLayout>
       <Header />
       {showDetail ? (
         <ScrollView showsVerticalScrollIndicator={false}>
@@ -149,6 +149,6 @@ export function Show() {
       ) : (
         <ContentHeaderLoader />
       )}
-    </AllScreenLayout>
+    </BasicLayout>
   )
 }

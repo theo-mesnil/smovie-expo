@@ -34,6 +34,8 @@ export const Button = styled.View(
   ({ theme, variant, variantSize }) => css`
     background-color: ${theme.colors[`${variant}`]};
     border-radius: ${theme.radii.md};
+    align-items: center;
+    flex-direction: row;
     ${ButtonSize};
     ${flexbox};
     ${layout};

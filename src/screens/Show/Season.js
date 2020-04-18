@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { format } from 'date-fns'
 import { useRoute } from '@react-navigation/native'
 
-import { AllScreenLayout } from '../../layouts'
+import { BasicLayout } from '../../layouts'
 import {
   Box,
   Centered,
@@ -30,7 +30,7 @@ export function Season() {
   }, [seasonNumber, showId])
 
   return (
-    <AllScreenLayout>
+    <BasicLayout>
       <Header>
         <TitleScreen marginBottom={0} marginTop={0}>
           {seasonName}
@@ -86,6 +86,6 @@ export function Season() {
           </Box>
         )}
       </Centered>
-    </AllScreenLayout>
+    </BasicLayout>
   )
 }

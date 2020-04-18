@@ -4,7 +4,7 @@ import { ImageBackground, ScrollView } from 'react-native'
 import { getYear } from 'date-fns'
 
 import { GradientBackground } from '../../components/GradientBackground'
-import { AllScreenLayout } from '../../layouts'
+import { BasicLayout } from '../../layouts'
 import {
   Box,
   Header,
@@ -65,7 +65,7 @@ export function People() {
 
   return (
     <>
-      <AllScreenLayout>
+      <BasicLayout>
         <Header />
         {peopleDetail && (
           <ScrollView showsVerticalScrollIndicator={false}>
@@ -205,7 +205,7 @@ export function People() {
             )}
           </ScrollView>
         )}
-      </AllScreenLayout>
+      </BasicLayout>
       <Modal closeAction={() => setBiographyModalVisible(false)} isVisible={biographyModalVisible}>
         {peopleDetail && <Text>{peopleDetail.biography}</Text>}
       </Modal>

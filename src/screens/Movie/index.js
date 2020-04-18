@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { ScrollView } from 'react-native-gesture-handler'
 
-import { AllScreenLayout } from '../../layouts'
+import { BasicLayout } from '../../layouts'
 import { getMovieDetail } from '../../api/movie'
 import { getImageUrl } from '../../constants/image'
 import {
@@ -47,7 +47,7 @@ export function Movie() {
     )
 
   return (
-    <AllScreenLayout>
+    <BasicLayout>
       <Header />
       {movieDetail ? (
         <ScrollView showsVerticalScrollIndicator={false}>
@@ -146,6 +146,6 @@ export function Movie() {
       ) : (
         <ContentHeaderLoader />
       )}
-    </AllScreenLayout>
+    </BasicLayout>
   )
 }

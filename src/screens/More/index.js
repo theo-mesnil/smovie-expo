@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import * as WebBrowser from 'expo-web-browser'
 import { ScrollView } from 'react-native-gesture-handler'
+import { StatusBar } from 'react-native'
 
 import { useTheme } from '../../contexts/theme'
 import { BasicLayout } from '../../layouts'
@@ -25,6 +26,7 @@ export function More() {
   function ThemeItem({ isLast, name, subtitle }) {
     return (
       <Touchable onPress={() => setTheme(name)}>
+        <StatusBar backgroundColor="transparent" translucent />
         <List.Item isLast={isLast}>
           <List.Item.Content>
             <List.Item.Title>{name}</List.Item.Title>

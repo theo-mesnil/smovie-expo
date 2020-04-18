@@ -1,12 +1,23 @@
 import React, { useEffect, useState } from 'react'
-import { ScrollView } from 'react-native'
+import { Animated, ImageBackground } from 'react-native'
 
 import { BasicLayout } from '../../layouts'
-import { Listing, ListingItem, ListingLoader, Section, Thumb } from '../../components'
+import {
+  Box,
+  Button,
+  GradientBackground,
+  Listing,
+  ListingItem,
+  ListingLoader,
+  Section,
+  Text,
+  Thumb
+} from '../../components'
 import { getGenres } from '../../api/genres'
 import { getImageUrl } from '../../constants/image'
 import { getTrending } from '../../api/trending'
 import { getPeoplePopular } from '../../api/people'
+import { isTablet, windowWidth } from '../../constants/screen'
 
 export function Trending({ navigation }) {
   const [moviesTrending, setMoviesTrending] = useState()
@@ -14,6 +25,9 @@ export function Trending({ navigation }) {
   const [showsTrending, setShowsTrending] = useState()
   const [showsGenre, setShowsGenre] = useState()
   const [peoplesTrending, setPeoplesTrending] = useState()
+  const [scrollY] = useState(new Animated.Value(0))
+  const aspectRatioCover = isTablet ? 16 / 5 : 16 / 18
+  const inputRange = windowWidth / aspectRatioCover - 100
 
   useEffect(() => {
     getGenres(setMovieGenre)
@@ -25,7 +39,100 @@ export function Trending({ navigation }) {
 
   return (
     <BasicLayout>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      {showsTrending && showsTrending.results && (
+        <Box
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0
+          }}
+        >
+          <Animated.View
+            aspectRatio={aspectRatioCover}
+            style={{
+              transform: [
+                {
+                  scale: scrollY.interpolate({
+                    inputRange: [0, inputRange - 1, inputRange],
+                    outputRange: [1.3, 1, 1]
+                  })
+                }
+              ]
+            }}
+          >
+            <Animated.View
+              style={{
+                opacity: scrollY.interpolate({
+                  inputRange: [0, inputRange],
+                  outputRange: [1, 0]
+                })
+              }}
+            >
+              <ImageBackground
+                source={{
+                  uri: getImageUrl(showsTrending.results?.[0]?.backdrop_path, 1280)
+                }}
+                style={{
+                  aspectRatio: aspectRatioCover
+                }}
+              />
+            </Animated.View>
+            <GradientBackground />
+          </Animated.View>
+        </Box>
+      )}
+      <Animated.ScrollView
+        onScroll={Animated.event(
+          [
+            {
+              nativeEvent: { contentOffset: { y: scrollY } }
+            }
+          ],
+          {
+            useNativeDriver: true
+          }
+        )}
+        scrollEventThrottle={16}
+        showsVerticalScrollIndicator={false}
+      >
+        <Animated.View
+          alignItems="center"
+          as={Box}
+          aspectRatio={aspectRatioCover}
+          justifyContent="flex-end"
+          style={{
+            opacity: scrollY.interpolate({
+              inputRange: [0, windowWidth / aspectRatioCover - 50],
+              outputRange: [1, 0]
+            })
+          }}
+        >
+          {showsTrending && showsTrending.results && (
+            <Box alignItems="center" paddingBottom={50}>
+              <Text
+                fontSize="h0"
+                lineHeight={55}
+                maxWidth={isTablet ? 600 : 300}
+                mb="md"
+                numberOfLines={2}
+                paddingLeft="sm"
+                paddingRight="sm"
+                textAlign="center"
+                weight="black"
+              >
+                {showsTrending.results?.[0]?.name}
+              </Text>
+              <Button
+                iconName="eye"
+                onPress={() => navigation.push('Show', { id: showsTrending.results?.[0]?.id })}
+              >
+                Discover
+              </Button>
+            </Box>
+          )}
+        </Animated.View>
         <Section onPress={() => navigation.navigate('Shows')} title="Tv Shows">
           {showsTrending && showsTrending.results && showsGenre ? (
             <Listing
@@ -82,7 +189,7 @@ export function Trending({ navigation }) {
             <ListingLoader />
           )}
         </Section>
-      </ScrollView>
+      </Animated.ScrollView>
     </BasicLayout>
   )
 }
