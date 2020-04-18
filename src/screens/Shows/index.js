@@ -51,6 +51,7 @@ export function Shows() {
         closeAction={() => setSelectTvShow()}
         isVisible={!!selectTvShow}
         pipeColor="rgba(255, 255, 255, 0.7)"
+        withPadding={false}
       >
         {selectTvShow && (
           <>

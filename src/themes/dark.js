@@ -18,7 +18,7 @@ export const colors = {
   dark800: '#e0e0e0',
   dark900: '#ebebeb',
   behind: '#141414',
-  ahead: '#1f1f1f'
+  ahead: '#292929'
 }
 
 export const darkTheme = {

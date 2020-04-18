@@ -133,7 +133,7 @@ export function People() {
               )}
             </Section>
             {peoplePopular && peoplePopular.filter(item => item.media_type === 'movie').length > 0 && (
-              <Section title="Movie">
+              <Section title="Movies">
                 <Padding pb={0} pt={0}>
                   <Box
                     backgroundColor="ahead"
@@ -157,8 +157,8 @@ export function People() {
 
                         return (
                           <Box key={item.id}>
-                            {date !== dateBefore && index > 0 && (
-                              <Box backgroundColor="light100" height="1px" mb="sm" with={1} />
+                            {date !== dateBefore && (
+                              <Filmography.Header date={date} index={index} />
                             )}
                             <Filmography date={date} id={item.id} isMovie title={item.title} />
                           </Box>
@@ -169,7 +169,7 @@ export function People() {
               </Section>
             )}
             {peoplePopular && peoplePopular.filter(item => item.media_type === 'tv').length > 0 && (
-              <Section title="Show">
+              <Section title="Shows">
                 <Padding pb={0} pt={0}>
                   <Box
                     backgroundColor="ahead"
@@ -192,8 +192,8 @@ export function People() {
 
                         return (
                           <Box key={item.id}>
-                            {date !== dateBefore && index > 0 && (
-                              <Box backgroundColor="light100" height="1px" mb="sm" with={1} />
+                            {date !== dateBefore && (
+                              <Filmography.Header date={date} index={index} />
                             )}
                             <Filmography date={date} id={item.id} title={item.name} />
                           </Box>
@@ -206,11 +206,7 @@ export function People() {
           </ScrollView>
         )}
       </AllScreenLayout>
-      <Modal
-        closeAction={() => setBiographyModalVisible(false)}
-        isVisible={biographyModalVisible}
-        withPadding
-      >
+      <Modal closeAction={() => setBiographyModalVisible(false)} isVisible={biographyModalVisible}>
         {peopleDetail && <Text>{peopleDetail.biography}</Text>}
       </Modal>
     </>

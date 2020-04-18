@@ -11,8 +11,8 @@ export function Modal({
   closeAction,
   maxHeight = screenHeight / 1.5,
   isVisible,
-  pipeColor = 'light400',
-  withPadding = false
+  pipeColor = 'light100',
+  withPadding = true
 }) {
   const scrollViewRef = createRef()
   const [scrollOffset, setScrollOffset] = useState()

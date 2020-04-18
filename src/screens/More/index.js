@@ -6,8 +6,8 @@ import { ScrollView } from 'react-native-gesture-handler'
 
 import { useTheme } from '../../contexts/theme'
 import { BasicLayout } from '../../layouts'
-import { Icon, Item, List, Modal } from '../../components'
-import { Touchable } from '../../components/Touchable.android'
+import { Icon, List, Modal } from '../../components'
+import { Touchable } from '../../components/Touchable'
 
 export function More() {
   const theme = useTheme()
@@ -25,12 +25,12 @@ export function More() {
   function ThemeItem({ isLast, name, subtitle }) {
     return (
       <Touchable onPress={() => setTheme(name)}>
-        <Item isLast={isLast}>
-          <Item.Content>
-            <Item.Title>{name}</Item.Title>
-            <Item.Subtitle>{subtitle}</Item.Subtitle>
-          </Item.Content>
-        </Item>
+        <List.Item isLast={isLast}>
+          <List.Item.Content>
+            <List.Item.Title>{name}</List.Item.Title>
+            <List.Item.Subtitle>{subtitle}</List.Item.Subtitle>
+          </List.Item.Content>
+        </List.Item>
       </Touchable>
     )
   }
@@ -42,33 +42,33 @@ export function More() {
           <List>
             <List.Title>Theme</List.Title>
             <Touchable onPress={() => setThemeModalVisible(true)}>
-              <Item isLast>
-                <Item.Content>
-                  <Item.Title>{theme.name}</Item.Title>
-                  <Item.Subtitle>Choose another theme</Item.Subtitle>
-                </Item.Content>
-              </Item>
+              <List.Item isLast>
+                <List.Item.Content>
+                  <List.Item.Title>{theme.name}</List.Item.Title>
+                  <List.Item.Subtitle>Choose another theme</List.Item.Subtitle>
+                </List.Item.Content>
+              </List.Item>
             </Touchable>
           </List>
           <List>
             <List.Title>Codebase</List.Title>
             <Touchable onPress={() => openLink('https://www.expo.io')}>
-              <Item>
-                <Item.Content>
-                  <Item.Title>Expo</Item.Title>
-                  <Item.Subtitle>Platform for universal React applications</Item.Subtitle>
-                </Item.Content>
+              <List.Item>
+                <List.Item.Content>
+                  <List.Item.Title>Expo</List.Item.Title>
+                  <List.Item.Subtitle>Platform for universal React applications</List.Item.Subtitle>
+                </List.Item.Content>
                 <Icon color="dark100" name="external-link" size={20} />
-              </Item>
+              </List.Item>
             </Touchable>
             <Touchable onPress={() => openLink('https://www.themoviedb.org')}>
-              <Item isLast>
-                <Item.Content>
-                  <Item.Title>The movie database</Item.Title>
-                  <Item.Subtitle>Community built movie and TV database</Item.Subtitle>
-                </Item.Content>
+              <List.Item isLast>
+                <List.Item.Content>
+                  <List.Item.Title>The movie database</List.Item.Title>
+                  <List.Item.Subtitle>Community built movie and TV database</List.Item.Subtitle>
+                </List.Item.Content>
                 <Icon color="dark100" name="external-link" size={20} />
-              </Item>
+              </List.Item>
             </Touchable>
           </List>
         </ScrollView>

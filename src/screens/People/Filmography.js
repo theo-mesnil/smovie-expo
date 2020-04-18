@@ -3,12 +3,11 @@ import { useNavigation } from '@react-navigation/native'
 
 import { Box, Icon, Text, TextLink } from '../../components'
 
-export function Filmography({ date, id, isMovie, title }) {
+export function Filmography({ id, isMovie, title }) {
   const navigation = useNavigation()
 
   return (
     <Box alignItems="center" flexDirection="row" flexWrap="nowrap" paddingBottom="md" w={1}>
-      <Text width={45}>{date}</Text>
       <Icon color="light100" name="chevron-right" size={15} />
       <TextLink
         flex={1}
@@ -28,3 +27,20 @@ export function Filmography({ date, id, isMovie, title }) {
     </Box>
   )
 }
+
+// eslint-disable-next-line react/no-multi-comp
+function Header({ date, index }) {
+  return (
+    <>
+      {index > 0 && <Box backgroundColor="light200" height="1px" mb="sm" />}
+      <Box alignItems="center" flexDirection="row" mb="xs">
+        <Icon color="dark900" name="chevron-right" size={15} />
+        <Text ml="xs" weight="black">
+          {date}
+        </Text>
+      </Box>
+    </>
+  )
+}
+
+Filmography.Header = Header

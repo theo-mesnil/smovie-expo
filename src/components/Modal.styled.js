@@ -14,16 +14,15 @@ export const Modal = styled(ModalNative)(
 
 export const Wrapper = styled(View)(
   ({ maxHeight, theme, withPadding }) => css`
-    background-color: ${theme.colors.light700};
+    background-color: ${theme.colors.ahead};
     border-radius: ${theme.radii.xl};
     max-height: ${maxHeight};
-    max-width: 600;
     overflow: hidden;
 
     ${withPadding &&
     css`
       padding-horizontal: ${theme.space.xl};
       padding-vertical: ${theme.space.xl};
-    `}
+    `};
   `
 )
