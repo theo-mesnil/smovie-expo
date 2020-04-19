@@ -5,7 +5,6 @@ export const List = styled.View(
     border-radius: ${theme.radii.md};
     background-color: ${theme.colors.ahead};
     padding-top: ${theme.space.lg};
-    padding-horizontal: ${theme.space.lg};
     margin-horizontal: ${theme.space.sm};
     margin-vertical: ${theme.space.sm};
   `
@@ -17,6 +16,7 @@ List.Title = styled.Text(
     color: ${theme.colors.primary500};
     font-size: ${theme.fontSizes.h4};
     text-transform: uppercase;
+    padding-horizontal: ${theme.space.lg};
   `
 )
 
@@ -25,6 +25,8 @@ List.Item = styled.View(
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding-horizontal: ${theme.space.lg};
+
     ${
       isLast
         ? css`
@@ -34,8 +36,10 @@ List.Item = styled.View(
             padding-vertical: ${theme.space.lg};
           `
     }
+
     border-bottom-width: ${isLast ? 0 : theme.borderWidths.sm};
-    border-color: ${theme.colors.light500};
+    border-style: solid;
+    border-color: ${theme.colors.light400};
   `
 )
 

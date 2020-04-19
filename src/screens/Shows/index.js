@@ -58,6 +58,7 @@ export function Shows() {
             <ContentHeader
               aspectRatioCover={isTablet ? 16 / 4 : 16 / 9}
               borderOnCover
+              colorGradient={['transparent', theme.values.colors.ahead]}
               cover={selectTvShow.backdrop_path}
               date={selectTvShow.first_air_date}
               imageStyle={{ borderRadius: theme.values.radii.xl }}

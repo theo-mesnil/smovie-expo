@@ -58,6 +58,7 @@ export function Movies() {
             <ContentHeader
               aspectRatioCover={isTablet ? 16 / 4 : 16 / 9}
               borderOnCover
+              colorGradient={['transparent', theme.values.colors.ahead]}
               cover={selectMovie.backdrop_path}
               date={selectMovie.release_date}
               imageStyle={{ borderRadius: theme.values.radii.xl }}

@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import * as WebBrowser from 'expo-web-browser'
 import { ScrollView } from 'react-native-gesture-handler'
+import { StatusBar } from 'react-native'
 
 import { useTheme } from '../../contexts/theme'
 import { BasicLayout } from '../../layouts'
@@ -39,7 +40,7 @@ export function More() {
     <>
       <BasicLayout>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <List>
+          <List style={{ marginTop: StatusBar.currentHeight + 15 }}>
             <List.Title>Theme</List.Title>
             <Touchable onPress={() => setThemeModalVisible(true)}>
               <List.Item isLast>
@@ -73,7 +74,11 @@ export function More() {
           </List>
         </ScrollView>
       </BasicLayout>
-      <Modal closeAction={() => setThemeModalVisible(false)} isVisible={themeModalVisible}>
+      <Modal
+        closeAction={() => setThemeModalVisible(false)}
+        isVisible={themeModalVisible}
+        withPadding={false}
+      >
         <ThemeItem name="dark" subtitle="Get that whiteness out of my sight" />
         <ThemeItem name="light" subtitle="Turn on the light" />
         <ThemeItem isLast name="native" subtitle="Get theme from your device settings" />

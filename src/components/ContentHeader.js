@@ -24,7 +24,8 @@ export function ContentHeader({
   title,
   voteAverage,
   date,
-  imageStyle
+  imageStyle,
+  colorGradient
 }) {
   return (
     <ImageBackground
@@ -33,7 +34,7 @@ export function ContentHeader({
       source={{ uri: getImageUrl(cover, isTablet ? 1280 : 780) }}
       style={{ aspectRatio: aspectRatioCover, justifyContent: 'flex-end' }}
     >
-      <GradientBackground />
+      <GradientBackground colors={colorGradient} />
       <S.ContentHeader>
         {!!poster && (
           <Box marginRight="lg" width={120}>
