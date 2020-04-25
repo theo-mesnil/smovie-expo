@@ -93,7 +93,7 @@ export function People() {
                   {peopleDetail.place_of_birth && `Born in ${peopleDetail.place_of_birth} `}
                   {peopleDetail.birthday && `on ${convertToFullDate(peopleDetail.birthday)}`}
                   {peopleDetail.deathday &&
-                    `and die in ${convertToFullDate(peopleDetail.deathday)}`}
+                    ` and die in ${convertToFullDate(peopleDetail.deathday)}`}
                 </Text>
               </Informations>
               {peopleDetail.biography.length > 0 && (
