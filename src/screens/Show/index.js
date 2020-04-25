@@ -109,6 +109,7 @@ export function Show() {
                           () => navigation.push('People', { id: item.id, name: item.name })
                           // eslint-disable-next-line react/jsx-curly-newline
                         }
+                        subtitle={item.character}
                         title={item.name}
                       />
                     </ListingItem>

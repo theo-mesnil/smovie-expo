@@ -21,12 +21,12 @@ export function Thumb({ backgroundUri, aspectRatio = 3 / 4, title, subtitle, onP
           source={{ uri: backgroundUri }}
           style={{ aspectRatio }}
         />
-        {title && (
+        {!!title && (
           <S.TitleWrapper>
             <S.Title numberOfLines={2}>{title}</S.Title>
           </S.TitleWrapper>
         )}
-        {subtitle && (
+        {!!subtitle && (
           <S.SubtitleWrapper>
             <S.Subtitle numberOfLines={1}>{subtitle}</S.Subtitle>
           </S.SubtitleWrapper>
