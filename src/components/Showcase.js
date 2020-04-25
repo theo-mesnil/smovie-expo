@@ -1,8 +1,10 @@
 import React from 'react'
 import { Animated, ImageBackground } from 'react-native'
 
-import { Box, GradientBackground } from '../../components'
-import { getImageUrl } from '../../constants/image'
+import { getImageUrl } from '../constants/image'
+
+import { Box } from './Box'
+import { GradientBackground } from './GradientBackground'
 
 export function Showcase({ aspectRatioCover, backdropImage, styleCover, styleGradient }) {
   return (
