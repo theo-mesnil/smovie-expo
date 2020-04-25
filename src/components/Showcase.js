@@ -2,6 +2,7 @@ import React from 'react'
 import { Animated, ImageBackground } from 'react-native'
 
 import { getImageUrl } from '../constants/image'
+import { isTablet } from '../constants/screen'
 
 import { Box } from './Box'
 import { GradientBackground } from './GradientBackground'
@@ -21,7 +22,7 @@ export function Showcase({ aspectRatioCover, backdropImage, styleCover, styleGra
         <Animated.View style={styleGradient}>
           <ImageBackground
             source={{
-              uri: getImageUrl(backdropImage, 1280)
+              uri: getImageUrl(backdropImage, isTablet ? 1280 : 780)
             }}
             style={{
               aspectRatio: aspectRatioCover

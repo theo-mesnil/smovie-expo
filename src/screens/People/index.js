@@ -1,38 +1,23 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigation, useRoute } from '@react-navigation/native'
-import { ImageBackground, ScrollView } from 'react-native'
-import { getYear } from 'date-fns'
+import { useRoute } from '@react-navigation/native'
 
-import { GradientBackground } from '../../components/GradientBackground'
-import { BasicLayout } from '../../layouts'
-import {
-  Box,
-  Header,
-  Informations,
-  Listing,
-  ListingItem,
-  ListingLoader,
-  Modal,
-  Padding,
-  Section,
-  Text,
-  Thumb
-} from '../../components'
+import { Box, Informations, Listing, Modal, Padding, Section, Text } from '../../components'
 import { getPeopleDetail } from '../../api/people'
-import { getImageUrl } from '../../constants/image'
 import { convertToFullDate } from '../../utils/formatTime'
 import { isTablet } from '../../constants/screen'
+import { CoverLayout } from '../../layouts/CoverLayout'
 
-import { Filmography } from './Filmography'
+import { KnowForItem } from './KnowforItem'
+import { Movies } from './Movies'
+import { Shows } from './Shows'
 
 export function People() {
-  const aspectRatioCover = isTablet ? 16 / 9 : 16 / 18
   const route = useRoute()
-  const navigation = useNavigation()
   const [peopleDetail, setPeopleDetail] = useState()
   const [peopleCredits, setPeopleCredits] = useState()
   const [peoplePopular, setPeoplePopular] = useState()
   const [biographyModalVisible, setBiographyModalVisible] = useState(false)
+  const aspectRatioCover = isTablet ? 16 / 9 : 16 / 18
 
   useEffect(() => {
     const peopleId = route.params.id
@@ -63,30 +48,18 @@ export function People() {
     )
   }, [peopleCredits, peopleDetail])
 
+  const movies = !!peoplePopular && peoplePopular.filter(item => item.media_type === 'movie')
+  const shows = !!peoplePopular && peoplePopular.filter(item => item.media_type === 'tv')
+
   return (
     <>
-      <BasicLayout>
-        <Header />
+      <CoverLayout
+        aspectRatioCover={aspectRatioCover}
+        backdropCover={peopleDetail?.profile_path}
+        coverContentTitle={peopleDetail?.name}
+      >
         {peopleDetail && (
-          <ScrollView showsVerticalScrollIndicator={false}>
-            <ImageBackground
-              opacity={0.8}
-              source={{ uri: getImageUrl(peopleDetail.profile_path, isTablet ? 1280 : 780) }}
-              style={{ aspectRatio: aspectRatioCover, justifyContent: 'flex-end' }}
-            >
-              <GradientBackground style={{ top: undefined, bottom: 0, height: '30%' }} />
-              <Text
-                fontSize="h0"
-                lineHeight={55}
-                mb="xxl"
-                paddingLeft="sm"
-                paddingRight="sm"
-                textAlign="center"
-                weight="black"
-              >
-                {route.params.name}
-              </Text>
-            </ImageBackground>
+          <>
             <Padding marginTop={-50}>
               <Informations title={peopleDetail.known_for_department}>
                 <Text>
@@ -96,7 +69,7 @@ export function People() {
                     ` and die in ${convertToFullDate(peopleDetail.deathday)}`}
                 </Text>
               </Informations>
-              {peopleDetail.biography.length > 0 && (
+              {peopleDetail.biography?.length > 0 && (
                 <Informations title="Biography">
                   <Text numberOfLines={3} onPress={() => setBiographyModalVisible(true)}>
                     {peopleDetail.biography.replace('\n\n', '\n')}
@@ -104,35 +77,18 @@ export function People() {
                 </Informations>
               )}
             </Padding>
-            <Section title="Know for">
-              {peoplePopular ? (
+            {peoplePopular && (
+              <Section title="Know for">
                 <Listing
                   data={peoplePopular
                     .sort((a, b) => b.popularity.toFixed(2) - a.popularity.toFixed(2))
                     .slice(0, 20)}
                   keyExtractor={item => `${item.id}_${Math.random()}`}
-                  renderItem={({ index, item }) => (
-                    <ListingItem isFirst={index === 0}>
-                      <Thumb
-                        aspectRatio={2 / 3}
-                        backgroundUri={getImageUrl(item.poster_path)}
-                        onPress={
-                          () =>
-                            navigation.push(item.media_type === 'movie' ? 'Movie' : 'Show', {
-                              id: item.id,
-                              name: item.name
-                            })
-                          // eslint-disable-next-line react/jsx-curly-newline
-                        }
-                      />
-                    </ListingItem>
-                  )}
+                  renderItem={props => <KnowForItem {...props} />}
                 />
-              ) : (
-                <ListingLoader />
-              )}
-            </Section>
-            {peoplePopular && peoplePopular.filter(item => item.media_type === 'movie').length > 0 && (
+              </Section>
+            )}
+            {movies?.length > 0 && (
               <Section title="Movies">
                 <Padding pb={0} pt={0}>
                   <Box
@@ -142,34 +98,13 @@ export function People() {
                     paddingRight="sm"
                     paddingTop="sm"
                   >
-                    {peoplePopular
-                      .filter(item => item.media_type === 'movie')
-                      .filter(item => !!item.release_date)
-                      .sort(
-                        (a, b) =>
-                          getYear(new Date(b.release_date)) - getYear(new Date(a.release_date))
-                      )
-                      .map((item, index, items) => {
-                        const date = getYear(new Date(item.release_date))
-
-                        const dateBefore =
-                          index > 0 ? getYear(new Date(items[index - 1].release_date)) : undefined
-
-                        return (
-                          <Box key={item.id}>
-                            {date !== dateBefore && (
-                              <Filmography.Header date={date} index={index} />
-                            )}
-                            <Filmography date={date} id={item.id} isMovie title={item.title} />
-                          </Box>
-                        )
-                      })}
+                    <Movies movies={movies} />
                   </Box>
                 </Padding>
               </Section>
             )}
-            {peoplePopular && peoplePopular.filter(item => item.media_type === 'tv').length > 0 && (
-              <Section title="Shows">
+            {shows?.length > 0 && (
+              <Section title="Movies">
                 <Padding pb={0} pt={0}>
                   <Box
                     backgroundColor="ahead"
@@ -178,34 +113,14 @@ export function People() {
                     paddingRight="sm"
                     paddingTop="sm"
                   >
-                    {peoplePopular
-                      .filter(item => item.media_type === 'tv')
-                      .filter(item => !!item.first_air_date)
-                      .sort(
-                        (a, b) =>
-                          getYear(new Date(b.first_air_date)) - getYear(new Date(a.first_air_date))
-                      )
-                      .map((item, index, items) => {
-                        const date = getYear(new Date(item.first_air_date))
-                        const dateBefore =
-                          index > 0 ? getYear(new Date(items[index - 1].first_air_date)) : undefined
-
-                        return (
-                          <Box key={item.id}>
-                            {date !== dateBefore && (
-                              <Filmography.Header date={date} index={index} />
-                            )}
-                            <Filmography date={date} id={item.id} title={item.name} />
-                          </Box>
-                        )
-                      })}
+                    <Shows shows={shows} />
                   </Box>
                 </Padding>
               </Section>
             )}
-          </ScrollView>
+          </>
         )}
-      </BasicLayout>
+      </CoverLayout>
       <Modal closeAction={() => setBiographyModalVisible(false)} isVisible={biographyModalVisible}>
         {peopleDetail && <Text>{peopleDetail.biography}</Text>}
       </Modal>

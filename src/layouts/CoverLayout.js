@@ -68,7 +68,7 @@ export function CoverLayout({
               })
             }}
           >
-            <Box alignItems="center" paddingBottom={50}>
+            <Box alignItems="center" paddingBottom={coverContentOnPress ? 50 : 20}>
               <Text
                 fontSize="h0"
                 lineHeight={55}
@@ -82,9 +82,11 @@ export function CoverLayout({
               >
                 {coverContentTitle}
               </Text>
-              <Button iconName="eye" onPress={coverContentOnPress}>
-                Discover
-              </Button>
+              {coverContentOnPress && (
+                <Button iconName="eye" onPress={coverContentOnPress}>
+                  Discover
+                </Button>
+              )}
             </Box>
           </Animated.View>
         )}

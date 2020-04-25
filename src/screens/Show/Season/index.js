@@ -3,7 +3,7 @@ import { format } from 'date-fns'
 import { useRoute } from '@react-navigation/native'
 import { ScrollView } from 'react-native'
 
-import { BasicLayout } from '../../layouts'
+import { BasicLayout } from '../../../layouts'
 import {
   Box,
   Centered,
@@ -13,11 +13,11 @@ import {
   ThumbLoader,
   TitleScreen,
   VoteAverage
-} from '../../components'
-import { getSeasonDetail } from '../../api/show'
-import { getImageUrl } from '../../constants/image'
+} from '../../../components'
+import { getSeasonDetail } from '../../../api/show'
+import { getImageUrl } from '../../../constants/image'
 
-import * as S from './Season.styled'
+import * as S from './styled'
 
 export function Season() {
   const route = useRoute()
