@@ -118,8 +118,8 @@ export function Show() {
                 <ListingLoader />
               )}
             </Section>
-            <Section backgroundColor="ahead" mb={0} pb="xl" pt="sm" title="Recommendations">
-              {showRecommendations ? (
+            {showRecommendations && showRecommendations?.results?.length > 0 && (
+              <Section backgroundColor="ahead" mb={0} pb="xl" pt="sm" title="Recommendations">
                 <Listing
                   data={showRecommendations.results}
                   keyExtractor={item => `${item.id}_${Math.random()}`}
@@ -140,10 +140,8 @@ export function Show() {
                     </ListingItem>
                   )}
                 />
-              ) : (
-                <ListingLoader numberOfColumns={1} numberOfColumnsTablet={3} />
-              )}
-            </Section>
+              </Section>
+            )}
           </Box>
         </ScrollView>
       ) : (
