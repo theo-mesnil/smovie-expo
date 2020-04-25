@@ -16,7 +16,6 @@ import {
   LinkList,
   Listing,
   ListingItem,
-  ListingLoader,
   Padding,
   Section,
   Text,
@@ -94,8 +93,8 @@ export function Movie() {
                 <Genres genres={movieDetail.genres} />
               </Informations>
             )}
-            <Section title="Casting">
-              {movieCredits ? (
+            {movieCredits && movieCredits?.cast?.length > 0 && (
+              <Section title="Casting">
                 <Listing
                   data={movieCredits.cast}
                   keyExtractor={item => `${item.id}_${Math.random()}`}
@@ -114,10 +113,8 @@ export function Movie() {
                     </ListingItem>
                   )}
                 />
-              ) : (
-                <ListingLoader />
-              )}
-            </Section>
+              </Section>
+            )}
             {movieRecommendations && movieRecommendations.results.length > 0 && (
               <Section backgroundColor="ahead" mb={0} pb="xl" pt="sm" title="Recommendations">
                 <Listing

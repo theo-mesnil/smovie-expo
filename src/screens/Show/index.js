@@ -13,7 +13,6 @@ import {
   Informations,
   Listing,
   ListingItem,
-  ListingLoader,
   Padding,
   Section,
   Text,
@@ -95,8 +94,8 @@ export function Show() {
                 <Genres genres={showDetail.genres} />
               </Informations>
             )}
-            <Section title="Casting">
-              {showCredits ? (
+            {showCredits && showCredits?.cast?.length > 0 && (
+              <Section title="Casting">
                 <Listing
                   data={showCredits.cast}
                   keyExtractor={item => `${item.id}_${Math.random()}`}
@@ -115,10 +114,8 @@ export function Show() {
                     </ListingItem>
                   )}
                 />
-              ) : (
-                <ListingLoader />
-              )}
-            </Section>
+              </Section>
+            )}
             {showRecommendations && showRecommendations?.results?.length > 0 && (
               <Section backgroundColor="ahead" mb={0} pb="xl" pt="sm" title="Recommendations">
                 <Listing
