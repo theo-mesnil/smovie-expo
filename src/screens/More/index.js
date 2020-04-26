@@ -13,6 +13,11 @@ export function More() {
   const theme = useTheme()
   const [themeModalVisible, setThemeModalVisible] = useState(false)
 
+  const themeIcon = {
+    dark: 'moon',
+    light: 'sun'
+  }
+
   const setTheme = name => {
     setThemeModalVisible(false)
     theme.setThemeName(name)
@@ -27,9 +32,10 @@ export function More() {
       <Touchable onPress={() => setTheme(name)}>
         <List.Item isLast={isLast}>
           <List.Item.Content>
-            <List.Item.Title>{name}</List.Item.Title>
+            <List.Item.Title style={{ textTransform: 'capitalize' }}>{name}</List.Item.Title>
             <List.Item.Subtitle>{subtitle}</List.Item.Subtitle>
           </List.Item.Content>
+          <Icon color="dark100" name={themeIcon[name] || 'smartphone'} size={20} />
         </List.Item>
       </Touchable>
     )
@@ -45,9 +51,38 @@ export function More() {
             <Touchable onPress={() => setThemeModalVisible(true)}>
               <List.Item isLast>
                 <List.Item.Content>
-                  <List.Item.Title>{theme.name}</List.Item.Title>
+                  <List.Item.Title style={{ textTransform: 'capitalize' }}>
+                    {theme.name}
+                  </List.Item.Title>
                   <List.Item.Subtitle>Choose another theme</List.Item.Subtitle>
                 </List.Item.Content>
+                <Icon color="dark100" name={themeIcon[theme.name] || 'smartphone'} size={20} />
+              </List.Item>
+            </Touchable>
+          </List>
+          <List>
+            <List.Title>Author</List.Title>
+            <Touchable onPress={() => openLink('https://www.theomesnil.com')}>
+              <List.Item>
+                <List.Item.Content>
+                  <List.Item.Title>Théo Mesnil</List.Item.Title>
+                  <List.Item.Subtitle>Front-end developer from Paris :)</List.Item.Subtitle>
+                </List.Item.Content>
+                <Icon color="dark100" name="external-link" size={20} />
+              </List.Item>
+            </Touchable>
+            <Touchable
+              onPress={
+                () => openLink('https://github.com/theo-mesnil/react-native-sandbox-themoviedb/')
+                // eslint-disable-next-line react/jsx-curly-newline
+              }
+            >
+              <List.Item isLast>
+                <List.Item.Content>
+                  <List.Item.Title>OpenSource repository</List.Item.Title>
+                  <List.Item.Subtitle>See the code source</List.Item.Subtitle>
+                </List.Item.Content>
+                <Icon color="dark100" name="github" size={20} />
               </List.Item>
             </Touchable>
           </List>
@@ -65,7 +100,7 @@ export function More() {
             <Touchable onPress={() => openLink('https://www.themoviedb.org')}>
               <List.Item isLast>
                 <List.Item.Content>
-                  <List.Item.Title>The movie database</List.Item.Title>
+                  <List.Item.Title>The Movie Database - API</List.Item.Title>
                   <List.Item.Subtitle>Community built movie and TV database</List.Item.Subtitle>
                 </List.Item.Content>
                 <Icon color="dark100" name="external-link" size={20} />
