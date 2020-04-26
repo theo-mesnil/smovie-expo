@@ -4,16 +4,7 @@ import { useRoute } from '@react-navigation/native'
 import { ScrollView } from 'react-native'
 
 import { BasicLayout } from '../../../layouts'
-import {
-  Box,
-  Centered,
-  Header,
-  Text,
-  Thumb,
-  ThumbLoader,
-  TitleScreen,
-  VoteAverage
-} from '../../../components'
+import { Box, Centered, Header, Text, Thumb, ThumbLoader, VoteAverage } from '../../../components'
 import { getSeasonDetail } from '../../../api/show'
 import { getImageUrl } from '../../../constants/image'
 

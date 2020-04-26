@@ -3,7 +3,7 @@ import { useRoute } from '@react-navigation/native'
 import { ScrollView } from 'react-native'
 
 import { BasicLayout } from '../../layouts'
-import { Centered, Text, TitleScreen } from '../../components'
+import { Centered, Text } from '../../components'
 
 export function Genre() {
   const route = useRoute()
@@ -12,7 +12,7 @@ export function Genre() {
     <BasicLayout>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Centered>
-          <TitleScreen>{route.params.name}</TitleScreen>
+          <Text>{route.params.name}</Text>
           <Text>Coming soon 🙃</Text>
         </Centered>
       </ScrollView>
