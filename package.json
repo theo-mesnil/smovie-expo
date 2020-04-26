@@ -16,6 +16,7 @@
     "axios": "0.19.2",
     "date-fns": "2.11.1",
     "expo": "^37.0.0",
+    "expo-constants": "~9.0.0",
     "expo-linear-gradient": "~8.1.0",
     "expo-web-browser": "~8.1.0",
     "lodash.merge": "4.6.2",

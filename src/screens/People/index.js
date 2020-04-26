@@ -57,6 +57,7 @@ export function People() {
         aspectRatioCover={aspectRatioCover}
         backdropCover={peopleDetail?.profile_path}
         coverContentTitle={peopleDetail?.name}
+        headerTitle={peopleDetail?.name}
       >
         {peopleDetail && (
           <>

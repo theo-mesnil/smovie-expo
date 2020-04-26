@@ -32,11 +32,7 @@ export function Season() {
 
   return (
     <BasicLayout>
-      <Header>
-        <TitleScreen marginBottom={0} marginTop={0}>
-          {seasonName}
-        </TitleScreen>
-      </Header>
+      <Header title={seasonName} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <Centered marginTop={70} withMaxSize>
           {seasonDetail ? (

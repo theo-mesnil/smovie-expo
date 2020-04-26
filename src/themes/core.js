@@ -26,7 +26,10 @@ const colors = {
   danger500: '#e32249',
   white: '#fff',
   behind: '#ebebeb',
-  ahead: '#f5f5f5'
+  ahead: '#f5f5f5',
+  aheadRgba: 'rgba(245, 245, 245, 1)',
+  aheadRgbaTransparent: 'rgba(245, 245, 245, 0)',
+  shadow: '#adadad'
 }
 
 export const coreTheme = {

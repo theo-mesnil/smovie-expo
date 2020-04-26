@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Animated } from 'react-native'
 
-import { Box, Button, Showcase, Text } from '../components'
+import { Box, Button, Header, Showcase, Text } from '../components'
 import { isTablet, windowWidth } from '../constants/screen'
+import { useTheme } from '../contexts/theme'
 
 import { BasicLayout } from './Basic'
 
@@ -11,14 +12,41 @@ export function CoverLayout({
   backdropCover,
   children,
   coverContentOnPress,
-  coverContentTitle
+  coverContentTitle,
+  headerTitle,
+  withBackButton = true
 }) {
+  const theme = useTheme()
   const [scrollY] = useState(new Animated.Value(0))
-
+  const [backgroundColor] = useState(new Animated.Value(0))
   const inputRange = windowWidth / aspectRatioCover - 100
 
   return (
     <BasicLayout>
+      <Header
+        styleTitle={{
+          opacity: scrollY.interpolate({
+            inputRange: [inputRange - 30, inputRange],
+            outputRange: [0, 1]
+          })
+        }}
+        styleWrapper={{
+          backgroundColor: scrollY.interpolate({
+            inputRange: [inputRange - 30, inputRange],
+            outputRange: [theme.values.colors.aheadRgbaTransparent, theme.values.colors.aheadRgba]
+          }),
+          shadowOpacity: scrollY.interpolate({
+            inputRange: [inputRange - 30, inputRange],
+            outputRange: [0, 0.3]
+          }),
+          elevation: scrollY.interpolate({
+            inputRange: [inputRange, inputRange],
+            outputRange: [0, 5]
+          })
+        }}
+        title={headerTitle}
+        withBackButton={withBackButton}
+      />
       {backdropCover && (
         <Showcase
           aspectRatioCover={aspectRatioCover}
@@ -46,6 +74,11 @@ export function CoverLayout({
           [
             {
               nativeEvent: { contentOffset: { y: scrollY } }
+            }
+          ],
+          [
+            {
+              nativeEvent: { contentOffset: { y: backgroundColor } }
             }
           ],
           {

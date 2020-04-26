@@ -37,7 +37,11 @@ export function Show() {
   }, [route.params.id])
 
   return (
-    <CoverLayout aspectRatioCover={aspectRatioCover} backdropCover={showDetail?.backdrop_path}>
+    <CoverLayout
+      aspectRatioCover={aspectRatioCover}
+      backdropCover={showDetail?.backdrop_path}
+      headerTitle={showDetail?.name}
+    >
       {showDetail && (
         <>
           <ContentHeader

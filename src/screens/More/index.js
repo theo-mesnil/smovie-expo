@@ -3,11 +3,10 @@
 import React, { useState } from 'react'
 import * as WebBrowser from 'expo-web-browser'
 import { ScrollView } from 'react-native-gesture-handler'
-import { StatusBar } from 'react-native'
 
 import { useTheme } from '../../contexts/theme'
 import { BasicLayout } from '../../layouts'
-import { Icon, List, Modal } from '../../components'
+import { Header, Icon, List, Modal, paddingHeader } from '../../components'
 import { Touchable } from '../../components/Touchable'
 
 export function More() {
@@ -39,8 +38,9 @@ export function More() {
   return (
     <>
       <BasicLayout>
+        <Header title="More" />
         <ScrollView showsVerticalScrollIndicator={false}>
-          <List style={{ marginTop: StatusBar.currentHeight + 15 }}>
+          <List style={{ marginTop: paddingHeader + theme.values.space.xl }}>
             <List.Title>Theme</List.Title>
             <Touchable onPress={() => setThemeModalVisible(true)}>
               <List.Item isLast>

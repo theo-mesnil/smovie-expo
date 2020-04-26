@@ -18,7 +18,10 @@ export const colors = {
   dark800: '#e0e0e0',
   dark900: '#ebebeb',
   behind: '#141414',
-  ahead: '#292929'
+  ahead: '#292929',
+  aheadRgba: 'rgba(41, 41, 41, 1)',
+  aheadRgbaTransparent: 'rgba(41, 41, 41, 0)',
+  shadow: '#000'
 }
 
 export const darkTheme = {

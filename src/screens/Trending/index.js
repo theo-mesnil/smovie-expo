@@ -33,6 +33,8 @@ export function Trending({ navigation }) {
       backdropCover={showsTrending?.results?.[0]?.backdrop_path}
       coverContentOnPress={goToTrending}
       coverContentTitle={showsTrending?.results?.[0]?.name}
+      headerTitle="Trending"
+      withBackButton={false}
     >
       <Section onPress={() => navigation.navigate('Shows')} title="Tv Shows">
         {showsTrending && showsTrending.results ? (

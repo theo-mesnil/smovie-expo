@@ -44,7 +44,11 @@ export function Movie() {
     )
 
   return (
-    <CoverLayout aspectRatioCover={aspectRatioCover} backdropCover={movieDetail?.backdrop_path}>
+    <CoverLayout
+      aspectRatioCover={aspectRatioCover}
+      backdropCover={movieDetail?.backdrop_path}
+      headerTitle={movieDetail?.title}
+    >
       {movieDetail && (
         <>
           <ContentHeader
