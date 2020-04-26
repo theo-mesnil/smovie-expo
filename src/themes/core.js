@@ -29,7 +29,8 @@ const colors = {
   ahead: '#f5f5f5',
   aheadRgba: 'rgba(245, 245, 245, 1)',
   aheadRgbaTransparent: 'rgba(245, 245, 245, 0)',
-  shadow: '#adadad'
+  shadow: '#adadad',
+  border: '#ebebeb'
 }
 
 export const coreTheme = {

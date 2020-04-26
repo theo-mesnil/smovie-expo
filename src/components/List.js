@@ -39,7 +39,7 @@ List.Item = styled.View(
 
     border-bottom-width: ${isLast ? 0 : theme.borderWidths.sm};
     border-style: solid;
-    border-color: ${theme.colors.light400};
+    border-color: ${theme.colors.border};
   `
 )
 
