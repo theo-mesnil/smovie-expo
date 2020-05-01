@@ -10,13 +10,12 @@ export function Genres({ genres }) {
       <Box flexDirection="row" paddingLeft="lg" paddingRight="lg">
         {genres.map(genre => (
           <Button
-            color="light900"
             key={`genre_${genre.name}`}
             marginRight="xxs"
             marginTop="xxs"
             // TODO : create Genre screen
             // onPress={() => navigation.push('Genre', { id: genre.id, name: genre.name })}
-            variant="light500"
+            variant="tertiary"
             variantSize="sm"
           >
             {genre.name}

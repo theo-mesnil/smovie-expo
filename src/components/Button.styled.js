@@ -1,42 +1,41 @@
 import styled, { css } from 'styled-components/native'
-import { flexbox, layout, position, space, typography } from 'styled-system'
+import { flexbox, layout, position, space, typography, variant } from 'styled-system'
 
 import { Text } from './Text'
 
-function ButtonSize({ theme, variantSize }) {
-  if (variantSize === 'sm') {
-    return css`
-      padding-vertical: ${theme.space.xxs};
-      padding-horizontal: ${theme.space.xs};
-    `
-  } else {
-    return css`
-      padding-vertical: ${theme.space.sm};
-      padding-horizontal: ${theme.space.md};
-    `
-  }
-}
-
-function ContentSize({ variantSize }) {
-  if (variantSize === 'sm') {
-    return css`
-      font-size: 13;
-    `
-  } else {
-    return css`
-      font-size: 16;
-    `
-  }
-}
-
 export const Button = styled.View(
   // eslint-disable-next-line no-unused-vars
-  ({ theme, variant, variantSize }) => css`
-    background-color: ${theme.colors[`${variant}`]};
+  ({ theme, variantSize }) => css`
+  ${variant({
+    variants: {
+      primary: {
+        bg: theme.colors.primary500
+      },
+      secondary: {
+        bg: theme.colors.secondary500
+      },
+      tertiary: {
+        bg: theme.colors.light500
+      }
+    }
+  })}
+  ${variant({
+    prop: 'variantSize',
+    variants: {
+      sm: {
+        'padding-vertical': theme.space.xxs,
+        'padding-horizontal': theme.space.xs
+      },
+      md: {
+        'padding-vertical': theme.space.sm,
+        'padding-horizontal': theme.space.md
+      }
+    }
+  })}
     border-radius: ${theme.radii.md};
     align-items: center;
+    justify-content: center;
     flex-direction: row;
-    ${ButtonSize};
     ${flexbox};
     ${layout};
     ${position};
@@ -47,9 +46,31 @@ export const Button = styled.View(
 
 export const Content = styled(Text)(
   // eslint-disable-next-line no-unused-vars
-  ({ color, theme, variantSize }) => css`
-    color: ${color || theme.colors.dark900};
+  ({ color, theme }) => css`
+    ${variant({
+      variants: {
+        primary: {
+          color: theme.colors.white
+        },
+        secondary: {
+          color: theme.colors.white
+        },
+        tertiary: {
+          color: theme.colors.dark900
+        }
+      }
+    })}
+    ${variant({
+      prop: 'variantSize',
+      variants: {
+        sm: {
+          'font-size': 13
+        },
+        md: {
+          'font-size': 16
+        }
+      }
+    })}
     font-family: 'bold';
-    ${ContentSize}
   `
 )
