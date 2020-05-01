@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import * as WebBrowser from 'expo-web-browser'
 import { ScrollView } from 'react-native-gesture-handler'
+import { Linking } from 'react-native'
 
 import { useTheme } from '../../contexts/theme'
 import { BasicLayout } from '../../layouts'
@@ -77,7 +78,7 @@ export function More() {
                 // eslint-disable-next-line react/jsx-curly-newline
               }
             >
-              <List.Item isLast>
+              <List.Item>
                 <List.Item.Content>
                   <List.Item.Title>OpenSource repository</List.Item.Title>
                   <List.Item.Subtitle>See the code source</List.Item.Subtitle>
@@ -85,8 +86,22 @@ export function More() {
                 <Icon color="dark100" name="github" size={20} />
               </List.Item>
             </Touchable>
+            <Touchable
+              onPress={
+                () => Linking.openURL(`mailto:smovie.contact@gmail.com`)
+                // eslint-disable-next-line react/jsx-curly-newline
+              }
+            >
+              <List.Item isLast>
+                <List.Item.Content>
+                  <List.Item.Title>Contact me</List.Item.Title>
+                  <List.Item.Subtitle>Feedback is always welcome</List.Item.Subtitle>
+                </List.Item.Content>
+                <Icon color="dark100" name="mail" size={20} />
+              </List.Item>
+            </Touchable>
           </List>
-          <List>
+          <List style={{ marginBottom: theme.values.space.xl }}>
             <List.Title>Codebase</List.Title>
             <Touchable onPress={() => openLink('https://www.expo.io')}>
               <List.Item>
