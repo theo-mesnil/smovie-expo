@@ -45,7 +45,6 @@ export function Show() {
       {showDetail && (
         <>
           <ContentHeader
-            cover={showDetail.backdrop_path}
             genre={showDetail.genres?.[0]?.name}
             minutes={showDetail.episode_run_time?.[0]}
             paddingTop={windowWidth / aspectRatioCover - 110}

@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Movies & Tv Shows",
-    "description": "Sandbox to play with React Native with Expo and themoviedb 🎥",
-    "slug": "react-native-sandbox-themoviedb",
+    "name": "Smovie - find movies & tv shows guide recommandations",
+    "description": "Looking for a movie or series idea for tonight? Smovie is the simplest and fastest way to discover movies, series or actors. It's an application based on themoviedb (TMDb)database.",
+    "slug": "smovie",
     "privacy": "public",
     "platforms": [
       "ios",
@@ -15,7 +15,7 @@
     "splash": {
       "image": "./src/assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#00ADB5"
+      "backgroundColor": "#5772B9"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -30,7 +30,7 @@
     "android": {
       "package": "com.yourcompany.yourappname",
       "adaptiveIcon": {
-        "backgroundColor": "#00ADB5",
+        "backgroundColor": "#5772B9",
         "foregroundImage": "./src/assets/icon-android.png"
       }
     }

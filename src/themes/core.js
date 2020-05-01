@@ -1,7 +1,7 @@
 const colors = {
-  primary100: '#dcfdff',
-  primary500: '#00adb5',
-  primary900: '#00888e',
+  primary100: '#d3daed',
+  primary500: '#5772b9',
+  primary900: '#4a67b2',
   secondary100: '#fcffc1',
   secondary500: '#cbd400',
   secondary900: '#a6ad00',
@@ -25,16 +25,19 @@ const colors = {
   light900: '#fff',
   danger500: '#e32249',
   white: '#fff',
-  behind: '#ebebeb',
-  ahead: '#f5f5f5',
-  aheadRgba: 'rgba(245, 245, 245, 1)',
-  aheadRgbaTransparent: 'rgba(245, 245, 245, 0)',
-  shadow: '#adadad',
-  border: '#ebebeb'
+  black: '#000'
 }
 
 export const coreTheme = {
-  colors,
+  colors: {
+    ...colors,
+    behind: colors.light700,
+    ahead: colors.light800,
+    aheadRgba: 'rgba(245, 245, 245, 1)',
+    aheadRgbaTransparent: 'rgba(245, 245, 245, 0)',
+    shadow: colors.light100,
+    border: colors.light700
+  },
   fontSizes: {
     h0: 55,
     h1: 27,

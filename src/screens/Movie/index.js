@@ -52,7 +52,6 @@ export function Movie() {
       {movieDetail && (
         <>
           <ContentHeader
-            cover={movieDetail.backdrop_path}
             genre={movieDetail?.genres?.[0]?.name}
             minutes={movieDetail.runtime}
             paddingTop={windowWidth / aspectRatioCover - 110}
