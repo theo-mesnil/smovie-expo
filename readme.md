@@ -1,4 +1,4 @@
-# React Native Sandbox
+# Smovie
 
 Play with react native, styled-components and [themoviedb API](https://developers.themoviedb.org/) 🥳
 
