@@ -20,4 +20,4 @@ export const THEMOVIEDB_API_KEY = 'YOUR_API_KEY'
 
 ## Demo
 
-Try on the Expo app ⬇️🔥 https://expo.io/@thehaut/react-native-sandbox-themoviedb
+Try on the Expo app : https://expo.io/@thehaut/smovie

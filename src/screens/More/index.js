@@ -74,7 +74,7 @@ export function More() {
             </Touchable>
             <Touchable
               onPress={
-                () => openLink('https://github.com/theo-mesnil/react-native-sandbox-themoviedb/')
+                () => openLink('https://github.com/theo-mesnil/smovie/')
                 // eslint-disable-next-line react/jsx-curly-newline
               }
             >
