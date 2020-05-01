@@ -23,7 +23,7 @@ export function Season() {
 
   return (
     <BasicLayout>
-      <Header title={seasonName} />
+      <Header title={seasonName} withBackButton />
       <ScrollView showsVerticalScrollIndicator={false}>
         <Centered marginTop={70} withMaxSize>
           {seasonDetail ? (
