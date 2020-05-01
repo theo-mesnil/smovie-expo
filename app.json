@@ -28,7 +28,7 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.yourcompany.yourappname",
+      "package": "com.theomesnil.smovie",
       "adaptiveIcon": {
         "backgroundColor": "#5772B9",
         "foregroundImage": "./src/assets/icon-android.png"
