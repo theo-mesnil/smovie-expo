@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Smovie - find movies & tv shows guide recommandations",
-    "description": "Looking for a movie or series idea for tonight? Smovie is the simplest and fastest way to discover movies, series or actors. It's an application based on themoviedb (TMDb)database.",
+    "description": "Looking for a movie or series idea for tonight? Smovie is the simplest and fastest way to discover movies, series and actors. It's an application based on themoviedb (TMDb)database.",
     "slug": "smovie",
     "privacy": "public",
     "platforms": [
