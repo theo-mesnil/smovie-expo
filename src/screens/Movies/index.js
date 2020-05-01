@@ -4,10 +4,19 @@ import { useNavigation } from '@react-navigation/native'
 
 import { useTheme } from '../../contexts/theme'
 import { BasicLayout } from '../../layouts'
-import { Box, Button, ContentHeader, Modal, Padding, Text, Thumb } from '../../components'
+import {
+  Button,
+  ContentHeader,
+  Header,
+  Modal,
+  Padding,
+  paddingHeader,
+  Text
+} from '../../components'
 import { getDiscover } from '../../api/discover'
-import { getImageUrl } from '../../constants/image'
 import { isTablet } from '../../constants/screen'
+
+import { MovieItem } from './ShowItem'
 
 export function Movies() {
   const numberOfColumns = isTablet ? 6 : 3
@@ -15,36 +24,50 @@ export function Movies() {
   const navigation = useNavigation()
   const [discover, setDiscover] = useState()
   const [selectMovie, setSelectMovie] = useState()
+  const [page, setPage] = useState(1)
+  const maxPage = 20
+
+  function setNewPage() {
+    if (page < maxPage) {
+      setPage(page + 1)
+    }
+  }
+
+  function getNewPageData(data) {
+    setDiscover(discover.concat(data))
+  }
 
   useEffect(() => {
-    getDiscover(setDiscover, 'movie')
-  }, [])
+    if (page === 1) {
+      getDiscover(setDiscover, 'movie', [{ name: 'page', value: page }])
+    } else if (page < maxPage) {
+      getDiscover(getNewPageData, 'movie', [{ name: 'page', value: page }])
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page])
 
   return (
     <>
       <BasicLayout>
+        <Header title="Movies" />
         {discover && (
-          <Padding pb={0} pr="xs" pt={0}>
-            <FlatList
-              data={discover.results}
-              keyExtractor={item => `${item.id}_${Math.random()}`}
-              numColumns={numberOfColumns}
-              renderItem={({ item }) => (
-                <Box flex={1 / numberOfColumns}>
-                  <Thumb
-                    backgroundUri={getImageUrl(item.poster_path)}
-                    onLongPress={() => setSelectMovie(item)}
-                    onPress={() => {
-                      navigation.push('Movie', { id: item.id })
-                    }}
-                    paddingBottom="md"
-                    paddingRight="md"
-                  />
-                </Box>
-              )}
-              showsVerticalScrollIndicator={false}
-            />
-          </Padding>
+          <FlatList
+            contentContainerStyle={{
+              paddingTop: paddingHeader + theme.values.space.sm,
+              paddingBottom: theme.values.space.lg,
+              paddingHorizontal: theme.values.space.xs
+            }}
+            data={discover}
+            initialNumToRender={20}
+            keyExtractor={item => `${item.id}_${Math.random()}`}
+            numColumns={numberOfColumns}
+            onEndReached={setNewPage}
+            onEndReachedThreshold={1}
+            renderItem={props => (
+              <MovieItem onLongPress={() => setSelectMovie(props.item)} {...props} />
+            )}
+            showsVerticalScrollIndicator={false}
+          />
         )}
       </BasicLayout>
       <Modal

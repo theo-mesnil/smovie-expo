@@ -3,11 +3,20 @@ import { FlatList } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
 import { BasicLayout } from '../../layouts'
-import { Box, Button, ContentHeader, Modal, Padding, Text, Thumb } from '../../components'
+import {
+  Button,
+  ContentHeader,
+  Header,
+  Modal,
+  Padding,
+  paddingHeader,
+  Text
+} from '../../components'
 import { getDiscover } from '../../api/discover'
-import { getImageUrl } from '../../constants/image'
 import { isTablet } from '../../constants/screen'
 import { useTheme } from '../../contexts/theme'
+
+import { ShowItem } from './ShowItem'
 
 export function Shows() {
   const numberOfColumns = isTablet ? 6 : 3
@@ -15,36 +24,50 @@ export function Shows() {
   const navigation = useNavigation()
   const [discover, setDiscover] = useState()
   const [selectTvShow, setSelectTvShow] = useState()
+  const [page, setPage] = useState(1)
+  const maxPage = 20
+
+  function setNewPage() {
+    if (page < maxPage) {
+      setPage(page + 1)
+    }
+  }
+
+  function getNewPageData(data) {
+    setDiscover(discover.concat(data))
+  }
 
   useEffect(() => {
-    getDiscover(setDiscover, 'tv')
-  }, [])
+    if (page === 1) {
+      getDiscover(setDiscover, 'tv', [{ name: 'page', value: page }])
+    } else if (page < maxPage) {
+      getDiscover(getNewPageData, 'tv', [{ name: 'page', value: page }])
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page])
 
   return (
     <>
       <BasicLayout>
+        <Header title="Shows" />
         {discover && (
-          <Padding pb={0} pr="xs" pt={0}>
-            <FlatList
-              data={discover.results}
-              keyExtractor={item => `${item.id}_${Math.random()}`}
-              numColumns={numberOfColumns}
-              renderItem={({ item }) => (
-                <Box flex={1 / numberOfColumns}>
-                  <Thumb
-                    backgroundUri={getImageUrl(item.poster_path)}
-                    onLongPress={() => setSelectTvShow(item)}
-                    onPress={() => {
-                      navigation.push('Show', { id: item.id })
-                    }}
-                    paddingBottom="md"
-                    paddingRight="md"
-                  />
-                </Box>
-              )}
-              showsVerticalScrollIndicator={false}
-            />
-          </Padding>
+          <FlatList
+            contentContainerStyle={{
+              paddingTop: paddingHeader + theme.values.space.sm,
+              paddingBottom: theme.values.space.lg,
+              paddingHorizontal: theme.values.space.xs
+            }}
+            data={discover}
+            initialNumToRender={20}
+            keyExtractor={item => `${item.id}_${Math.random()}`}
+            numColumns={numberOfColumns}
+            onEndReached={setNewPage}
+            onEndReachedThreshold={1}
+            renderItem={props => (
+              <ShowItem onLongPress={() => setSelectTvShow(props.item)} {...props} />
+            )}
+            showsVerticalScrollIndicator={false}
+          />
         )}
       </BasicLayout>
       <Modal
