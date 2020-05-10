@@ -10,13 +10,12 @@ import {
   Modal,
   Padding,
   paddingHeader,
+  ShowItem,
   Text
 } from '../../components'
 import { getDiscover } from '../../api/discover'
 import { isTablet } from '../../constants/screen'
 import { useTheme } from '../../contexts/theme'
-
-import { ShowItem } from './ShowItem'
 
 export function Shows() {
   const numberOfColumns = isTablet ? 6 : 3
@@ -64,7 +63,11 @@ export function Shows() {
             onEndReached={setNewPage}
             onEndReachedThreshold={1}
             renderItem={props => (
-              <ShowItem onLongPress={() => setSelectTvShow(props.item)} {...props} />
+              <ShowItem
+                numberOfColumns={numberOfColumns}
+                onLongPress={() => setSelectTvShow(props.item)}
+                {...props}
+              />
             )}
             showsVerticalScrollIndicator={false}
           />

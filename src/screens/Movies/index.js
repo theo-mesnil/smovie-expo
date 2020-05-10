@@ -9,14 +9,13 @@ import {
   ContentHeader,
   Header,
   Modal,
+  MovieItem,
   Padding,
   paddingHeader,
   Text
 } from '../../components'
 import { getDiscover } from '../../api/discover'
 import { isTablet } from '../../constants/screen'
-
-import { MovieItem } from './ShowItem'
 
 export function Movies() {
   const numberOfColumns = isTablet ? 6 : 3
@@ -64,7 +63,11 @@ export function Movies() {
             onEndReached={setNewPage}
             onEndReachedThreshold={1}
             renderItem={props => (
-              <MovieItem onLongPress={() => setSelectMovie(props.item)} {...props} />
+              <MovieItem
+                numberOfColumns={numberOfColumns}
+                onLongPress={() => setSelectMovie(props.item)}
+                {...props}
+              />
             )}
             showsVerticalScrollIndicator={false}
           />

@@ -22,6 +22,7 @@ export const paddingHeader = Platform.select({
 })
 
 export function Header({
+  content,
   iconName = 'arrow-left',
   styleTitle,
   styleWrapper,
@@ -74,6 +75,7 @@ export function Header({
           mr={withBackButton ? 30 : undefined}
           style={styleTitle}
         >
+          {content}
           {title && (
             <Text fontSize="h2" lines={1} weight="bold">
               {title}

@@ -1,13 +1,18 @@
 import React, { memo } from 'react'
 import { useNavigation } from '@react-navigation/native'
 
-import { Box, Thumb } from '../../components'
-import { getImageUrl } from '../../constants/image'
-import { isTablet } from '../../constants/screen'
+import { getImageUrl } from '../constants/image'
 
-const numberOfColumns = isTablet ? 6 : 3
+import { Box } from './Box'
+import { Thumb } from './Thumb'
 
-export const ShowItem = memo(function ShowItem({ item, onLongPress }) {
+export const ShowItem = memo(function ShowItem({
+  item,
+  numberOfColumns,
+  onLongPress,
+  subtitle,
+  withTitle
+}) {
   const navigation = useNavigation()
 
   return (
@@ -18,6 +23,8 @@ export const ShowItem = memo(function ShowItem({ item, onLongPress }) {
         onPress={() => {
           navigation.push('Show', { id: item.id })
         }}
+        subtitle={subtitle}
+        title={withTitle && item.name}
       />
     </Box>
   )

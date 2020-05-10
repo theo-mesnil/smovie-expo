@@ -10,6 +10,7 @@ import { More } from '../screens/More'
 import { Icon } from '../components/Icon'
 import { useTheme } from '../contexts/theme'
 import { isAndroid } from '../constants/screen'
+import { Search } from '../screens/Search'
 
 const androidTabBarStyle = isAndroid
   ? {
@@ -50,6 +51,11 @@ export function TabBar() {
         component={Trending}
         name="Trending"
         options={{ tabBarIcon: props => tabBarIcon({ ...props, name: 'star' }) }}
+      />
+      <Tab.Screen
+        component={Search}
+        name="Search"
+        options={{ tabBarIcon: props => tabBarIcon({ ...props, name: 'search' }) }}
       />
       <Tab.Screen
         component={Movies}

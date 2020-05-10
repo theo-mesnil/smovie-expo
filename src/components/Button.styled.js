@@ -36,6 +36,7 @@ export const Button = styled.View(
     align-items: center;
     justify-content: center;
     flex-direction: row;
+    overflow: hidden;
     ${flexbox};
     ${layout};
     ${position};
