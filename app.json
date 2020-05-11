@@ -8,7 +8,7 @@
       "ios",
       "android"
     ],
-    "version": "1.0.0",
+    "version": "1.1.0",
     "sdkVersion": "37.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/icon.png",
@@ -29,6 +29,7 @@
     },
     "android": {
       "package": "com.theomesnil.smovie",
+      "versionCode": 2,
       "adaptiveIcon": {
         "backgroundColor": "#5772B9",
         "foregroundImage": "./src/assets/icon-android.png"
