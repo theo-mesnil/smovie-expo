@@ -41,9 +41,10 @@ export const coreTheme = {
   fontSizes: {
     h0: 55,
     h1: 27,
-    h2: 20,
-    h3: 17,
-    h4: 13,
+    h2: 23,
+    h3: 20,
+    h4: 17,
+    h5: 13,
     body1: 15,
     body2: 14,
     body3: 13

@@ -63,7 +63,7 @@ export function Header({
       >
         {withBackButton && (
           <Touchable onPress={() => navigation.goBack(null)}>
-            <Box>
+            <Box mr="sm">
               <Icon color="dark900" name={iconName} size={30} />
             </Box>
           </Touchable>
@@ -77,7 +77,7 @@ export function Header({
         >
           {content}
           {title && (
-            <Text fontSize="h2" lines={1} weight="bold">
+            <Text fontSize="h3" numberOfLines={1} weight="bold">
               {title}
             </Text>
           )}

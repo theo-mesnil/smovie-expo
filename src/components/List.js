@@ -14,7 +14,7 @@ List.Title = styled.Text(
   ({ theme }) => css`
     font-family: 'black';
     color: ${theme.colors.primary500};
-    font-size: ${theme.fontSizes.h4};
+    font-size: ${theme.fontSizes.h5};
     text-transform: uppercase;
     padding-horizontal: ${theme.space.lg};
   `

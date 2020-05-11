@@ -35,7 +35,7 @@ export function Season() {
                       <Thumb aspectRatio={16 / 9} backgroundUri={getImageUrl(episode.still_path)} />
                     </Box>
                   )}
-                  <Text fontSize="h2" mb="sm" numberOfLines={3} weight="bold">
+                  <Text fontSize="h3" mb="sm" numberOfLines={3} weight="bold">
                     {`${episode.episode_number}. ${episode.name}`}
                   </Text>
                   {!!episode.overview && <Text color="dark400">{episode.overview}</Text>}
