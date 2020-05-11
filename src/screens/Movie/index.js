@@ -60,13 +60,13 @@ export function Movie() {
             voteAverage={movieDetail.vote_average}
           />
           <Padding pb={0}>
-            {movieDetail.overview && <Text>{movieDetail.overview}</Text>}
+            {!!movieDetail.overview && <Text>{movieDetail.overview}</Text>}
             {movieDetail.release_date && (
-              <Informations title={movieDetail.status}>
+              <Informations title={movieDetail?.status}>
                 <Text numberOfLines={1}>{convertToFullDate(movieDetail.release_date)}</Text>
               </Informations>
             )}
-            {director && (
+            {director?.length > 0 && (
               <Informations title="Director">
                 <LinkList
                   list={director}
@@ -74,7 +74,7 @@ export function Movie() {
                 />
               </Informations>
             )}
-            {writers.length > 0 && (
+            {writers?.length > 0 && (
               <Informations title="Writers">
                 <LinkList
                   list={writers}

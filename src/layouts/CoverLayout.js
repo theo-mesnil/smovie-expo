@@ -13,6 +13,7 @@ export function CoverLayout({
   children,
   coverContentOnPress,
   coverContentTitle,
+  forceContentTitle,
   headerTitle,
   withBackButton = true
 }) {
@@ -47,28 +48,26 @@ export function CoverLayout({
         title={headerTitle}
         withBackButton={withBackButton}
       />
-      {backdropCover && (
-        <Showcase
-          aspectRatioCover={aspectRatioCover}
-          backdropImage={backdropCover}
-          styleCover={{
-            transform: [
-              {
-                scale: scrollY.interpolate({
-                  inputRange: [0, inputRange - 1, inputRange],
-                  outputRange: [1.3, 1, 1]
-                })
-              }
-            ]
-          }}
-          styleGradient={{
-            opacity: scrollY.interpolate({
-              inputRange: [0, inputRange],
-              outputRange: [1, 0]
-            })
-          }}
-        />
-      )}
+      <Showcase
+        aspectRatioCover={aspectRatioCover}
+        backdropImage={backdropCover}
+        styleCover={{
+          transform: [
+            {
+              scale: scrollY.interpolate({
+                inputRange: [0, inputRange - 1, inputRange],
+                outputRange: [1.3, 1, 1]
+              })
+            }
+          ]
+        }}
+        styleGradient={{
+          opacity: scrollY.interpolate({
+            inputRange: [0, inputRange],
+            outputRange: [1, 0]
+          })
+        }}
+      />
       <Animated.ScrollView
         onScroll={Animated.event(
           [
@@ -88,7 +87,7 @@ export function CoverLayout({
         scrollEventThrottle={16}
         showsVerticalScrollIndicator={false}
       >
-        {coverContentTitle && (
+        {(forceContentTitle || coverContentTitle) && (
           <Animated.View
             alignItems="center"
             as={Box}
@@ -105,7 +104,7 @@ export function CoverLayout({
               <Text
                 fontSize="h0"
                 lineHeight={55}
-                maxWidth={isTablet ? 600 : 300}
+                maxWidth={isTablet ? 600 : 320}
                 mb="md"
                 numberOfLines={2}
                 paddingLeft="sm"
@@ -115,10 +114,8 @@ export function CoverLayout({
               >
                 {coverContentTitle}
               </Text>
-              {coverContentOnPress && (
-                <Button iconName="eye" onPress={coverContentOnPress}>
-                  Discover
-                </Button>
+              {coverContentOnPress && coverContentTitle && (
+                <Button onPress={coverContentOnPress}>Discover</Button>
               )}
             </Box>
           </Animated.View>

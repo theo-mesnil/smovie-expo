@@ -20,14 +20,24 @@ export function Showcase({ aspectRatioCover, backdropImage, styleCover, styleGra
     >
       <Animated.View aspectRatio={aspectRatioCover} style={styleCover}>
         <Animated.View style={styleGradient}>
-          <ImageBackground
-            source={{
-              uri: getImageUrl(backdropImage, isTablet ? 1280 : 780)
-            }}
-            style={{
-              aspectRatio: aspectRatioCover
-            }}
-          />
+          {backdropImage && (
+            <ImageBackground
+              source={{
+                uri: getImageUrl(backdropImage, isTablet ? 1280 : 780)
+              }}
+              style={{
+                aspectRatio: aspectRatioCover
+              }}
+            />
+          )}
+          {!backdropImage && (
+            <Box
+              backgroundColor="ahead"
+              style={{
+                aspectRatio: aspectRatioCover
+              }}
+            />
+          )}
         </Animated.View>
         <GradientBackground />
       </Animated.View>

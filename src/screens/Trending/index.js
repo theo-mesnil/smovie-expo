@@ -33,6 +33,7 @@ export function Trending({ navigation }) {
       backdropCover={showsTrending?.results?.[0]?.backdrop_path}
       coverContentOnPress={goToTrending}
       coverContentTitle={showsTrending?.results?.[0]?.name}
+      forceContentTitle
       headerTitle="Trending"
       withBackButton={false}
     >
