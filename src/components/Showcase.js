@@ -19,7 +19,7 @@ export function Showcase({ aspectRatioCover, backdropImage, styleCover, styleGra
       }}
     >
       <Animated.View aspectRatio={aspectRatioCover} style={styleCover}>
-        <Animated.View style={styleGradient}>
+        <Animated.View style={{ ...styleGradient, marginTop: -1 }}>
           {backdropImage && (
             <ImageBackground
               source={{
