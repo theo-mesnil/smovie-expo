@@ -105,7 +105,7 @@ export function People() {
               </Section>
             )}
             {shows?.length > 0 && (
-              <Section title="Movies">
+              <Section title="Tv Shows">
                 <Padding pb={0} pt={0}>
                   <Box
                     backgroundColor="ahead"
