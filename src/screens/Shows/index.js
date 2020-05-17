@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { FlatList } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+import i18n from 'i18n-js'
 
 import { BasicLayout } from '../../layouts'
 import {
@@ -13,7 +14,7 @@ import {
   ShowItem,
   Text
 } from '../../components'
-import { getDiscover } from '../../api/discover'
+import { useGetDiscover } from '../../api/discover'
 import { isTablet } from '../../constants/screen'
 import { useTheme } from '../../contexts/theme'
 
@@ -25,6 +26,7 @@ export function Shows() {
   const [selectTvShow, setSelectTvShow] = useState()
   const [page, setPage] = useState(1)
   const maxPage = 20
+  const getDiscover = useGetDiscover()
 
   function setNewPage() {
     if (page < maxPage) {
@@ -48,7 +50,7 @@ export function Shows() {
   return (
     <>
       <BasicLayout>
-        <Header title="Shows" />
+        <Header title={i18n.t('shows')} />
         {discover && (
           <FlatList
             contentContainerStyle={{
@@ -102,7 +104,7 @@ export function Shows() {
                   setSelectTvShow()
                 }}
               >
-                See more
+                {i18n.t('seemore')}
               </Button>
             </Padding>
           </>

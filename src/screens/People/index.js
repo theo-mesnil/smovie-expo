@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useRoute } from '@react-navigation/native'
+import i18n from 'i18n-js'
 
 import { Box, Informations, Listing, Modal, Padding, Section, Text } from '../../components'
-import { getPeopleDetail } from '../../api/people'
-import { convertToFullDate } from '../../utils/formatTime'
+import { useGetPeopleDetail } from '../../api/people'
+import { useConvertToDate } from '../../utils/formatTime'
 import { isTablet } from '../../constants/screen'
 import { CoverLayout } from '../../layouts/CoverLayout'
 
@@ -18,11 +19,14 @@ export function People() {
   const [peoplePopular, setPeoplePopular] = useState()
   const [biographyModalVisible, setBiographyModalVisible] = useState(false)
   const aspectRatioCover = isTablet ? 16 / 9 : 16 / 18
+  const getPeopleDetail = useGetPeopleDetail()
+  const convertToDate = useConvertToDate()
 
   useEffect(() => {
     const peopleId = route.params.id
     getPeopleDetail(setPeopleDetail, peopleId)
     getPeopleDetail(setPeopleCredits, peopleId, '/combined_credits')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [route.params.id])
 
   useEffect(() => {
@@ -64,14 +68,16 @@ export function People() {
             <Padding marginTop={-50}>
               <Informations title={peopleDetail.known_for_department}>
                 <Text>
-                  {peopleDetail.place_of_birth && `Born in ${peopleDetail.place_of_birth} `}
-                  {peopleDetail.birthday && `on ${convertToFullDate(peopleDetail.birthday)}`}
+                  {peopleDetail.place_of_birth &&
+                    `${i18n.t('birth.in')} ${peopleDetail.place_of_birth} `}
+                  {peopleDetail.birthday &&
+                    `${i18n.t('birth.on')} ${convertToDate(peopleDetail.birthday)}`}
                   {peopleDetail.deathday &&
-                    ` and die in ${convertToFullDate(peopleDetail.deathday)}`}
+                    ` ${i18n.t('birth.die')} ${convertToDate(peopleDetail.deathday)}`}
                 </Text>
               </Informations>
               {peopleDetail.biography?.length > 0 && (
-                <Informations title="Biography">
+                <Informations title={i18n.t('biography')}>
                   <Text numberOfLines={3} onPress={() => setBiographyModalVisible(true)}>
                     {peopleDetail.biography.replace('\n\n', '\n')}
                   </Text>
@@ -79,7 +85,7 @@ export function People() {
               )}
             </Padding>
             {peoplePopular && (
-              <Section title="Know for">
+              <Section title={i18n.t('knowfor')}>
                 <Listing
                   data={peoplePopular
                     .sort((a, b) => b.popularity.toFixed(2) - a.popularity.toFixed(2))
@@ -90,7 +96,7 @@ export function People() {
               </Section>
             )}
             {movies?.length > 0 && (
-              <Section title="Movies">
+              <Section title={i18n.t('movies')}>
                 <Padding pb={0} pt={0}>
                   <Box
                     backgroundColor="ahead"
@@ -105,7 +111,7 @@ export function People() {
               </Section>
             )}
             {shows?.length > 0 && (
-              <Section title="Tv Shows">
+              <Section title={i18n.t('shows')}>
                 <Padding pb={0} pt={0}>
                   <Box
                     backgroundColor="ahead"

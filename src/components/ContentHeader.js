@@ -4,7 +4,7 @@ import { ImageBackground } from 'react-native'
 
 import { getImageUrl } from '../constants/image'
 import { convertMinToHours } from '../utils/formatTime'
-import { convertToDate } from '../utils/formatTime'
+import { useConvertToDate } from '../utils/formatTime'
 import { isTablet } from '../constants/screen'
 
 import { Box } from './Box'
@@ -15,6 +15,8 @@ import * as S from './ContentHeader.styled'
 import { GradientBackground } from './GradientBackground'
 
 function Content({ date, genre, minutes, poster, title, voteAverage, ...rest }) {
+  const convertToDate = useConvertToDate()
+
   return (
     <S.ContentHeader {...rest}>
       {!!poster && (

@@ -1,19 +1,33 @@
 import axios from 'axios'
 
-import { getApiUrl } from './api'
+import { useApiUrl } from './api'
 
-export const getPeopleDetail = (callback, id, url = '') =>
-  axios
-    .get(getApiUrl(`person/${id}${url}`))
-    .then(response => {
-      callback(response.data)
-    })
-    .catch()
+export const useGetPeopleDetail = () => {
+  const apiUrl = useApiUrl()
 
-export const getPeoplePopular = callback =>
-  axios
-    .get(getApiUrl(`person/popular`))
-    .then(response => {
-      callback(response.data)
-    })
-    .catch()
+  function getPeopleDetail(callback, id, url = '') {
+    return axios
+      .get(apiUrl(`person/${id}${url}`))
+      .then(response => {
+        callback(response.data)
+      })
+      .catch()
+  }
+
+  return getPeopleDetail
+}
+
+export const useGetPeoplePopular = () => {
+  const apiUrl = useApiUrl()
+
+  function getTrending(callback) {
+    return axios
+      .get(apiUrl(`person/popular`))
+      .then(response => {
+        callback(response.data)
+      })
+      .catch()
+  }
+
+  return getTrending
+}

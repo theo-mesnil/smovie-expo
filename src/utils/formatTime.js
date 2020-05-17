@@ -1,5 +1,7 @@
 import { format } from 'date-fns'
 
+import { useDateFnsLocale } from './i18n'
+
 export function convertMinToHours(number) {
   const hours = number / 60
   const rhours = Math.floor(hours)
@@ -17,10 +19,22 @@ export function convertMinToHours(number) {
   }
 }
 
-export function convertToFullDate(date) {
-  return format(new Date(date), 'PPPP')
+export function useConvertToFullDate() {
+  const dateFnsLocale = useDateFnsLocale()
+
+  function convertToFullDate(date) {
+    return format(new Date(date), 'PPPP', { locale: dateFnsLocale })
+  }
+
+  return convertToFullDate
 }
 
-export function convertToDate(date) {
-  return format(new Date(date), 'PPP')
+export function useConvertToDate() {
+  const dateFnsLocale = useDateFnsLocale()
+
+  function convertToDate(date) {
+    return format(new Date(date), 'PPP', { locale: dateFnsLocale })
+  }
+
+  return convertToDate
 }

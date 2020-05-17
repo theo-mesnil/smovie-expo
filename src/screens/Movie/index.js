@@ -1,8 +1,9 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
+import i18n from 'i18n-js'
 
-import { getMovieDetail } from '../../api/movie'
+import { useGetMovieDetail } from '../../api/movie'
 import {
   ContentHeader,
   Genres,
@@ -13,7 +14,7 @@ import {
   Section,
   Text
 } from '../../components'
-import { convertToFullDate } from '../../utils/formatTime'
+import { useConvertToFullDate } from '../../utils/formatTime'
 import { formatMoney } from '../../utils/formatMoney'
 import { CoverLayout } from '../../layouts/CoverLayout'
 import { isTablet, windowWidth } from '../../constants/screen'
@@ -28,12 +29,15 @@ export function Movie() {
   const [movieCredits, setMovieCredits] = useState()
   const [movieRecommendations, setMovieRecommendations] = useState()
   const aspectRatioCover = isTablet ? 16 / 5 : 16 / 9
+  const getMovieDetail = useGetMovieDetail()
+  const convertToFullDate = useConvertToFullDate()
 
   useEffect(() => {
     const movieId = route.params.id
     getMovieDetail(setMovieDetail, movieId)
     getMovieDetail(setMovieCredits, movieId, '/credits')
     getMovieDetail(setMovieRecommendations, movieId, '/recommendations')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [route.params.id])
 
   const director = !!movieCredits && movieCredits.crew.filter(credit => credit.job === 'Director')
@@ -61,13 +65,18 @@ export function Movie() {
           />
           <Padding pb={0}>
             {!!movieDetail.overview && <Text>{movieDetail.overview}</Text>}
+            {movieDetail?.original_title !== movieDetail.title && (
+              <Informations title={i18n.t('originaltitle')}>
+                <Text>{movieDetail.original_title}</Text>
+              </Informations>
+            )}
             {movieDetail.release_date && (
               <Informations title={movieDetail?.status}>
                 <Text numberOfLines={1}>{convertToFullDate(movieDetail.release_date)}</Text>
               </Informations>
             )}
             {director?.length > 0 && (
-              <Informations title="Director">
+              <Informations title={i18n.t('director')}>
                 <LinkList
                   list={director}
                   onPress={(id, name) => navigation.push('People', { id, name })}
@@ -75,7 +84,7 @@ export function Movie() {
               </Informations>
             )}
             {writers?.length > 0 && (
-              <Informations title="Writers">
+              <Informations title={i18n.t('writers')}>
                 <LinkList
                   list={writers}
                   onPress={(id, name) => navigation.push('People', { id, name })}
@@ -83,18 +92,18 @@ export function Movie() {
               </Informations>
             )}
             {!!movieDetail.revenue && !!movieDetail.revenue !== 0 && (
-              <Informations title="Revenue">
+              <Informations title={i18n.t('revenue')}>
                 <Text numberOfLines={1}>{formatMoney(movieDetail.revenue)}</Text>
               </Informations>
             )}
           </Padding>
           {movieDetail.genres && (
-            <Informations mb="lg" paddingOnTitle title="Genres">
+            <Informations mb="lg" paddingOnTitle title={i18n.t('genres')}>
               <Genres genres={movieDetail.genres} />
             </Informations>
           )}
           {movieCredits && movieCredits?.cast?.length > 0 && (
-            <Section title="Casting">
+            <Section title={i18n.t('casting')}>
               <Listing
                 data={movieCredits.cast}
                 keyExtractor={item => `${item.id}_${Math.random()}`}
@@ -103,7 +112,13 @@ export function Movie() {
             </Section>
           )}
           {movieRecommendations && movieRecommendations.results.length > 0 && (
-            <Section backgroundColor="ahead" mb={0} pb="xl" pt="sm" title="Recommendations">
+            <Section
+              backgroundColor="ahead"
+              mb={0}
+              pb="xl"
+              pt="sm"
+              title={i18n.t('recommendations')}
+            >
               <Listing
                 data={movieRecommendations.results}
                 keyExtractor={item => `${item.id}_${Math.random()}`}

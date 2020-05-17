@@ -1,11 +1,18 @@
 import axios from 'axios'
 
-import { getApiUrl } from './api'
+import { useApiUrl } from './api'
 
-export const getDiscover = (callback, type, params) =>
-  axios
-    .get(getApiUrl(`discover/${type}`, params))
-    .then(response => {
-      callback(response?.data?.results)
-    })
-    .catch()
+export const useGetDiscover = () => {
+  const apiUrl = useApiUrl()
+
+  function getDiscover(callback, type, params) {
+    return axios
+      .get(apiUrl(`discover/${type}`, params))
+      .then(response => {
+        callback(response?.data?.results)
+      })
+      .catch()
+  }
+
+  return getDiscover
+}

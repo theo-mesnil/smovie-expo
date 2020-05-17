@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
 import { useNavigation, useRoute } from '@react-navigation/native'
+import i18n from 'i18n-js'
 
 import {
   Button,
@@ -12,8 +13,8 @@ import {
   Section,
   Text
 } from '../../components'
-import { getShowDetail } from '../../api/show'
-import { convertToFullDate } from '../../utils/formatTime'
+import { useGetShowDetail } from '../../api/show'
+import { useConvertToFullDate } from '../../utils/formatTime'
 import { CoverLayout } from '../../layouts/CoverLayout'
 import { isTablet, windowWidth } from '../../constants/screen'
 
@@ -28,12 +29,15 @@ export function Show() {
   const [showCredits, setShowCredits] = useState()
   const [showRecommendations, setShowRecommendations] = useState()
   const aspectRatioCover = isTablet ? 16 / 5 : 16 / 9
+  const getShowDetail = useGetShowDetail()
+  const convertToFullDate = useConvertToFullDate()
 
   useEffect(() => {
     const showId = route.params.id
     getShowDetail(setShowDetail, showId)
     getShowDetail(setShowCredits, showId, '/credits')
     getShowDetail(setShowRecommendations, showId, '/recommendations')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [route.params.id])
 
   return (
@@ -74,28 +78,33 @@ export function Show() {
           </ScrollView>
           <Padding pb={0} pt={0}>
             {showDetail.overview && <Text>{showDetail.overview}</Text>}
-            <Informations title="Seasons and Episodes">
+            <Informations title={i18n.t('seasonsandepisodes')}>
               <Text>
-                {`${showDetail.number_of_seasons} season${
+                {`${showDetail.number_of_seasons} ${i18n.t('season')}${
                   showDetail.number_of_seasons > 1 ? 's' : ''
-                } and ${showDetail.number_of_episodes} episode${
+                } ${i18n.t('and')} ${showDetail.number_of_episodes} ${i18n.t('episode')}${
                   showDetail.number_of_episodes > 1 ? 's' : ''
                 }`}
               </Text>
             </Informations>
+            {showDetail?.original_name !== showDetail.title && (
+              <Informations title={i18n.t('originaltitle')}>
+                <Text>{showDetail.original_name}</Text>
+              </Informations>
+            )}
             {showDetail.first_air_date && (
-              <Informations title="First broadcast">
+              <Informations title={i18n.t('firstbroadcast')}>
                 <Text numberOfLines={1}>{convertToFullDate(showDetail.first_air_date)}</Text>
               </Informations>
             )}
           </Padding>
           {showDetail.genres && (
-            <Informations mb="lg" paddingOnTitle title="Genres">
+            <Informations mb="lg" paddingOnTitle title={i18n.t('genres')}>
               <Genres genres={showDetail.genres} />
             </Informations>
           )}
           {showCredits && showCredits?.cast?.length > 0 && (
-            <Section title="Casting">
+            <Section title={i18n.t('casting')}>
               <Listing
                 data={showCredits.cast}
                 keyExtractor={item => `${item.id}_${Math.random()}`}
@@ -104,7 +113,13 @@ export function Show() {
             </Section>
           )}
           {showRecommendations && showRecommendations?.results?.length > 0 && (
-            <Section backgroundColor="ahead" mb={0} pb="xl" pt="sm" title="Recommendations">
+            <Section
+              backgroundColor="ahead"
+              mb={0}
+              pb="xl"
+              pt="sm"
+              title={i18n.t('recommendations')}
+            >
               <Listing
                 data={showRecommendations.results}
                 keyExtractor={item => `${item.id}_${Math.random()}`}

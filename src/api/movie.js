@@ -1,11 +1,18 @@
 import axios from 'axios'
 
-import { getApiUrl } from './api'
+import { useApiUrl } from './api'
 
-export const getMovieDetail = (callback, id, url) =>
-  axios
-    .get(getApiUrl(`movie/${id}${url}`))
-    .then(response => {
-      callback(response.data)
-    })
-    .catch()
+export const useGetMovieDetail = () => {
+  const apiUrl = useApiUrl()
+
+  function getMovieDetail(callback, id, url) {
+    return axios
+      .get(apiUrl(`movie/${id}${url}`))
+      .then(response => {
+        callback(response.data)
+      })
+      .catch()
+  }
+
+  return getMovieDetail
+}

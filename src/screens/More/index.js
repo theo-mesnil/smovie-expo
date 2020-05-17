@@ -4,15 +4,19 @@ import React, { useState } from 'react'
 import * as WebBrowser from 'expo-web-browser'
 import { ScrollView } from 'react-native-gesture-handler'
 import { Linking } from 'react-native'
+import i18n from 'i18n-js'
 
 import { useTheme } from '../../contexts/theme'
 import { BasicLayout } from '../../layouts'
 import { Header, Icon, List, Modal, paddingHeader } from '../../components'
 import { Touchable } from '../../components/Touchable'
+import { useLanguage } from '../../contexts/language'
 
 export function More() {
   const theme = useTheme()
+  const language = useLanguage()
   const [themeModalVisible, setThemeModalVisible] = useState(false)
+  const [languageModalVisible, setLanguageModalVisible] = useState(false)
 
   const themeIcon = {
     dark: 'moon',
@@ -24,19 +28,36 @@ export function More() {
     theme.setThemeName(name)
   }
 
+  const setLanguage = name => {
+    setLanguageModalVisible(false)
+    language.setLocale(name)
+  }
+
   const openLink = async link => {
     await WebBrowser.openBrowserAsync(link)
   }
 
-  function ThemeItem({ isLast, name, subtitle }) {
+  function ThemeItem({ isLast, value }) {
     return (
-      <Touchable onPress={() => setTheme(name)}>
+      <Touchable onPress={() => setTheme(value)}>
         <List.Item isLast={isLast}>
           <List.Item.Content>
-            <List.Item.Title style={{ textTransform: 'capitalize' }}>{name}</List.Item.Title>
-            <List.Item.Subtitle>{subtitle}</List.Item.Subtitle>
+            <List.Item.Title>{i18n.t(`themeoptions.${value}.title`)}</List.Item.Title>
+            <List.Item.Subtitle>{i18n.t(`themeoptions.${value}.baseline`)}</List.Item.Subtitle>
           </List.Item.Content>
-          <Icon color="dark100" name={themeIcon[name] || 'smartphone'} size={20} />
+          <Icon color="dark100" name={themeIcon[value] || 'smartphone'} size={20} />
+        </List.Item>
+      </Touchable>
+    )
+  }
+
+  function LanguageItem({ isLast, value }) {
+    return (
+      <Touchable onPress={() => setLanguage(value)}>
+        <List.Item isLast={isLast}>
+          <List.Item.Content>
+            <List.Item.Title>{i18n.t(value)}</List.Item.Title>
+          </List.Item.Content>
         </List.Item>
       </Touchable>
     )
@@ -45,29 +66,39 @@ export function More() {
   return (
     <>
       <BasicLayout>
-        <Header title="More" />
+        <Header title={i18n.t('more')} />
         <ScrollView showsVerticalScrollIndicator={false}>
           <List style={{ marginTop: paddingHeader + theme.values.space.xl }}>
-            <List.Title>Theme</List.Title>
+            <List.Title>{i18n.t('settings')}</List.Title>
             <Touchable onPress={() => setThemeModalVisible(true)}>
-              <List.Item isLast>
+              <List.Item>
                 <List.Item.Content>
-                  <List.Item.Title style={{ textTransform: 'capitalize' }}>
-                    {theme.name}
-                  </List.Item.Title>
-                  <List.Item.Subtitle>Choose another theme</List.Item.Subtitle>
+                  <List.Item.Title>{i18n.t('theme')}</List.Item.Title>
+                  <List.Item.Subtitle>
+                    {i18n.t(`themeoptions.${theme.name}.title`)}
+                  </List.Item.Subtitle>
                 </List.Item.Content>
                 <Icon color="dark100" name={themeIcon[theme.name] || 'smartphone'} size={20} />
               </List.Item>
             </Touchable>
+            <Touchable onPress={() => setLanguageModalVisible(true)}>
+              <List.Item isLast>
+                <List.Item.Content>
+                  <List.Item.Title style={{ textTransform: 'capitalize' }}>
+                    {i18n.t('language')}
+                  </List.Item.Title>
+                  <List.Item.Subtitle>{i18n.t(language.locale)}</List.Item.Subtitle>
+                </List.Item.Content>
+              </List.Item>
+            </Touchable>
           </List>
           <List>
-            <List.Title>Author</List.Title>
+            <List.Title>{i18n.t('morescreen.titles.author')}</List.Title>
             <Touchable onPress={() => openLink('https://www.theomesnil.com')}>
               <List.Item>
                 <List.Item.Content>
                   <List.Item.Title>Théo Mesnil</List.Item.Title>
-                  <List.Item.Subtitle>Front-end developer from Paris :)</List.Item.Subtitle>
+                  <List.Item.Subtitle>{i18n.t('morescreen.author.baseline')}</List.Item.Subtitle>
                 </List.Item.Content>
                 <Icon color="dark100" name="external-link" size={20} />
               </List.Item>
@@ -80,8 +111,10 @@ export function More() {
             >
               <List.Item>
                 <List.Item.Content>
-                  <List.Item.Title>OpenSource repository</List.Item.Title>
-                  <List.Item.Subtitle>See the code source</List.Item.Subtitle>
+                  <List.Item.Title>{i18n.t('morescreen.opensource.title')}</List.Item.Title>
+                  <List.Item.Subtitle>
+                    {i18n.t('morescreen.opensource.baseline')}
+                  </List.Item.Subtitle>
                 </List.Item.Content>
                 <Icon color="dark100" name="github" size={20} />
               </List.Item>
@@ -94,8 +127,8 @@ export function More() {
             >
               <List.Item isLast>
                 <List.Item.Content>
-                  <List.Item.Title>Contact me</List.Item.Title>
-                  <List.Item.Subtitle>Feedback is always welcome</List.Item.Subtitle>
+                  <List.Item.Title>{i18n.t('morescreen.contactme.title')}</List.Item.Title>
+                  <List.Item.Subtitle>{i18n.t('morescreen.contactme.baseline')}</List.Item.Subtitle>
                 </List.Item.Content>
                 <Icon color="dark100" name="mail" size={20} />
               </List.Item>
@@ -107,7 +140,7 @@ export function More() {
               <List.Item>
                 <List.Item.Content>
                   <List.Item.Title>Expo</List.Item.Title>
-                  <List.Item.Subtitle>Platform for universal React applications</List.Item.Subtitle>
+                  <List.Item.Subtitle>{i18n.t('morescreen.expo.baseline')}</List.Item.Subtitle>
                 </List.Item.Content>
                 <Icon color="dark100" name="external-link" size={20} />
               </List.Item>
@@ -116,7 +149,7 @@ export function More() {
               <List.Item isLast>
                 <List.Item.Content>
                   <List.Item.Title>The Movie Database - API</List.Item.Title>
-                  <List.Item.Subtitle>Community built movie and TV database</List.Item.Subtitle>
+                  <List.Item.Subtitle>{i18n.t('morescreen.tmdb.baseline')}</List.Item.Subtitle>
                 </List.Item.Content>
                 <Icon color="dark100" name="external-link" size={20} />
               </List.Item>
@@ -129,9 +162,17 @@ export function More() {
         isVisible={themeModalVisible}
         withPadding={false}
       >
-        <ThemeItem name="dark" subtitle="Get that whiteness out of my sight" />
-        <ThemeItem name="light" subtitle="Turn on the light" />
-        <ThemeItem isLast name="native" subtitle="Get theme from your device settings" />
+        <ThemeItem value="dark" />
+        <ThemeItem value="light" />
+        <ThemeItem isLast value="native" />
+      </Modal>
+      <Modal
+        closeAction={() => setLanguageModalVisible(false)}
+        isVisible={languageModalVisible}
+        withPadding={false}
+      >
+        <LanguageItem value="en" />
+        <LanguageItem isLast value="fr" />
       </Modal>
     </>
   )

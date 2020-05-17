@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Animated } from 'react-native'
+import i18n from 'i18n-js'
 
 import { Box, Button, Header, Showcase, Text } from '../components'
 import { isTablet, windowWidth } from '../constants/screen'
@@ -115,7 +116,7 @@ export function CoverLayout({
                 {coverContentTitle}
               </Text>
               {coverContentOnPress && coverContentTitle && (
-                <Button onPress={coverContentOnPress}>Discover</Button>
+                <Button onPress={coverContentOnPress}>{i18n.t('discover')}</Button>
               )}
             </Box>
           </Animated.View>

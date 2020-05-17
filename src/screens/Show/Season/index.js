@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { format } from 'date-fns'
 import { useRoute } from '@react-navigation/native'
 import { ScrollView } from 'react-native'
+import i18n from 'i18n-js'
 
 import { BasicLayout } from '../../../layouts'
 import { Box, Centered, Header, Text, Thumb, ThumbLoader, VoteAverage } from '../../../components'
-import { getSeasonDetail } from '../../../api/show'
+import { useGetSeasonDetail } from '../../../api/show'
 import { getImageUrl } from '../../../constants/image'
 
 import * as S from './styled'
@@ -16,9 +17,11 @@ export function Season() {
   const seasonName = route.params.seasonName
   const showId = route.params.id
   const seasonNumber = route.params.seasonNumber
+  const getSeasonDetail = useGetSeasonDetail()
 
   useEffect(() => {
     getSeasonDetail(setSeasonDetail, showId, seasonNumber)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [seasonNumber, showId])
 
   return (
@@ -48,7 +51,7 @@ export function Season() {
                     {!!episode.vote_average && (
                       <VoteAverage vote={episode.vote_average} weight="regular" />
                     )}
-                    <Text>{format(new Date(episode.air_date), 'MM/dd/yyyy')}</Text>
+                    <Text>{format(new Date(episode.air_date), i18n.t('date.air_date'))}</Text>
                   </Box>
                 </S.Episode>
               ))}

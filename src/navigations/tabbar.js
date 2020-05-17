@@ -2,6 +2,7 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import merge from 'lodash.merge'
+import i18n from 'i18n-js'
 
 import { Trending } from '../screens/Trending'
 import { Movies } from '../screens/Movies'
@@ -49,27 +50,27 @@ export function TabBar() {
     <Tab.Navigator tabBarOptions={tabBarOptions}>
       <Tab.Screen
         component={Trending}
-        name="Trending"
+        name={i18n.t('trending')}
         options={{ tabBarIcon: props => tabBarIcon({ ...props, name: 'star' }) }}
       />
       <Tab.Screen
         component={Search}
-        name="Search"
+        name={i18n.t('search')}
         options={{ tabBarIcon: props => tabBarIcon({ ...props, name: 'search' }) }}
       />
       <Tab.Screen
         component={Movies}
-        name="Movies"
+        name={i18n.t('movies')}
         options={{ tabBarIcon: props => tabBarIcon({ ...props, name: 'film' }) }}
       />
       <Tab.Screen
         component={Shows}
-        name="Shows"
+        name={i18n.t('shows')}
         options={{ tabBarIcon: props => tabBarIcon({ ...props, name: 'tv' }) }}
       />
       <Tab.Screen
         component={More}
-        name="More"
+        name={i18n.t('more')}
         options={{ tabBarIcon: props => tabBarIcon({ ...props, name: 'menu' }) }}
       />
     </Tab.Navigator>

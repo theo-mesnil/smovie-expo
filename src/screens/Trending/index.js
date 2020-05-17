@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import i18n from 'i18n-js'
 
 import { Listing, ListingLoader, Section } from '../../components'
-import { getTrending } from '../../api/trending'
-import { getPeoplePopular } from '../../api/people'
+import { useGetTrending } from '../../api/trending'
+import { useGetPeoplePopular } from '../../api/people'
 import { isTablet } from '../../constants/screen'
 import { keyExtractor } from '../../utils/keyExtractor'
 import { CoverLayout } from '../../layouts/CoverLayout'
@@ -16,11 +17,14 @@ export function Trending({ navigation }) {
   const [showsTrending, setShowsTrending] = useState()
   const [peoplesTrending, setPeoplesTrending] = useState()
   const aspectRatioCover = isTablet ? 16 / 5 : 16 / 18
+  const getTrending = useGetTrending()
+  const getPeoplePopular = useGetPeoplePopular()
 
   useEffect(() => {
     getTrending(setMoviesTrending)
     getTrending(setShowsTrending, 'tv')
     getPeoplePopular(setPeoplesTrending)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   function goToTrending() {
@@ -34,10 +38,10 @@ export function Trending({ navigation }) {
       coverContentOnPress={goToTrending}
       coverContentTitle={showsTrending?.results?.[0]?.name}
       forceContentTitle
-      headerTitle="Trending"
+      headerTitle={i18n.t('trending')}
       withBackButton={false}
     >
-      <Section onPress={() => navigation.navigate('Shows')} title="Tv Shows">
+      <Section onPress={() => navigation.navigate('Shows')} title={i18n.t('shows')}>
         {showsTrending && showsTrending.results ? (
           <Listing
             data={showsTrending.results}
@@ -48,7 +52,7 @@ export function Trending({ navigation }) {
           <ListingLoader numberOfColumns={2} numberOfColumnsTablet={3} withoutTitle />
         )}
       </Section>
-      <Section onPress={() => navigation.navigate('Movies')} title="Movies">
+      <Section onPress={() => navigation.navigate('Movies')} title={i18n.t('movies')}>
         {moviesTrending && moviesTrending.results ? (
           <Listing
             data={moviesTrending.results}
@@ -59,7 +63,7 @@ export function Trending({ navigation }) {
           <ListingLoader numberOfColumns={2} numberOfColumnsTablet={3} withoutTitle />
         )}
       </Section>
-      <Section title="People">
+      <Section title={i18n.t('people')}>
         {peoplesTrending && peoplesTrending.results ? (
           <Listing
             data={peoplesTrending.results}

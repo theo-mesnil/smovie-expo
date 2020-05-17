@@ -1,11 +1,18 @@
 import axios from 'axios'
 
-import { getApiUrl } from './api'
+import { useApiUrl } from './api'
 
-export const getGenres = (callback, type = 'movie') =>
-  axios
-    .get(getApiUrl(`genre/${type}/list`))
-    .then(response => {
-      callback(response.data)
-    })
-    .catch()
+export const useGetGenres = () => {
+  const apiUrl = useApiUrl()
+
+  function getGenres(callback, type = 'movie') {
+    return axios
+      .get(apiUrl(`genre/${type}/list`))
+      .then(response => {
+        callback(response.data)
+      })
+      .catch()
+  }
+
+  return getGenres
+}

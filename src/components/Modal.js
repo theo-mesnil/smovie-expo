@@ -10,6 +10,7 @@ export function Modal({
   children,
   closeAction,
   maxHeight = screenHeight / 1.5,
+  minHeight = 100,
   isVisible,
   pipeColor = 'light100',
   withPadding = true
@@ -39,7 +40,7 @@ export function Modal({
       swipeDirection={['down']}
       testID="modal"
     >
-      <S.Wrapper maxHeight={maxHeight} withPadding={withPadding}>
+      <S.Wrapper maxHeight={maxHeight} minHeight={minHeight} withPadding={withPadding}>
         <Box
           alignSelf="center"
           backgroundColor={pipeColor}

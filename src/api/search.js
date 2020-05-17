@@ -1,11 +1,18 @@
 import axios from 'axios'
 
-import { getApiUrl } from './api'
+import { useApiUrl } from './api'
 
-export const getSearch = (callback, type = 'multi', params) =>
-  axios
-    .get(getApiUrl(`search/${type}`, params))
-    .then(response => {
-      callback(response?.data?.results)
-    })
-    .catch()
+export const useGetSearch = () => {
+  const apiUrl = useApiUrl()
+
+  function getSearch(callback, type = 'multi', params) {
+    return axios
+      .get(apiUrl(`search/${type}`, params))
+      .then(response => {
+        callback(response?.data?.results)
+      })
+      .catch()
+  }
+
+  return getSearch
+}

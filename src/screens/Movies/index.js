@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { FlatList } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+import i18n from 'i18n-js'
 
 import { useTheme } from '../../contexts/theme'
 import { BasicLayout } from '../../layouts'
@@ -14,7 +15,7 @@ import {
   paddingHeader,
   Text
 } from '../../components'
-import { getDiscover } from '../../api/discover'
+import { useGetDiscover } from '../../api/discover'
 import { isTablet } from '../../constants/screen'
 
 export function Movies() {
@@ -25,6 +26,7 @@ export function Movies() {
   const [selectMovie, setSelectMovie] = useState()
   const [page, setPage] = useState(1)
   const maxPage = 20
+  const getDiscover = useGetDiscover()
 
   function setNewPage() {
     if (page < maxPage) {
@@ -48,7 +50,7 @@ export function Movies() {
   return (
     <>
       <BasicLayout>
-        <Header title="Movies" />
+        <Header title={i18n.t('movies')} />
         {discover && (
           <FlatList
             contentContainerStyle={{
@@ -102,7 +104,7 @@ export function Movies() {
                   setSelectMovie()
                 }}
               >
-                See more
+                {i18n.t('seemore')}
               </Button>
             </Padding>
           </>

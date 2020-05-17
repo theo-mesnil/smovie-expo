@@ -1,11 +1,18 @@
 import axios from 'axios'
 
-import { getApiUrl } from './api'
+import { useApiUrl } from './api'
 
-export const getTrending = (callback, type = 'movie', time = 'day') =>
-  axios
-    .get(getApiUrl(`trending/${type}/${time}`))
-    .then(response => {
-      callback(response.data)
-    })
-    .catch()
+export const useGetTrending = () => {
+  const apiUrl = useApiUrl()
+
+  function getTrending(callback, type = 'movie', time = 'day') {
+    return axios
+      .get(apiUrl(`trending/${type}/${time}`))
+      .then(response => {
+        callback(response.data)
+      })
+      .catch()
+  }
+
+  return getTrending
+}
