@@ -63,7 +63,7 @@ export function Trending({ navigation }) {
           <ListingLoader numberOfColumns={2} numberOfColumnsTablet={3} withoutTitle />
         )}
       </Section>
-      <Section title={i18n.t('people')}>
+      <Section title={i18n.t('artists')}>
         {peoplesTrending && peoplesTrending.results ? (
           <Listing
             data={peoplesTrending.results}
