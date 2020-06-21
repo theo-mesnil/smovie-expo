@@ -65,10 +65,10 @@ export const Content = styled(Text)(
       prop: 'variantSize',
       variants: {
         sm: {
-          'font-size': 13
+          'font-size': 16
         },
         md: {
-          'font-size': 16
+          'font-size': 20
         }
       }
     })}

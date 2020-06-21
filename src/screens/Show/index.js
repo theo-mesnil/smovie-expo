@@ -100,7 +100,7 @@ export function Show() {
           </Padding>
           {showDetail.genres && (
             <Informations mb="lg" paddingOnTitle title={i18n.t('genres')}>
-              <Genres genres={showDetail.genres} />
+              <Genres genres={showDetail.genres} type="tv" />
             </Informations>
           )}
           {showCredits && showCredits?.cast?.length > 0 && (

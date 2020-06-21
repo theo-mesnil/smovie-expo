@@ -1,10 +1,13 @@
 import React from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
+import { useNavigation } from '@react-navigation/native'
 
 import { Box } from './Box'
 import { Button } from './Button'
 
-export function Genres({ genres }) {
+export function Genres({ genres, type = 'movie' }) {
+  const navigation = useNavigation()
+
   return (
     <ScrollView horizontal showsHorizontalScrollIndicator={false}>
       <Box flexDirection="row" paddingLeft="lg" paddingRight="lg">
@@ -13,8 +16,7 @@ export function Genres({ genres }) {
             key={`genre_${genre.name}`}
             marginRight="xxs"
             marginTop="xxs"
-            // TODO : create Genre screen
-            // onPress={() => navigation.push('Genre', { id: genre.id, name: genre.name })}
+            onPress={() => navigation.push('Genre', { id: genre.id, name: genre.name, type })}
             variant="tertiary"
             variantSize="sm"
           >
