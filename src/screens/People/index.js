@@ -95,21 +95,6 @@ export function People() {
                 />
               </Section>
             )}
-            {movies?.length > 0 && (
-              <Section title={i18n.t('movies')}>
-                <Padding pb={0} pt={0}>
-                  <Box
-                    backgroundColor="ahead"
-                    borderRadius="md"
-                    paddingLeft="sm"
-                    paddingRight="sm"
-                    paddingTop="sm"
-                  >
-                    <Movies movies={movies} />
-                  </Box>
-                </Padding>
-              </Section>
-            )}
             {shows?.length > 0 && (
               <Section title={i18n.t('shows')}>
                 <Padding pb={0} pt={0}>
@@ -121,6 +106,21 @@ export function People() {
                     paddingTop="sm"
                   >
                     <Shows shows={shows} />
+                  </Box>
+                </Padding>
+              </Section>
+            )}
+            {movies?.length > 0 && (
+              <Section title={i18n.t('movies')}>
+                <Padding pb={0} pt={0}>
+                  <Box
+                    backgroundColor="ahead"
+                    borderRadius="md"
+                    paddingLeft="sm"
+                    paddingRight="sm"
+                    paddingTop="sm"
+                  >
+                    <Movies movies={movies} />
                   </Box>
                 </Padding>
               </Section>
