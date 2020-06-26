@@ -29,8 +29,8 @@ export function TextInput({ handleClean, icon, ...rest }) {
         {...rest}
       />
       {handleClean && (
-        <Button onPress={() => handleClean()} variantSize="sm">
-          <Icon color="#fff" icon={CrossIcon} size="15" />
+        <Button onPress={() => handleClean()} px="xxs" variantSize="sm">
+          <Icon color="#ffffff" icon={CrossIcon} size="15" />
         </Button>
       )}
     </S.Wrapper>

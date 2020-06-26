@@ -31,5 +31,12 @@ const IconStyled = styled.View`
 export function Icon({ color = 'dark900', icon: IconComponent, size, ...rest }) {
   const theme = useTheme()
 
-  return <IconStyled as={IconComponent} color={theme.values.colors[color]} size={size} {...rest} />
+  return (
+    <IconStyled
+      as={IconComponent}
+      color={theme.values.colors[color] || color}
+      size={size}
+      {...rest}
+    />
+  )
 }

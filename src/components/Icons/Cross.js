@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Svg, { Path } from 'react-native-svg'
 
-function SvgComponent({ color, size, ...props }) {
+function SvgComponent({ color, props, size }) {
   return (
     <Svg
       className="prefix__feather prefix__feather-x"
