@@ -49,7 +49,7 @@ export function More() {
   function ThemeItem({ isLast, value }) {
     return (
       <Touchable onPress={() => setTheme(value)}>
-        <List.Item isLast={isLast}>
+        <List.Item isLast={isLast} py="xxl">
           <List.Item.Content>
             <List.Item.Title>{i18n.t(`themeoptions.${value}.title`)}</List.Item.Title>
             <List.Item.Subtitle>{i18n.t(`themeoptions.${value}.baseline`)}</List.Item.Subtitle>
@@ -63,7 +63,7 @@ export function More() {
   function LanguageItem({ isLast, value }) {
     return (
       <Touchable onPress={() => setLanguage(value)}>
-        <List.Item isLast={isLast}>
+        <List.Item isLast={isLast} py="xxl">
           <List.Item.Content>
             <List.Item.Title>{i18n.t(value)}</List.Item.Title>
           </List.Item.Content>

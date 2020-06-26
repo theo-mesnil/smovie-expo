@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components/native'
+import { space } from 'styled-system'
 
 export const List = styled.View(
   ({ theme }) => css`
@@ -40,12 +41,14 @@ List.Item = styled.View(
     border-bottom-width: ${isLast ? 0 : theme.borderWidths.sm};
     border-style: solid;
     border-color: ${theme.colors.border};
+
+    ${space};
   `
 )
 
 List.Item.Content = styled.View`
   flex-direction: column;
-  width: auto;
+  flex: 1;
 `
 
 List.Item.Title = styled.Text(
