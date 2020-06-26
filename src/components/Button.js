@@ -2,11 +2,11 @@ import React from 'react'
 
 import * as S from './Button.styled'
 import { Touchable } from './Touchable'
-import { Icon } from './Icon'
+import { Icon } from './Icons'
 
 export function Button({
   children,
-  iconName,
+  icon,
   onPress,
   variant = 'primary',
   variantSize = 'md',
@@ -15,11 +15,9 @@ export function Button({
   return (
     <Touchable onPress={onPress}>
       <S.Button variant={variant} variantSize={variantSize} {...rest}>
-        {iconName && (
-          <Icon color={variant === 'primary' ? '#fff' : undefined} name={iconName} size={20} />
-        )}
+        {icon && <Icon color={variant === 'primary' ? '#fff' : undefined} icon={icon} size="20" />}
         <S.Content
-          style={{ marginLeft: iconName ? 10 : undefined }}
+          style={{ marginLeft: icon ? 10 : undefined }}
           variant={variant}
           variantSize={variantSize}
         >

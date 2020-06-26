@@ -4,9 +4,9 @@ import { useTheme } from '../contexts/theme'
 
 import * as S from './TextInput.styled'
 import { Button } from './Button'
-import { Icon } from './Icon'
+import { CrossIcon, Icon } from './Icons'
 
-export function TextInput({ handleClean, iconName, ...rest }) {
+export function TextInput({ handleClean, icon, ...rest }) {
   const theme = useTheme()
 
   const keyboardAppearance = useCallback(() => {
@@ -21,7 +21,7 @@ export function TextInput({ handleClean, iconName, ...rest }) {
 
   return (
     <S.Wrapper>
-      {iconName && <Icon color="primary500" mr="xs" name={iconName} size={15} />}
+      {icon && <Icon color="primary500" icon={icon} mr="xs" size="15" />}
       <S.TextInput
         keyboardAppearance={keyboardAppearance()}
         placeholderTextColor={theme.values.colors.dark100}
@@ -30,7 +30,7 @@ export function TextInput({ handleClean, iconName, ...rest }) {
       />
       {handleClean && (
         <Button onPress={() => handleClean()} variantSize="sm">
-          <Icon color="white" name="x-circle" size={15} />
+          <Icon color="#fff" icon={CrossIcon} size="15" />
         </Button>
       )}
     </S.Wrapper>

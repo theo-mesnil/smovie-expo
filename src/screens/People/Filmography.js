@@ -1,14 +1,15 @@
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 
-import { Box, Icon, Text, TextLink } from '../../components'
+import { Box, Text, TextLink } from '../../components'
+import { ChevronRightIcon, Icon } from '../../components/Icons'
 
 export function Filmography({ id, isMovie, title }) {
   const navigation = useNavigation()
 
   return (
     <Box alignItems="center" flexDirection="row" flexWrap="nowrap" paddingBottom="md" w={1}>
-      <Icon color="light100" name="chevron-right" size={15} />
+      <Icon icon={ChevronRightIcon} size="15" />
       <TextLink
         flex={1}
         ml="xs"
@@ -34,7 +35,7 @@ function Header({ date, index }) {
     <>
       {index > 0 && <Box backgroundColor="light200" height="1px" mb="sm" />}
       <Box alignItems="center" flexDirection="row" mb="xs">
-        <Icon color="dark900" name="chevron-right" size={15} />
+        <Icon icon={ChevronRightIcon} size="15" />
         <Text ml="xs" weight="black">
           {date}
         </Text>

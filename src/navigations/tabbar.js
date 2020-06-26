@@ -8,10 +8,10 @@ import { Trending } from '../screens/Trending'
 import { Movies } from '../screens/Movies'
 import { Shows } from '../screens/Shows'
 import { More } from '../screens/More'
-import { Icon } from '../components/Icon'
 import { useTheme } from '../contexts/theme'
 import { isAndroid } from '../constants/screen'
 import { Search } from '../screens/Search'
+import { Icon, MenuIcon, MovieIcon, SearchIcon, StarIcon, TvIcon } from '../components/Icons'
 
 const androidTabBarStyle = isAndroid
   ? {
@@ -42,8 +42,8 @@ export function TabBar() {
     androidTabBarStyle
   )
 
-  function tabBarIcon({ focused, name }) {
-    return <Icon color={focused ? 'primary500' : 'dark900'} name={name} size={24} />
+  function tabBarIcon({ focused, icon: IconComponent }) {
+    return <Icon color={focused ? 'primary500' : undefined} icon={IconComponent} size="24" />
   }
 
   return (
@@ -51,27 +51,27 @@ export function TabBar() {
       <Tab.Screen
         component={Trending}
         name={i18n.t('trending')}
-        options={{ tabBarIcon: props => tabBarIcon({ ...props, name: 'star' }) }}
+        options={{ tabBarIcon: props => tabBarIcon({ ...props, icon: StarIcon }) }}
       />
       <Tab.Screen
         component={Search}
         name={i18n.t('search')}
-        options={{ tabBarIcon: props => tabBarIcon({ ...props, name: 'search' }) }}
+        options={{ tabBarIcon: props => tabBarIcon({ ...props, icon: SearchIcon }) }}
       />
       <Tab.Screen
         component={Movies}
         name={i18n.t('movies')}
-        options={{ tabBarIcon: props => tabBarIcon({ ...props, name: 'film' }) }}
+        options={{ tabBarIcon: props => tabBarIcon({ ...props, icon: MovieIcon }) }}
       />
       <Tab.Screen
         component={Shows}
         name={i18n.t('shows')}
-        options={{ tabBarIcon: props => tabBarIcon({ ...props, name: 'tv' }) }}
+        options={{ tabBarIcon: props => tabBarIcon({ ...props, icon: TvIcon }) }}
       />
       <Tab.Screen
         component={More}
         name={i18n.t('more')}
-        options={{ tabBarIcon: props => tabBarIcon({ ...props, name: 'menu' }) }}
+        options={{ tabBarIcon: props => tabBarIcon({ ...props, icon: MenuIcon }) }}
       />
     </Tab.Navigator>
   )

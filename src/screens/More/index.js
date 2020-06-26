@@ -8,7 +8,16 @@ import i18n from 'i18n-js'
 
 import { useTheme } from '../../contexts/theme'
 import { BasicLayout } from '../../layouts'
-import { Header, Icon, List, Modal, paddingHeader } from '../../components'
+import { Header, List, Modal, paddingHeader } from '../../components'
+import {
+  ExternalLinkIcon,
+  GithubIcon,
+  Icon,
+  MailIcon,
+  MoonIcon,
+  SmartphoneIcon,
+  SunIcon
+} from '../../components/Icons'
 import { Touchable } from '../../components/Touchable'
 import { useLanguage } from '../../contexts/language'
 
@@ -19,8 +28,8 @@ export function More() {
   const [languageModalVisible, setLanguageModalVisible] = useState(false)
 
   const themeIcon = {
-    dark: 'moon',
-    light: 'sun'
+    dark: MoonIcon,
+    light: SunIcon
   }
 
   const setTheme = name => {
@@ -45,7 +54,7 @@ export function More() {
             <List.Item.Title>{i18n.t(`themeoptions.${value}.title`)}</List.Item.Title>
             <List.Item.Subtitle>{i18n.t(`themeoptions.${value}.baseline`)}</List.Item.Subtitle>
           </List.Item.Content>
-          <Icon color="dark100" name={themeIcon[value] || 'smartphone'} size={20} />
+          <Icon color="dark100" icon={themeIcon[value] || SmartphoneIcon} size="20" />
         </List.Item>
       </Touchable>
     )
@@ -78,7 +87,7 @@ export function More() {
                     {i18n.t(`themeoptions.${theme.name}.title`)}
                   </List.Item.Subtitle>
                 </List.Item.Content>
-                <Icon color="dark100" name={themeIcon[theme.name] || 'smartphone'} size={20} />
+                <Icon color="dark100" icon={themeIcon[theme.name] || SmartphoneIcon} size="20" />
               </List.Item>
             </Touchable>
             <Touchable onPress={() => setLanguageModalVisible(true)}>
@@ -100,7 +109,7 @@ export function More() {
                   <List.Item.Title>Théo Mesnil</List.Item.Title>
                   <List.Item.Subtitle>{i18n.t('morescreen.author.baseline')}</List.Item.Subtitle>
                 </List.Item.Content>
-                <Icon color="dark100" name="external-link" size={20} />
+                <Icon color="dark100" icon={ExternalLinkIcon} size="20" />
               </List.Item>
             </Touchable>
             <Touchable
@@ -116,7 +125,7 @@ export function More() {
                     {i18n.t('morescreen.opensource.baseline')}
                   </List.Item.Subtitle>
                 </List.Item.Content>
-                <Icon color="dark100" name="github" size={20} />
+                <Icon color="dark100" icon={GithubIcon} size="20" />
               </List.Item>
             </Touchable>
             <Touchable
@@ -130,7 +139,7 @@ export function More() {
                   <List.Item.Title>{i18n.t('morescreen.contactme.title')}</List.Item.Title>
                   <List.Item.Subtitle>{i18n.t('morescreen.contactme.baseline')}</List.Item.Subtitle>
                 </List.Item.Content>
-                <Icon color="dark100" name="mail" size={20} />
+                <Icon color="dark100" icon={MailIcon} size="20" />
               </List.Item>
             </Touchable>
           </List>
@@ -142,7 +151,7 @@ export function More() {
                   <List.Item.Title>Expo</List.Item.Title>
                   <List.Item.Subtitle>{i18n.t('morescreen.expo.baseline')}</List.Item.Subtitle>
                 </List.Item.Content>
-                <Icon color="dark100" name="external-link" size={20} />
+                <Icon color="dark100" icon={ExternalLinkIcon} size="20" />
               </List.Item>
             </Touchable>
             <Touchable onPress={() => openLink('https://www.themoviedb.org')}>
@@ -151,7 +160,7 @@ export function More() {
                   <List.Item.Title>The Movie Database - API</List.Item.Title>
                   <List.Item.Subtitle>{i18n.t('morescreen.tmdb.baseline')}</List.Item.Subtitle>
                 </List.Item.Content>
-                <Icon color="dark100" name="external-link" size={20} />
+                <Icon color="dark100" icon={ExternalLinkIcon} size="20" />
               </List.Item>
             </Touchable>
           </List>

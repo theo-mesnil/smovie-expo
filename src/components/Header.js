@@ -5,7 +5,7 @@ import Constants from 'expo-constants'
 
 import { useTheme } from '../contexts/theme'
 
-import { Icon } from './Icon'
+import { ArrowLeftIcon, Icon } from './Icons'
 import { Box } from './Box'
 import { Touchable } from './Touchable'
 import { Text } from './Text'
@@ -23,7 +23,7 @@ export const paddingHeader = Platform.select({
 
 export function Header({
   content,
-  iconName = 'arrow-left',
+  icon = ArrowLeftIcon,
   styleTitle,
   styleWrapper,
   title,
@@ -64,7 +64,7 @@ export function Header({
         {withBackButton && (
           <Touchable onPress={() => navigation.goBack(null)}>
             <Box mr="sm">
-              <Icon color="dark900" name={iconName} size={30} />
+              <Icon icon={icon} size="30" />
             </Box>
           </Touchable>
         )}

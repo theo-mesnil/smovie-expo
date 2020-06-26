@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Icon } from './Icon'
+import { ArrowRightIcon, Icon } from './Icons'
 import * as S from './Section.styled'
 import { Touchable } from './Touchable'
 
@@ -14,7 +14,7 @@ export function Section({ children, onPress, title, ...rest }) {
               <S.TitleContent numberOfLines={1}>{title}</S.TitleContent>
               <Touchable onPress={onPress}>
                 <S.Icon>
-                  <Icon color="dark900" name="arrow-right" size={24} />
+                  <Icon icon={ArrowRightIcon} size="24" />
                 </S.Icon>
               </Touchable>
             </S.TitleWithLink>

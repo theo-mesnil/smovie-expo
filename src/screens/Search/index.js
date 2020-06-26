@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { FlatList } from 'react-native'
 import i18n from 'i18n-js'
 
-import { Header, paddingHeader, TextInput } from '../../components'
+import { Header, paddingHeader, SearchIcon, TextInput } from '../../components'
 import { BasicLayout } from '../../layouts/Basic'
 import { useTheme } from '../../contexts/theme'
 import { isTablet } from '../../constants/screen'
@@ -36,7 +36,7 @@ export function Search() {
           <TextInput
             autoFocus
             handleClean={handleClean}
-            iconName="search"
+            icon={SearchIcon}
             onChangeText={value => setValue(value)}
             placeholder={i18n.t('search')}
             value={value}
