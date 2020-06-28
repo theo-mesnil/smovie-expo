@@ -5,7 +5,17 @@ import { ScrollView } from 'react-native'
 import i18n from 'i18n-js'
 
 import { BasicLayout } from '../../../layouts'
-import { Box, Centered, Header, Text, Thumb, ThumbLoader, VoteAverage } from '../../../components'
+import {
+  Box,
+  Centered,
+  Header,
+  Icon,
+  Text,
+  Thumb,
+  ThumbLoader,
+  TvIcon,
+  VoteAverage
+} from '../../../components'
 import { useGetSeasonDetail } from '../../../api/show'
 import { getImageUrl } from '../../../constants/image'
 
@@ -33,11 +43,13 @@ export function Season() {
             <Box mt={40}>
               {seasonDetail.episodes.map(episode => (
                 <S.Episode key={episode.name}>
-                  {!!episode.still_path && (
-                    <Box mb="md" mr="sm" width="100%">
-                      <Thumb aspectRatio={16 / 9} backgroundUri={getImageUrl(episode.still_path)} />
-                    </Box>
-                  )}
+                  <Box mb="md" mr="sm" width="100%">
+                    <Thumb
+                      aspectRatio={16 / 9}
+                      backgroundUri={!!episode.still_path && getImageUrl(episode.still_path)}
+                      iconNoContent={<Icon icon={TvIcon} opacity="0.6" size="40" />}
+                    />
+                  </Box>
                   <Text fontSize="h3" mb="sm" numberOfLines={3} weight="bold">
                     {`${episode.episode_number}. ${episode.name}`}
                   </Text>

@@ -87,9 +87,7 @@ export function People() {
             {peoplePopular && (
               <Section title={i18n.t('knowfor')}>
                 <Listing
-                  data={peoplePopular
-                    .sort((a, b) => b.popularity.toFixed(2) - a.popularity.toFixed(2))
-                    .slice(0, 20)}
+                  data={peoplePopular.slice(0, 20)}
                   keyExtractor={item => `${item.id}_${Math.random()}`}
                   renderItem={props => <KnowForItem {...props} />}
                 />

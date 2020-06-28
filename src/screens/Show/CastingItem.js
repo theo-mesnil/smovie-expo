@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import { useNavigation } from '@react-navigation/native'
 
-import { ListingItem, Thumb } from '../../components'
+import { Icon, ListingItem, Thumb, UserIcon } from '../../components'
 import { getImageUrl } from '../../constants/image'
 
 export const CastingItem = memo(function CastingItem({ index, item }) {
@@ -11,7 +11,8 @@ export const CastingItem = memo(function CastingItem({ index, item }) {
     <ListingItem isFirst={index === 0}>
       <Thumb
         aspectRatio={2 / 3}
-        backgroundUri={getImageUrl(item.profile_path)}
+        backgroundUri={!!item.profile_path && getImageUrl(item.profile_path)}
+        iconNoContent={<Icon icon={UserIcon} opacity="0.6" size="40" />}
         onPress={() => navigation.push('People', { id: item.id, name: item.name })}
         subtitle={item.character}
         title={item.name}

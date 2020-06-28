@@ -23,6 +23,7 @@ export SmartphoneIcon from './Smartphone'
 export StarIcon from './Star'
 export SunIcon from './Sun'
 export TvIcon from './Tv'
+export UserIcon from './User'
 
 const IconStyled = styled.View`
   ${space};
