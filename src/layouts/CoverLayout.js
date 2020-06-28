@@ -81,9 +81,7 @@ export function CoverLayout({
               nativeEvent: { contentOffset: { y: backgroundColor } }
             }
           ],
-          {
-            useNativeDriver: true
-          }
+          { useNativeDriver: true }
         )}
         scrollEventThrottle={16}
         showsVerticalScrollIndicator={false}

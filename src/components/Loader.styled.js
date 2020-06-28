@@ -23,11 +23,13 @@ export function ShapeLoader({
       Animated.sequence([
         Animated.timing(fadeAnim, {
           toValue: 1,
-          duration: 1000
+          duration: 1000,
+          useNativeDriver: false
         }),
         Animated.timing(fadeAnim, {
           toValue: startValue,
-          duration: 500
+          duration: 500,
+          useNativeDriver: false
         })
       ])
     ).start()
