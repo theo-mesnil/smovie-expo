@@ -41,7 +41,7 @@ export function Trending({ navigation }) {
       headerTitle={i18n.t('trending')}
       withBackButton={false}
     >
-      <Section onPress={() => navigation.navigate('Shows')} title={i18n.t('shows')}>
+      <Section onPress={() => navigation.jumpTo('Shows')} title={i18n.t('shows')}>
         {showsTrending && showsTrending.results ? (
           <Listing
             data={showsTrending.results}
@@ -52,7 +52,7 @@ export function Trending({ navigation }) {
           <ListingLoader numberOfColumns={2} numberOfColumnsTablet={3} withoutTitle />
         )}
       </Section>
-      <Section onPress={() => navigation.navigate('Movies')} title={i18n.t('movies')}>
+      <Section onPress={() => navigation.jumpTo('Movies')} title={i18n.t('movies')}>
         {moviesTrending && moviesTrending.results ? (
           <Listing
             data={moviesTrending.results}
