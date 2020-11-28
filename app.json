@@ -10,7 +10,7 @@
     "icon": "./src/assets/icon.png",
     "backgroundColor": "#0f1115",
     "primaryColor": "#5772B9",
-    "githubUrl": "https://github.com/theo-mesnil/smovie",
+    "githubUrl": "https://github.com/theo-mesnil/smovie-expo",
     "splash": {
       "image": "./src/assets/splash.png",
       "resizeMode": "contain",

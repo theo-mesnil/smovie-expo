@@ -114,7 +114,7 @@ export function More() {
             </Touchable>
             <Touchable
               onPress={
-                () => openLink('https://github.com/theo-mesnil/smovie/')
+                () => openLink('https://github.com/theo-mesnil/smovie-expo/')
                 // eslint-disable-next-line react/jsx-curly-newline
               }
             >

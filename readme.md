@@ -22,4 +22,5 @@ export const THEMOVIEDB_API_KEY = 'YOUR_API_KEY'
 
 ## Demo
 
-Try on the Expo app : https://expo.io/@thehaut/smovie
+- Expo app : https://expo.io/@thehaut/smovie
+- Android : https://play.google.com/store/apps/details?id=com.theomesnil.smovie
