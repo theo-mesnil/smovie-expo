@@ -1,4 +1,6 @@
-# Smovie
+# New version here : https://github.com/theo-mesnil/WhatToWatch
+
+### Smovie [OLD]
 
 Play with react native, styled-components and [themoviedb API](https://developers.themoviedb.org/) 🥳
 
